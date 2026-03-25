@@ -1,661 +1,645 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-TW">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.2">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2050 我的未來宇宙</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#05060f;--neon1:#a259ff;--neon2:#00e5ff;--neon3:#ff6b9d;--neon4:#ffe066;--neon5:#39ff99;--card:#0e1130;--card2:#12143a;--text:#e8eaff;--sub:#8890c8}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+#stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.star{position:absolute;background:#fff;border-radius:50%;animation:twinkle linear infinite}
+@keyframes twinkle{0%,100%{opacity:.1}50%{opacity:.9}}
+.screen{display:none;min-height:100vh;padding:2rem 1.2rem 3rem;position:relative;z-index:1;max-width:600px;margin:0 auto}
+.screen.active{display:flex;flex-direction:column;align-items:center}
+.impact-q{font-size:1.85rem;font-weight:900;line-height:1.3;margin-bottom:1.4rem;background:linear-gradient(135deg,#fff,var(--neon2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center}
+.impact-sub{color:var(--sub);font-size:.88rem;line-height:1.85;margin-bottom:2.2rem;max-width:360px;text-align:center}
+.impact-sub em{color:var(--neon3);font-style:normal;font-weight:700}
+.impact-choices{display:flex;flex-direction:column;gap:.75rem;width:100%;max-width:360px}
+.impact-choice{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);border-radius:13px;padding:.95rem 1.1rem;cursor:pointer;font-size:.9rem;font-family:inherit;color:var(--text);text-align:left;transition:.22s;line-height:1.4}
+.impact-choice:hover{border-color:var(--neon2);background:rgba(0,229,255,.06);transform:translateX(4px)}
+.impact-skip{margin-top:1.4rem;font-size:.76rem;color:var(--sub);cursor:pointer;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:.1rem}
+.setup-title{font-size:1.45rem;font-weight:900;text-align:center;margin-bottom:.35rem;background:linear-gradient(135deg,var(--neon1),var(--neon2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.setup-sub{color:var(--sub);font-size:.81rem;text-align:center;line-height:1.7;margin-bottom:1.6rem}
+.setup-form{width:100%;display:flex;flex-direction:column;gap:.95rem}
+.setup-field label{display:block;font-size:.7rem;letter-spacing:.12em;font-weight:700;color:var(--neon4);margin-bottom:.38rem}
+.setup-field input{width:100%;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.11);border-radius:11px;color:var(--text);font-family:inherit;font-size:.9rem;padding:.72rem .95rem;transition:.2s}
+.setup-field input:focus{outline:none;border-color:var(--neon1)}
+.setup-field input::placeholder{color:var(--sub);opacity:.55}
+.setup-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.setup-hint{font-size:.7rem;color:var(--sub);line-height:1.6;background:rgba(162,89,255,.06);border-radius:9px;padding:.6rem .8rem}
+.setup-hint em{color:var(--neon1);font-style:normal}
+.logo-badge{font-size:.7rem;letter-spacing:.2em;color:var(--neon2);background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.28);border-radius:20px;padding:.25rem .82rem;margin-bottom:.9rem}
+.welcome-name{font-size:.95rem;color:var(--sub);text-align:center;margin-bottom:.25rem}
+.welcome-name em{color:var(--neon2);font-style:normal;font-weight:700}
+h1.title{font-size:2.2rem;font-weight:900;text-align:center;line-height:1.15;background:linear-gradient(135deg,var(--neon1),var(--neon2),var(--neon3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.75rem}
+.home-ctx{width:100%;background:rgba(255,224,102,.05);border:1px solid rgba(255,224,102,.15);border-radius:13px;padding:.82rem .98rem;margin-bottom:1.1rem;font-size:.79rem;line-height:1.88;color:var(--sub)}
+.home-ctx strong{color:var(--neon4)}.home-ctx em{color:var(--neon3);font-style:normal}
+.planet-wrap{position:relative;width:155px;height:155px;margin:.2rem 0 1.3rem}
+.planet{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#7c3aed,#1e1b4b 70%);box-shadow:0 0 55px rgba(162,89,255,.5),0 0 110px rgba(162,89,255,.18);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);animation:float 4s ease-in-out infinite}
+.ring{position:absolute;top:50%;left:50%;width:175px;height:38px;border:2px solid rgba(0,229,255,.32);border-radius:50%;transform:translate(-50%,-50%) rotateX(75deg)}
+@keyframes float{0%,100%{transform:translate(-50%,-50%) translateY(0)}50%{transform:translate(-50%,-50%) translateY(-9px)}}
+.btn-main{background:linear-gradient(135deg,var(--neon1),var(--neon2));color:#05060f;font-weight:900;font-size:.94rem;border:none;padding:.78rem 1.9rem;border-radius:50px;cursor:pointer;box-shadow:0 0 28px rgba(162,89,255,.32);transition:.2s;font-family:inherit}
+.btn-main:hover{transform:scale(1.04)}
+.or-divider{color:var(--sub);margin:.62rem 0;font-size:.73rem}
+.btn-sec{background:transparent;color:var(--neon2);border:1.5px solid var(--neon2);font-size:.83rem;padding:.53rem 1.35rem;border-radius:50px;cursor:pointer;font-family:inherit;transition:.2s}
+.btn-sec:hover{background:rgba(0,229,255,.06)}
+.quiz-progress{width:100%;background:rgba(255,255,255,.07);height:4px;border-radius:5px;margin-bottom:1.7rem;overflow:hidden}
+.quiz-bar{height:100%;background:linear-gradient(90deg,var(--neon1),var(--neon2));transition:width .4s}
+.quiz-emoji{font-size:2rem;text-align:center;width:100%;margin-bottom:.6rem}
+.quiz-q{font-size:.98rem;font-weight:700;text-align:center;margin-bottom:.28rem;line-height:1.5}
+.quiz-sub{color:var(--sub);font-size:.73rem;text-align:center;margin-bottom:1rem}
+.quiz-opts{width:100%;display:flex;flex-direction:column;gap:.56rem}
+.quiz-opt{background:var(--card);border:1.5px solid rgba(255,255,255,.08);border-radius:11px;padding:.78rem .92rem;cursor:pointer;font-size:.84rem;font-family:inherit;color:var(--text);text-align:left;transition:.2s;line-height:1.4}
+.quiz-opt:hover{border-color:var(--neon1);background:rgba(162,89,255,.07)}
+.quiz-opt.selected{border-color:var(--neon2);background:rgba(0,229,255,.07)}
+.btn-next{margin-top:1rem;background:linear-gradient(135deg,var(--neon1),var(--neon2));color:#05060f;font-weight:900;border:none;padding:.65rem 1.6rem;border-radius:50px;cursor:pointer;font-size:.86rem;font-family:inherit;opacity:.3;pointer-events:none;transition:.2s}
+.btn-next.ready{opacity:1;pointer-events:auto}
+.result-badge{font-size:2.4rem;margin-bottom:.3rem}
+.result-group{font-size:1.5rem;font-weight:900;background:linear-gradient(135deg,var(--neon1),var(--neon3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.28rem;text-align:center}
+.result-desc{color:var(--sub);font-size:.8rem;text-align:center;line-height:1.7;margin-bottom:1rem;max-width:350px}
+.result-tags{display:flex;gap:.42rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.3rem}
+.trait-tag{background:rgba(162,89,255,.12);border:1px solid rgba(162,89,255,.25);border-radius:20px;padding:.22rem .66rem;font-size:.7rem;color:var(--neon1)}
+.group-cat{width:100%;margin-bottom:.7rem}
+.cat-label{font-size:.62rem;letter-spacing:.14em;font-weight:700;color:var(--sub);margin-bottom:.4rem}
+.group-pills{display:flex;gap:.38rem;flex-wrap:wrap}
+.gpill{background:var(--card);border:1.5px solid rgba(255,255,255,.08);border-radius:22px;padding:.32rem .82rem;cursor:pointer;font-size:.76rem;font-family:inherit;color:var(--sub);transition:.2s;white-space:nowrap}
+.gpill:hover{border-color:var(--neon1);color:var(--neon1)}
+.gpill.active{border-color:var(--neon1);color:var(--neon1);background:rgba(162,89,255,.1)}
+.scene-box{background:linear-gradient(135deg,rgba(162,89,255,.09),rgba(0,229,255,.06));border:1px solid rgba(162,89,255,.17);border-radius:15px;padding:1.1rem;margin-bottom:.9rem;width:100%}
+.scene-yr{font-size:.62rem;letter-spacing:.2em;color:var(--neon2);margin-bottom:.26rem}
+.scene-ttl{font-size:.95rem;font-weight:700;margin-bottom:.52rem}
+.scene-txt{color:var(--sub);font-size:.8rem;line-height:1.88}
+.scene-txt em{color:var(--neon3);font-style:normal;font-weight:700}
+.cmp-intro{font-size:.76rem;color:var(--sub);line-height:1.6;margin-bottom:.65rem;padding:.58rem .78rem;background:rgba(255,255,255,.03);border-radius:9px;border-left:3px solid var(--neon2)}
+.cmp-intro em{color:var(--neon2);font-style:normal;font-weight:700}
+.cmp-grid{display:flex;flex-direction:column;gap:.5rem;width:100%}
+.cmp-row{display:grid;grid-template-columns:1fr 1fr;gap:.45rem}
+.cmp-now{background:var(--card);border-radius:10px;padding:.68rem .75rem;border-top:2px solid rgba(255,255,255,.13)}
+.cmp-fut{background:linear-gradient(135deg,rgba(162,89,255,.11),rgba(0,229,255,.06));border-radius:10px;padding:.68rem .75rem;border-top:2px solid var(--neon1)}
+.cmp-lbl{font-size:.58rem;letter-spacing:.12em;font-weight:700;margin-bottom:.28rem;opacity:.68}
+.cmp-now .cmp-lbl{color:var(--sub)}.cmp-fut .cmp-lbl{color:var(--neon1)}
+.cmp-txt{font-size:.76rem;line-height:1.5}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:.44rem}
+.pain-item{background:var(--card);border-radius:9px;padding:.62rem;font-size:.74rem;line-height:1.5;border-left:3px solid var(--neon3)}
+.sw-layers{display:flex;flex-direction:column;gap:.36rem;width:100%}
+.sw-layer{border-radius:10px;padding:.62rem .88rem;font-size:.77rem;line-height:1.5;display:flex;align-items:flex-start;gap:.48rem}
+.sw-layer.top{background:rgba(255,224,102,.05);border:1px solid rgba(255,224,102,.15)}
+.sw-layer.mid{background:rgba(162,89,255,.08);border:2px solid rgba(162,89,255,.24)}
+.sw-layer.bot{background:rgba(0,229,255,.04);border:1px solid rgba(0,229,255,.14)}
+.sw-ico{font-size:1.18rem;flex-shrink:0}
+.sw-lbl{font-size:.62rem;font-weight:700;margin-bottom:.1rem}
+.sw-layer.top .sw-lbl{color:var(--neon4)}.sw-layer.mid .sw-lbl{color:var(--neon1)}.sw-layer.bot .sw-lbl{color:var(--neon2)}
+.cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:.58rem}
+.flip-card{height:116px;cursor:pointer;perspective:800px}
+.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:.5s}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:10px;padding:.62rem;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.flip-front{background:var(--card2);border:1.5px solid rgba(255,255,255,.07)}
+.flip-back{background:linear-gradient(135deg,rgba(162,89,255,.15),rgba(0,229,255,.1));border:1.5px solid rgba(162,89,255,.24);transform:rotateY(180deg)}
+.flip-ico{font-size:1.28rem;margin-bottom:.24rem}
+.flip-nm{font-size:.7rem;font-weight:700;color:var(--neon2)}
+.flip-hint{font-size:.56rem;color:var(--sub);margin-top:.15rem;opacity:.46}
+.flip-bt{font-size:.64rem;font-weight:700;color:var(--neon1);margin-bottom:.18rem}
+.flip-bd{font-size:.6rem;color:var(--sub);line-height:1.4}
+.skill-item{background:var(--card);border-radius:11px;padding:.85rem;border-left:3px solid var(--neon5);margin-bottom:.6rem}
+.skill-ttl{font-size:.8rem;font-weight:700;color:var(--neon5);margin-bottom:.2rem}
+.skill-desc{font-size:.74rem;color:var(--sub);line-height:1.56;margin-bottom:.38rem}
+.skill-now{font-size:.67rem;color:var(--neon4);background:rgba(255,224,102,.05);border-radius:7px;padding:.25rem .48rem;line-height:1.5}
+.tl-intro{font-size:.76rem;color:var(--sub);line-height:1.75;margin-bottom:.8rem;background:rgba(255,255,255,.03);border-radius:9px;padding:.65rem .85rem;border-left:3px solid var(--neon4)}
+.tl-intro em{color:var(--neon4);font-style:normal;font-weight:700}
+.tl-intro strong{color:var(--neon3)}
+.tl-phase{display:flex;align-items:center;gap:.5rem;margin:1rem 0 .42rem}
+.tl-ph-line{flex:1;height:1px;opacity:.22;background:currentColor}
+.tl-ph-lbl{font-size:.58rem;letter-spacing:.13em;font-weight:700;white-space:nowrap}
+.timeline{position:relative;padding-left:1.35rem}
+.timeline::before{content:'';position:absolute;left:.33rem;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--neon1) 0%,var(--neon2) 20%,var(--neon5) 40%,var(--neon4) 60%,var(--neon3) 75%,#c084fc 88%,#fff 100%)}
+.tl-item{position:relative;margin-bottom:.82rem}
+.tl-dot{position:absolute;left:-1.35rem;top:.1rem;width:12px;height:12px;border-radius:50%;border:2px solid;background:var(--bg);font-size:.44rem;display:flex;align-items:center;justify-content:center}
+.tl-box{border-radius:10px;padding:.65rem .82rem}
+.tl-plain{background:var(--card)}
+.tl-hot{background:linear-gradient(135deg,rgba(255,224,102,.07),rgba(162,89,255,.04));border:1px solid rgba(255,224,102,.13)}
+.tl-sw{background:linear-gradient(135deg,rgba(162,89,255,.09),rgba(0,229,255,.04));border:1px solid rgba(162,89,255,.19)}
+.tl-self{background:linear-gradient(135deg,rgba(255,107,157,.07),rgba(162,89,255,.05));border:1px solid rgba(255,107,157,.17)}
+.tl-elder{background:linear-gradient(135deg,rgba(57,255,153,.06),rgba(0,229,255,.04));border:1px solid rgba(57,255,153,.17)}
+.tl-c100{background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(162,89,255,.06));border:1px dashed rgba(255,255,255,.17)}
+.tl-age{font-size:.6rem;letter-spacing:.1em;font-weight:700;margin-bottom:.13rem}
+.tl-ttl{font-size:.78rem;font-weight:700;margin-bottom:.17rem}
+.tl-txt{font-size:.72rem;color:var(--sub);line-height:1.54}
+.tl-txt em{color:var(--neon3);font-style:normal;font-weight:700}
+.tl-txt strong{color:var(--neon5)}
+.newtag{display:inline-block;background:rgba(57,255,153,.08);border:1px solid rgba(57,255,153,.26);border-radius:20px;font-size:.59rem;color:var(--neon5);padding:.12rem .5rem;margin-top:.26rem}
+.imagine-box{width:100%;background:var(--card);border-radius:13px;padding:.95rem;margin-bottom:.9rem}
+.imagine-q{font-size:.8rem;font-weight:700;margin-bottom:.58rem;line-height:1.55}
+.imagine-q span{color:var(--neon3)}
+textarea{width:100%;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);border-radius:9px;color:var(--text);font-family:inherit;font-size:.79rem;padding:.63rem;resize:none;height:78px;line-height:1.6;transition:.2s}
+textarea:focus{outline:none;border-color:var(--neon1)}
+.sub-btn{background:linear-gradient(135deg,var(--neon3),var(--neon1));color:#fff;border:none;padding:.46rem 1.15rem;border-radius:20px;cursor:pointer;font-size:.74rem;font-weight:700;font-family:inherit;margin-top:.4rem;transition:.2s}
+.sub-btn:hover{transform:scale(1.04)}
+.ai-resp{margin-top:.6rem;background:rgba(255,107,157,.07);border-left:3px solid var(--neon3);border-radius:8px;padding:.56rem .75rem;font-size:.74rem;color:var(--sub);line-height:1.65;display:none;white-space:pre-line}
+.sec{width:100%;margin-bottom:.9rem}
+.sec-lbl{font-size:.62rem;letter-spacing:.14em;font-weight:700;margin-bottom:.58rem}
+.top-nav{width:100%;display:flex;align-items:center;margin-bottom:.95rem;gap:.38rem}
+.back-btn{background:transparent;border:1px solid rgba(255,255,255,.1);border-radius:20px;color:var(--sub);padding:.26rem .72rem;cursor:pointer;font-size:.73rem;font-family:inherit;transition:.2s}
+.back-btn:hover{border-color:var(--neon2);color:var(--neon2)}
+.nav-ttl{font-size:.8rem;font-weight:700}
+.fade-in{animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+.w100{width:100%}
+.ldots::after{content:'';animation:dots 1.2s steps(4,end) infinite}
+@keyframes dots{0%,20%{content:''}40%{content:'.'}60%{content:'..'}80%,100%{content:'...'}}
+</style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="zh-TW"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1">&lt;title&gt;2050 我的未來宇宙&lt;/title&gt;</p>
-<p class="p1">&lt;style&gt;</p>
-<p class="p1">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&amp;display=swap');</p>
-<p class="p1">*{margin:0;padding:0;box-sizing:border-box}</p>
-<p class="p1">:root{--bg:#05060f;--neon1:#a259ff;--neon2:#00e5ff;--neon3:#ff6b9d;--neon4:#ffe066;--neon5:#39ff99;--card:#0e1130;--card2:#12143a;--text:#e8eaff;--sub:#8890c8}</p>
-<p class="p1">body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}</p>
-<p class="p1">#stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}</p>
-<p class="p1">.star{position:absolute;background:#fff;border-radius:50%;animation:twinkle linear infinite}</p>
-<p class="p1">@keyframes twinkle{0%,100%{opacity:.1}50%{opacity:.9}}</p>
-<p class="p1">.screen{display:none;min-height:100vh;padding:2rem 1.2rem 3rem;position:relative;z-index:1;max-width:600px;margin:0 auto}</p>
-<p class="p1">.screen.active{display:flex;flex-direction:column;align-items:center}</p>
-<p class="p1">.impact-q{font-size:1.85rem;font-weight:900;line-height:1.3;margin-bottom:1.4rem;background:linear-gradient(135deg,#fff,var(--neon2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center}</p>
-<p class="p1">.impact-sub{color:var(--sub);font-size:.88rem;line-height:1.85;margin-bottom:2.2rem;max-width:360px;text-align:center}</p>
-<p class="p1">.impact-sub em{color:var(--neon3);font-style:normal;font-weight:700}</p>
-<p class="p1">.impact-choices{display:flex;flex-direction:column;gap:.75rem;width:100%;max-width:360px}</p>
-<p class="p1">.impact-choice{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);border-radius:13px;padding:.95rem 1.1rem;cursor:pointer;font-size:.9rem;font-family:inherit;color:var(--text);text-align:left;transition:.22s;line-height:1.4}</p>
-<p class="p1">.impact-choice:hover{border-color:var(--neon2);background:rgba(0,229,255,.06);transform:translateX(4px)}</p>
-<p class="p1">.impact-skip{margin-top:1.4rem;font-size:.76rem;color:var(--sub);cursor:pointer;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:.1rem}</p>
-<p class="p1">.setup-title{font-size:1.45rem;font-weight:900;text-align:center;margin-bottom:.35rem;background:linear-gradient(135deg,var(--neon1),var(--neon2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}</p>
-<p class="p1">.setup-sub{color:var(--sub);font-size:.81rem;text-align:center;line-height:1.7;margin-bottom:1.6rem}</p>
-<p class="p1">.setup-form{width:100%;display:flex;flex-direction:column;gap:.95rem}</p>
-<p class="p1">.setup-field label{display:block;font-size:.7rem;letter-spacing:.12em;font-weight:700;color:var(--neon4);margin-bottom:.38rem}</p>
-<p class="p1">.setup-field input{width:100%;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.11);border-radius:11px;color:var(--text);font-family:inherit;font-size:.9rem;padding:.72rem .95rem;transition:.2s}</p>
-<p class="p1">.setup-field input:focus{outline:none;border-color:var(--neon1)}</p>
-<p class="p1">.setup-field input::placeholder{color:var(--sub);opacity:.55}</p>
-<p class="p1">.setup-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}</p>
-<p class="p1">.setup-hint{font-size:.7rem;color:var(--sub);line-height:1.6;background:rgba(162,89,255,.06);border-radius:9px;padding:.6rem .8rem}</p>
-<p class="p1">.setup-hint em{color:var(--neon1);font-style:normal}</p>
-<p class="p1">.logo-badge{font-size:.7rem;letter-spacing:.2em;color:var(--neon2);background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.28);border-radius:20px;padding:.25rem .82rem;margin-bottom:.9rem}</p>
-<p class="p1">.welcome-name{font-size:.95rem;color:var(--sub);text-align:center;margin-bottom:.25rem}</p>
-<p class="p1">.welcome-name em{color:var(--neon2);font-style:normal;font-weight:700}</p>
-<p class="p1">h1.title{font-size:2.2rem;font-weight:900;text-align:center;line-height:1.15;background:linear-gradient(135deg,var(--neon1),var(--neon2),var(--neon3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.75rem}</p>
-<p class="p1">.home-ctx{width:100%;background:rgba(255,224,102,.05);border:1px solid rgba(255,224,102,.15);border-radius:13px;padding:.82rem .98rem;margin-bottom:1.1rem;font-size:.79rem;line-height:1.88;color:var(--sub)}</p>
-<p class="p1">.home-ctx strong{color:var(--neon4)}.home-ctx em{color:var(--neon3);font-style:normal}</p>
-<p class="p1">.planet-wrap{position:relative;width:155px;height:155px;margin:.2rem 0 1.3rem}</p>
-<p class="p1">.planet{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#7c3aed,#1e1b4b 70%);box-shadow:0 0 55px rgba(162,89,255,.5),0 0 110px rgba(162,89,255,.18);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);animation:float 4s ease-in-out infinite}</p>
-<p class="p1">.ring{position:absolute;top:50%;left:50%;width:175px;height:38px;border:2px solid rgba(0,229,255,.32);border-radius:50%;transform:translate(-50%,-50%) rotateX(75deg)}</p>
-<p class="p1">@keyframes float{0%,100%{transform:translate(-50%,-50%) translateY(0)}50%{transform:translate(-50%,-50%) translateY(-9px)}}</p>
-<p class="p1">.btn-main{background:linear-gradient(135deg,var(--neon1),var(--neon2));color:#05060f;font-weight:900;font-size:.94rem;border:none;padding:.78rem 1.9rem;border-radius:50px;cursor:pointer;box-shadow:0 0 28px rgba(162,89,255,.32);transition:.2s;font-family:inherit}</p>
-<p class="p1">.btn-main:hover{transform:scale(1.04)}</p>
-<p class="p1">.or-divider{color:var(--sub);margin:.62rem 0;font-size:.73rem}</p>
-<p class="p1">.btn-sec{background:transparent;color:var(--neon2);border:1.5px solid var(--neon2);font-size:.83rem;padding:.53rem 1.35rem;border-radius:50px;cursor:pointer;font-family:inherit;transition:.2s}</p>
-<p class="p1">.btn-sec:hover{background:rgba(0,229,255,.06)}</p>
-<p class="p1">.quiz-progress{width:100%;background:rgba(255,255,255,.07);height:4px;border-radius:5px;margin-bottom:1.7rem;overflow:hidden}</p>
-<p class="p1">.quiz-bar{height:100%;background:linear-gradient(90deg,var(--neon1),var(--neon2));transition:width .4s}</p>
-<p class="p1">.quiz-emoji{font-size:2rem;text-align:center;width:100%;margin-bottom:.6rem}</p>
-<p class="p1">.quiz-q{font-size:.98rem;font-weight:700;text-align:center;margin-bottom:.28rem;line-height:1.5}</p>
-<p class="p1">.quiz-sub{color:var(--sub);font-size:.73rem;text-align:center;margin-bottom:1rem}</p>
-<p class="p1">.quiz-opts{width:100%;display:flex;flex-direction:column;gap:.56rem}</p>
-<p class="p1">.quiz-opt{background:var(--card);border:1.5px solid rgba(255,255,255,.08);border-radius:11px;padding:.78rem .92rem;cursor:pointer;font-size:.84rem;font-family:inherit;color:var(--text);text-align:left;transition:.2s;line-height:1.4}</p>
-<p class="p1">.quiz-opt:hover{border-color:var(--neon1);background:rgba(162,89,255,.07)}</p>
-<p class="p1">.quiz-opt.selected{border-color:var(--neon2);background:rgba(0,229,255,.07)}</p>
-<p class="p1">.btn-next{margin-top:1rem;background:linear-gradient(135deg,var(--neon1),var(--neon2));color:#05060f;font-weight:900;border:none;padding:.65rem 1.6rem;border-radius:50px;cursor:pointer;font-size:.86rem;font-family:inherit;opacity:.3;pointer-events:none;transition:.2s}</p>
-<p class="p1">.btn-next.ready{opacity:1;pointer-events:auto}</p>
-<p class="p1">.result-badge{font-size:2.4rem;margin-bottom:.3rem}</p>
-<p class="p1">.result-group{font-size:1.5rem;font-weight:900;background:linear-gradient(135deg,var(--neon1),var(--neon3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.28rem;text-align:center}</p>
-<p class="p1">.result-desc{color:var(--sub);font-size:.8rem;text-align:center;line-height:1.7;margin-bottom:1rem;max-width:350px}</p>
-<p class="p1">.result-tags{display:flex;gap:.42rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.3rem}</p>
-<p class="p1">.trait-tag{background:rgba(162,89,255,.12);border:1px solid rgba(162,89,255,.25);border-radius:20px;padding:.22rem .66rem;font-size:.7rem;color:var(--neon1)}</p>
-<p class="p1">.group-cat{width:100%;margin-bottom:.7rem}</p>
-<p class="p1">.cat-label{font-size:.62rem;letter-spacing:.14em;font-weight:700;color:var(--sub);margin-bottom:.4rem}</p>
-<p class="p1">.group-pills{display:flex;gap:.38rem;flex-wrap:wrap}</p>
-<p class="p1">.gpill{background:var(--card);border:1.5px solid rgba(255,255,255,.08);border-radius:22px;padding:.32rem .82rem;cursor:pointer;font-size:.76rem;font-family:inherit;color:var(--sub);transition:.2s;white-space:nowrap}</p>
-<p class="p1">.gpill:hover{border-color:var(--neon1);color:var(--neon1)}</p>
-<p class="p1">.gpill.active{border-color:var(--neon1);color:var(--neon1);background:rgba(162,89,255,.1)}</p>
-<p class="p1">.scene-box{background:linear-gradient(135deg,rgba(162,89,255,.09),rgba(0,229,255,.06));border:1px solid rgba(162,89,255,.17);border-radius:15px;padding:1.1rem;margin-bottom:.9rem;width:100%}</p>
-<p class="p1">.scene-yr{font-size:.62rem;letter-spacing:.2em;color:var(--neon2);margin-bottom:.26rem}</p>
-<p class="p1">.scene-ttl{font-size:.95rem;font-weight:700;margin-bottom:.52rem}</p>
-<p class="p1">.scene-txt{color:var(--sub);font-size:.8rem;line-height:1.88}</p>
-<p class="p1">.scene-txt em{color:var(--neon3);font-style:normal;font-weight:700}</p>
-<p class="p1">.cmp-intro{font-size:.76rem;color:var(--sub);line-height:1.6;margin-bottom:.65rem;padding:.58rem .78rem;background:rgba(255,255,255,.03);border-radius:9px;border-left:3px solid var(--neon2)}</p>
-<p class="p1">.cmp-intro em{color:var(--neon2);font-style:normal;font-weight:700}</p>
-<p class="p1">.cmp-grid{display:flex;flex-direction:column;gap:.5rem;width:100%}</p>
-<p class="p1">.cmp-row{display:grid;grid-template-columns:1fr 1fr;gap:.45rem}</p>
-<p class="p1">.cmp-now{background:var(--card);border-radius:10px;padding:.68rem .75rem;border-top:2px solid rgba(255,255,255,.13)}</p>
-<p class="p1">.cmp-fut{background:linear-gradient(135deg,rgba(162,89,255,.11),rgba(0,229,255,.06));border-radius:10px;padding:.68rem .75rem;border-top:2px solid var(--neon1)}</p>
-<p class="p1">.cmp-lbl{font-size:.58rem;letter-spacing:.12em;font-weight:700;margin-bottom:.28rem;opacity:.68}</p>
-<p class="p1">.cmp-now .cmp-lbl{color:var(--sub)}.cmp-fut .cmp-lbl{color:var(--neon1)}</p>
-<p class="p1">.cmp-txt{font-size:.76rem;line-height:1.5}</p>
-<p class="p1">.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:.44rem}</p>
-<p class="p1">.pain-item{background:var(--card);border-radius:9px;padding:.62rem;font-size:.74rem;line-height:1.5;border-left:3px solid var(--neon3)}</p>
-<p class="p1">.sw-layers{display:flex;flex-direction:column;gap:.36rem;width:100%}</p>
-<p class="p1">.sw-layer{border-radius:10px;padding:.62rem .88rem;font-size:.77rem;line-height:1.5;display:flex;align-items:flex-start;gap:.48rem}</p>
-<p class="p1">.sw-layer.top{background:rgba(255,224,102,.05);border:1px solid rgba(255,224,102,.15)}</p>
-<p class="p1">.sw-layer.mid{background:rgba(162,89,255,.08);border:2px solid rgba(162,89,255,.24)}</p>
-<p class="p1">.sw-layer.bot{background:rgba(0,229,255,.04);border:1px solid rgba(0,229,255,.14)}</p>
-<p class="p1">.sw-ico{font-size:1.18rem;flex-shrink:0}</p>
-<p class="p1">.sw-lbl{font-size:.62rem;font-weight:700;margin-bottom:.1rem}</p>
-<p class="p1">.sw-layer.top .sw-lbl{color:var(--neon4)}.sw-layer.mid .sw-lbl{color:var(--neon1)}.sw-layer.bot .sw-lbl{color:var(--neon2)}</p>
-<p class="p1">.cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:.58rem}</p>
-<p class="p1">.flip-card{height:116px;cursor:pointer;perspective:800px}</p>
-<p class="p1">.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:.5s}</p>
-<p class="p1">.flip-card.flipped .flip-inner{transform:rotateY(180deg)}</p>
-<p class="p1">.flip-front,.flip-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:10px;padding:.62rem;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}</p>
-<p class="p1">.flip-front{background:var(--card2);border:1.5px solid rgba(255,255,255,.07)}</p>
-<p class="p1">.flip-back{background:linear-gradient(135deg,rgba(162,89,255,.15),rgba(0,229,255,.1));border:1.5px solid rgba(162,89,255,.24);transform:rotateY(180deg)}</p>
-<p class="p1">.flip-ico{font-size:1.28rem;margin-bottom:.24rem}</p>
-<p class="p1">.flip-nm{font-size:.7rem;font-weight:700;color:var(--neon2)}</p>
-<p class="p1">.flip-hint{font-size:.56rem;color:var(--sub);margin-top:.15rem;opacity:.46}</p>
-<p class="p1">.flip-bt{font-size:.64rem;font-weight:700;color:var(--neon1);margin-bottom:.18rem}</p>
-<p class="p1">.flip-bd{font-size:.6rem;color:var(--sub);line-height:1.4}</p>
-<p class="p1">.skill-item{background:var(--card);border-radius:11px;padding:.85rem;border-left:3px solid var(--neon5);margin-bottom:.6rem}</p>
-<p class="p1">.skill-ttl{font-size:.8rem;font-weight:700;color:var(--neon5);margin-bottom:.2rem}</p>
-<p class="p1">.skill-desc{font-size:.74rem;color:var(--sub);line-height:1.56;margin-bottom:.38rem}</p>
-<p class="p1">.skill-now{font-size:.67rem;color:var(--neon4);background:rgba(255,224,102,.05);border-radius:7px;padding:.25rem .48rem;line-height:1.5}</p>
-<p class="p1">.tl-intro{font-size:.76rem;color:var(--sub);line-height:1.75;margin-bottom:.8rem;background:rgba(255,255,255,.03);border-radius:9px;padding:.65rem .85rem;border-left:3px solid var(--neon4)}</p>
-<p class="p1">.tl-intro em{color:var(--neon4);font-style:normal;font-weight:700}</p>
-<p class="p1">.tl-intro strong{color:var(--neon3)}</p>
-<p class="p1">.tl-phase{display:flex;align-items:center;gap:.5rem;margin:1rem 0 .42rem}</p>
-<p class="p1">.tl-ph-line{flex:1;height:1px;opacity:.22;background:currentColor}</p>
-<p class="p1">.tl-ph-lbl{font-size:.58rem;letter-spacing:.13em;font-weight:700;white-space:nowrap}</p>
-<p class="p1">.timeline{position:relative;padding-left:1.35rem}</p>
-<p class="p1">.timeline::before{content:'';position:absolute;left:.33rem;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--neon1) 0%,var(--neon2) 20%,var(--neon5) 40%,var(--neon4) 60%,var(--neon3) 75%,#c084fc 88%,#fff 100%)}</p>
-<p class="p1">.tl-item{position:relative;margin-bottom:.82rem}</p>
-<p class="p1">.tl-dot{position:absolute;left:-1.35rem;top:.1rem;width:12px;height:12px;border-radius:50%;border:2px solid;background:var(--bg);font-size:.44rem;display:flex;align-items:center;justify-content:center}</p>
-<p class="p1">.tl-box{border-radius:10px;padding:.65rem .82rem}</p>
-<p class="p1">.tl-plain{background:var(--card)}</p>
-<p class="p1">.tl-hot{background:linear-gradient(135deg,rgba(255,224,102,.07),rgba(162,89,255,.04));border:1px solid rgba(255,224,102,.13)}</p>
-<p class="p1">.tl-sw{background:linear-gradient(135deg,rgba(162,89,255,.09),rgba(0,229,255,.04));border:1px solid rgba(162,89,255,.19)}</p>
-<p class="p1">.tl-self{background:linear-gradient(135deg,rgba(255,107,157,.07),rgba(162,89,255,.05));border:1px solid rgba(255,107,157,.17)}</p>
-<p class="p1">.tl-elder{background:linear-gradient(135deg,rgba(57,255,153,.06),rgba(0,229,255,.04));border:1px solid rgba(57,255,153,.17)}</p>
-<p class="p1">.tl-c100{background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(162,89,255,.06));border:1px dashed rgba(255,255,255,.17)}</p>
-<p class="p1">.tl-age{font-size:.6rem;letter-spacing:.1em;font-weight:700;margin-bottom:.13rem}</p>
-<p class="p1">.tl-ttl{font-size:.78rem;font-weight:700;margin-bottom:.17rem}</p>
-<p class="p1">.tl-txt{font-size:.72rem;color:var(--sub);line-height:1.54}</p>
-<p class="p1">.tl-txt em{color:var(--neon3);font-style:normal;font-weight:700}</p>
-<p class="p1">.tl-txt strong{color:var(--neon5)}</p>
-<p class="p1">.newtag{display:inline-block;background:rgba(57,255,153,.08);border:1px solid rgba(57,255,153,.26);border-radius:20px;font-size:.59rem;color:var(--neon5);padding:.12rem .5rem;margin-top:.26rem}</p>
-<p class="p1">.imagine-box{width:100%;background:var(--card);border-radius:13px;padding:.95rem;margin-bottom:.9rem}</p>
-<p class="p1">.imagine-q{font-size:.8rem;font-weight:700;margin-bottom:.58rem;line-height:1.55}</p>
-<p class="p1">.imagine-q span{color:var(--neon3)}</p>
-<p class="p1">textarea{width:100%;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);border-radius:9px;color:var(--text);font-family:inherit;font-size:.79rem;padding:.63rem;resize:none;height:78px;line-height:1.6;transition:.2s}</p>
-<p class="p1">textarea:focus{outline:none;border-color:var(--neon1)}</p>
-<p class="p1">.sub-btn{background:linear-gradient(135deg,var(--neon3),var(--neon1));color:#fff;border:none;padding:.46rem 1.15rem;border-radius:20px;cursor:pointer;font-size:.74rem;font-weight:700;font-family:inherit;margin-top:.4rem;transition:.2s}</p>
-<p class="p1">.sub-btn:hover{transform:scale(1.04)}</p>
-<p class="p1">.ai-resp{margin-top:.6rem;background:rgba(255,107,157,.07);border-left:3px solid var(--neon3);border-radius:8px;padding:.56rem .75rem;font-size:.74rem;color:var(--sub);line-height:1.65;display:none;white-space:pre-line}</p>
-<p class="p1">.sec{width:100%;margin-bottom:.9rem}</p>
-<p class="p1">.sec-lbl{font-size:.62rem;letter-spacing:.14em;font-weight:700;margin-bottom:.58rem}</p>
-<p class="p1">.top-nav{width:100%;display:flex;align-items:center;margin-bottom:.95rem;gap:.38rem}</p>
-<p class="p1">.back-btn{background:transparent;border:1px solid rgba(255,255,255,.1);border-radius:20px;color:var(--sub);padding:.26rem .72rem;cursor:pointer;font-size:.73rem;font-family:inherit;transition:.2s}</p>
-<p class="p1">.back-btn:hover{border-color:var(--neon2);color:var(--neon2)}</p>
-<p class="p1">.nav-ttl{font-size:.8rem;font-weight:700}</p>
-<p class="p1">.fade-in{animation:fadeIn .4s ease}</p>
-<p class="p1">@keyframes fadeIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}</p>
-<p class="p1">.w100{width:100%}</p>
-<p class="p1">.ldots::after{content:'';animation:dots 1.2s steps(4,end) infinite}</p>
-<p class="p1">@keyframes dots{0%,20%{content:''}40%{content:'.'}60%{content:'..'}80%,100%{content:'...'}}</p>
-<p class="p1">&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1">&lt;div id="stars"&gt;&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div class="screen active" id="s-impact"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div style="width:100%;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem 1.2rem" class="fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="font-size:.68rem;letter-spacing:.2em;color:var(--neon2);margin-bottom:1.4rem"&gt;✦ 在你選科系之前，先面對一件事&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="impact-q"&gt;你會活到&lt;br&gt;100 歲。&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="impact-sub"&gt;這不是假設。這是你這個世代的現實。&lt;br&gt;&lt;br&gt;那麼——你現在對未來的計畫，&lt;br&gt;&lt;em&gt;夠撐 100 年嗎？&lt;/em&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="impact-choices"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="impact-choice" onclick="afterImpact('a')"&gt;😰 我只想到「找一份好工作」&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="impact-choice" onclick="afterImpact('b')"&gt;🤔 我知道會很久，但沒想過 100 歲是什麼感覺&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="impact-choice" onclick="afterImpact('c')"&gt;😐 我覺得 100 歲跟現在的老人差不多吧&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="impact-choice" onclick="afterImpact('d')"&gt;🔥 我想過，但不知道怎麼準備&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="impact-skip" onclick="goto('s-setup')"&gt;跳過，直接開始 →&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div class="screen" id="s-impact2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div style="width:100%;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem 1.2rem" class="fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="impact2-content"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="btn-main" style="margin-top:2rem" onclick="goto('s-setup')"&gt;我準備好了，開始探索 →&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div class="screen" id="s-setup"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="top-nav"&gt;&lt;button class="back-btn" onclick="goto('s-impact')"&gt;← 返回&lt;/button&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="setup-title"&gt;讓內容變成你的故事&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="setup-sub"&gt;輸入你的資訊，時間軸會自動變成「你的人生」&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="setup-form w100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="setup-field"&gt;&lt;label&gt;你叫什麼名字？&lt;/label&gt;&lt;input id="inp-name" type="text" placeholder="輸入名字或暱稱" maxlength="10"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="setup-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="setup-field"&gt;&lt;label&gt;爸爸現在幾歲？&lt;/label&gt;&lt;input id="inp-dad" type="number" placeholder="例如 50" min="30" max="80"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="setup-field"&gt;&lt;label&gt;媽媽現在幾歲？&lt;/label&gt;&lt;input id="inp-mom" type="number" placeholder="例如 48" min="30" max="80"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="setup-hint" id="setup-preview"&gt;填入後，這裡會出現你父母在 2050 年的年齡 ✦&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="btn-main w100" onclick="saveSetup()"&gt;進入我的 2050 宇宙 🚀&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="btn-sec w100" onclick="saveSetup(true)" style="margin-top:.3rem"&gt;先跳過&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div class="screen" id="s-home"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="logo-badge"&gt;✦ 2050 未來宇宙探索器&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="welcome-name" id="welcome-name"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;h1 class="title"&gt;你的科系&lt;br&gt;藏著什麼&lt;br&gt;超能力？&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="home-ctx" id="home-ctx"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="planet-wrap"&gt;&lt;div class="ring"&gt;&lt;/div&gt;&lt;div class="planet"&gt;&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;button class="btn-main" onclick="goto('s-quiz')"&gt;🔭 測驗：找到我的未來學群&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="or-divider"&gt;— 或 —&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;button class="btn-sec" onclick="goto('s-explore')"&gt;直接瀏覽 18 個學群&lt;/button&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div class="screen" id="s-quiz"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="top-nav"&gt;&lt;button class="back-btn" onclick="goto('s-home')"&gt;← 返回&lt;/button&gt;&lt;span class="nav-ttl"&gt;🎯 找到你的未來星球&lt;/span&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="quiz-progress w100"&gt;&lt;div class="quiz-bar" id="qbar" style="width:0%"&gt;&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="quiz-body" class="w100"&gt;&lt;/div&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div class="screen" id="s-result"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="top-nav"&gt;&lt;button class="back-btn" onclick="goto('s-quiz')"&gt;← 重測&lt;/button&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="result-badge" id="r-emoji"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="result-group" id="r-group"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="result-desc" id="r-desc"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="result-tags" id="r-tags"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;button class="btn-main" onclick="exploreResult()"&gt;🚀 探索我的 100 年人生宇宙&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="or-divider"&gt;— 也看看其他學群 —&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;button class="btn-sec" onclick="goto('s-explore')"&gt;瀏覽全部 18 學群&lt;/button&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div class="screen" id="s-explore"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="top-nav"&gt;&lt;button class="back-btn" onclick="goto('s-home')"&gt;← 返回&lt;/button&gt;&lt;span class="nav-ttl"&gt;🌌 學群星圖&lt;/span&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="group-selector" class="w100"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="group-content" class="w100"&gt;&lt;/div&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;script&gt;</p>
-<p class="p1">const sf=document.getElementById('stars');</p>
-<p class="p1">for(let i=0;i&lt;80;i++){const s=document.createElement('div');s.className='star';const z=Math.random()*2.5+.5;s.style.cssText=`width:${z}px;height:${z}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${Math.random()*3+2}s;animation-delay:${Math.random()*3}s`;sf.appendChild(s)}</p>
-<p class="p2"><br></p>
-<p class="p1">let user={name:'',dadAge:0,momAge:0};</p>
-<p class="p1">let activeGroup='資訊學群';</p>
-<p class="p2"><br></p>
-<p class="p1">// ── 18 學群完整資料 ──</p>
-<p class="p1">const GD={</p>
-<p class="p1"><span class="Apple-converted-space">  </span>'資訊學群':{emoji:'💻',sub:'計算機科學・資工・資管',traits:['系統思維','全齡設計','數據倫理','跨代介面'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個週三，台北信義區',ttl:'43 歲的你，同時活在三個世界裡',txt:'上午你的視訊右邊是&lt;em&gt;77 歲的資深顧問阿財伯&lt;/em&gt;，他的語音辨識是你幫他設定的。左邊是女兒傳來：「爸，阿公的健康 App 又當掉了。」下午你去提案——你是那家老年科技公司的&lt;em&gt;技術長&lt;/em&gt;，你在定義老人怎麼被科技服務。晚上你打開自己的身體數據，43 歲了，膝蓋開始說話，你幫自己設了一個&lt;em&gt;預防性 AI 教練&lt;/em&gt;。'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你現在滑手機，偶爾覺得介面很難用',f:'你在設計讓 8 歲和 80 歲都能用的介面'},{n:'你用 AI 查資料、寫作業',f:'你在設計 AI 如何理解一個 75 歲老人的需求'},{n:'你在學校被系統管理',f:'你在決定誰的數據可以被使用、怎麼保護'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['科技設計排除高齡使用者','四代同工協作系統崩潰','龐大醫療數據無法個人化','自身健康管理需要智慧工具'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'🧠',n:'記憶工程師',d:'建立個人記憶數據模型，讓家族記憶可被保存',w:'失智人口激增，記憶保存成家庭剛需'},{i:'♿',n:'全齡介面設計師',d:'設計讓 8 歲到 85 歲都能流暢使用的系統',w:'四代共用同一科技環境已是現實'},{i:'🏥',n:'個人健康 AI 架構師',d:'建立終身健康數據模型整合預防與治療',w:'醫療資源稀缺，預防性 AI 成標配'},{i:'🌐',n:'跨代職場系統設計師',d:'設計讓不同世代有效協作的工作工具',w:'2050 職場平均橫跨四個世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'🔍',t:'以人為本的系統設計力',d:'技術要能被各年齡層使用。你不只是工程師，是理解不同世代怎麼思考的設計者。',n:'觀察家中長輩用手機的方式，記錄三個讓他們困惑的地方'},{i:'⚖️',t:'數據倫理與隱私思維',d:'2050 的數據包含記憶、情感、健康。懂技術不夠，要懂什麼不應該做。',n:'找一篇 AI 倫理爭議新聞，寫下你的立場'},{i:'🌉',t:'跨世代溝通與翻譯力',d:'你的系統要同時說服 25 歲的同事和 75 歲的使用者。',n:'試著用三句話向一位長輩解釋一個你熟悉的科技概念'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇資訊學群',x:'你對「系統如何運作」有說不清的著迷，還不知道這會變成改變世界的能力。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的衝擊',x:'你的 App 發布，你發現 60 歲以上的使用者根本用不了。&lt;em&gt;設計是有立場的。&lt;/em&gt;'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'職場出現老同事',x:'新主管 68 歲，比你多 37 年經驗。你需要學會協作，不是等他退休。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'上有父母，下有孩子，職場有 75 歲同事。&lt;em&gt;誰來幫我設計一個好用的 43 歲？&lt;/em&gt;'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'開始為自己設計',x:'幫別人做了三十年的系統，第一次認真為自己打造。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'新世代老人——和父母那代截然不同',x:'你依然在工作。&lt;strong&gt;你這代的 73 歲，是父母那代 50 歲的狀態。&lt;/strong&gt;你的需求要求社會重新設計「老」。',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'那時的社會是為活到 100 歲的人設計的。&lt;strong&gt;那些設計，是 2025 年選科系的你們創造的。&lt;/strong&gt;',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果 73 歲的你回頭看 18 歲的你，你希望那時的你，對「設計給所有人使用的東西」這件事有什麼不同的理解？'},</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>'工程學群':{emoji:'⚙️',sub:'土木・機械・電機・材料',traits:['結構設計','仿生工程','全齡城市','輔具創新'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個早晨，高雄左營',ttl:'43 歲的你，在重新設計這座城市',txt:'你站在一個捷運站的改造工地前。這不是普通的無障礙工程——你是&lt;em&gt;全齡城市工程師&lt;/em&gt;，你在設計讓 80 歲的人和 8 歲的孩子都覺得「這個城市是為我造的」。你的手機同時顯示父親的健康數據，他 72 歲，上週剛換了你設計的&lt;em&gt;仿生膝關節輔具&lt;/em&gt;。下午你要去審查一棟「智慧老宅」的結構圖——你 43 歲，你自己也開始想這件事。'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你學物理覺得很抽象',f:'你用力學模型設計讓老人骨骼撐更久的外骨骼'},{n:'你喜歡拆東西、組東西',f:'你在設計房子怎麼跟著主人的身體一起變化'},{n:'你看城市覺得理所當然',f:'你發現這座城市的所有設計都假設使用者是健康的 30 歲'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['城市基礎設施為年輕身體設計','老年輔具笨重昂貴且不美觀','住宅無法隨老化需求調整','交通系統對高齡者極不友善'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'🏙️',n:'全齡城市工程師',d:'重新設計城市基礎設施讓所有年齡安全移動',w:'超高齡城市的基礎建設全面需要改造'},{i:'🦾',n:'仿生外骨骼設計師',d:'開發讓老年人維持行動力的穿戴式輔助裝置',w:'肌少症是高齡社會最大的失能來源'},{i:'🏠',n:'智慧老宅改造工程師',d:'將既有住宅升級為能隨老化需求調整的智慧空間',w:'九成高齡者希望在自己家老去'},{i:'🚇',n:'高齡移動科技研發師',d:'開發讓行動不便的高齡者能自主移動的交通科技',w:'移動能力直接決定高齡者的生活品質'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'🏗️',t:'人本工程設計思維',d:'工程不只是技術，是為人服務的解方。你要能從使用者的身體和生活去思考設計。',n:'試著觀察你家附近的公共設施，找出三個對老人或孩子不友善的設計'},{i:'🔋',t:'永續與長效材料思維',d:'2050 的工程要同時考慮環境和人的老化，設計壽命要和人一樣長。',n:'找一個你覺得「設計很差」的日常物件，想想怎麼改'},{i:'🤝',t:'跨域協作整合能力',d:'全齡工程需要和醫生、設計師、社工一起工作。工程師的語言要能被所有人理解。',n:'試著向一個非理工的朋友解釋一個你學過的工程概念'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇工程學群',x:'你喜歡解決問題、動手做東西，但還不知道工程和人的關係有多深。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作',x:'你在建設公司畫圖。你第一次注意到：所有規範都假設使用者是健康的成年男性。'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'開始承擔跨世代責任',x:'父母開始有行動問題。你發現市面上的輔具又醜又貴，決定自己來做。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你主導整個城市的全齡改造計畫。&lt;em&gt;你也開始為自己的 73 歲設計。&lt;/em&gt;'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'工程師的第二人生',x:'你開始教年輕工程師：每一個設計決定，都在決定誰可以活得有尊嚴。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你住在自己設計的城市裡',x:'&lt;strong&gt;你 73 歲，住在你親手改造的城市裡，身上穿著你設計的輔具，依然每天出門。&lt;/strong&gt;',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你這輩子建造的東西，還在支撐著這個城市裡每一個年齡的人。',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果 73 歲的你回頭看 18 歲的你，你希望那時就知道：工程設計的每一個決定，對誰的生命影響最大？'},</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>'數理化學群':{emoji:'🔬',sub:'物理・化學・數學・應用科學',traits:['量化分析','老化模型','精準科學','長壽研究'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個深夜，台大研究室',ttl:'43 歲的你，正在讀一個人的老化方程式',txt:'螢幕上是一份&lt;em&gt;細胞老化速率模型&lt;/em&gt;，你花了三年建立它。你 43 歲，但你的生理年齡數據顯示是 36 歲——這是你自己研發的介入方案帶來的結果。你的研究讓人類第一次有機會&lt;em&gt;選擇怎麼老&lt;/em&gt;。你媽媽 68 歲，你幫她建了一個個人化的「老化預測模型」，知道她在哪一年需要注意什麼。這就是&lt;em&gt;數理化學群&lt;/em&gt;在 2050 年的日常。'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你學微積分覺得很抽象',f:'你用數學模型預測一個人老化的速度和時間點'},{n:'你做化學實驗好奇物質變化',f:'你在研發讓神經細胞再生的化合物'},{n:'你學統計做數據分析',f:'你分析百萬人的老化路徑，找出可以介入的關鍵變數'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['老化目前不可逆是最大人類設計缺陷','失智症尚無根本解方','長壽但不健康的失能老年期','個人化醫療仍然昂貴稀缺'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'⏳',n:'老化逆轉研究員',d:'研究細胞老化機制並開發延緩或逆轉老化的方法',w:'長壽科技是 2050 年最大的科研投資領域'},{i:'🧬',n:'生物年齡工程師',d:'開發精準測量生理年齡的技術與個人化介入方案',w:'每個人老化速度不同，個人化是關鍵'},{i:'💊',n:'個人化長壽方案設計師',d:'根據個人數據設計延長健康壽命的科學方案',w:'健康老化市場在 2050 年超越所有其他醫療'},{i:'🔢',n:'高齡社會數據科學家',d:'分析大規模人口老化數據找出預防介入的最佳時機',w:'超高齡社會產生海量數據等待被解讀'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'🔭',t:'抽象思維與模型建構',d:'真實世界的老化問題需要被轉化成可計算的模型。這是數理人最獨特的能力。',n:'試著用數學或圖表描述你觀察到的一個生活現象'},{i:'🧪',t:'實驗設計與驗證思維',d:'2050 的長壽科學需要嚴謹的實驗設計。你要懂得區分相關和因果。',n:'找一個「大家都說有效但沒有科學依據」的健康建議，查查看真相'},{i:'🌐',t:'跨學科整合應用力',d:'數理知識要結合生物、醫學、工程才能解決老化問題。純數理人在 2050 年不夠用。',n:'找一篇將數學應用在生物或醫學的研究，試著看懂它的核心邏輯'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇數理化學群',x:'你喜歡找規律、解開複雜問題，但還沒想到這些能力可以用來理解老化。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'進入研究領域',x:'你的碩士論文研究細胞老化機制。第一次意識到：老化是可以被數學描述的。'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'研究開始有真實意義',x:'你的模型被用在臨床試驗中。&lt;em&gt;你第一次感受到：數字背後是真實的人。&lt;/em&gt;'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你在實驗室研究老化，同時幫父母建立老化預測模型，也開始監測自己的生理數據。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'科學家的第二人生',x:'你開始把研究成果轉化成普通人用得到的工具。科學不只在實驗室裡。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你的研究讓人類多活了二十年',x:'&lt;strong&gt;你 73 歲的身體狀態，來自你年輕時建立的那套老化介入模型。你是第一代受益者。&lt;/strong&gt;',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你的方程式，改變了人類老化的軌跡。',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果你有一個數學模型可以預測自己的老化軌跡，你最想知道哪一個人生節點？為什麼？'},</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>'醫藥衛生學群':{emoji:'🏥',sub:'醫學・牙醫・護理・藥學・公衛',traits:['預防醫學','全人照護','長壽設計','公衛思維'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個下午，台南第三人生中心',ttl:'43 歲的你，不在醫院，在設計人怎麼好好老',txt:'你的診間不在醫院——而是在一個叫&lt;em&gt;「第三人生中心」&lt;/em&gt;的地方。你是&lt;em&gt;全人老化設計師&lt;/em&gt;，你的工作不是治病，是幫人在還健康的時候，設計怎麼好好老。今天你有三個個案：一個 65 歲剛退休的工程師、一個 78 歲還想繼續旅行的阿嬤、還有一個 43 歲的——就是你自己，你開始幫自己做預防性規劃。'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你背解剖學覺得很難',f:'你設計人體感測系統，讓疾病在發生前就被發現'},{n:'你想學護理幫助人',f:'你在設計讓老人不需要護理師也能自主生活的系統'},{n:'你對藥物作用感興趣',f:'你在研究讓人不需要藥物的預防性生活介入方案'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['醫療資源向急性病傾斜，預防醫學被忽視','心理健康在高齡照護中幾乎不存在','「等生病再治」的模式在超高齡社會撐不住','失智照護讓家屬身心俱疲'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'🌱',n:'全人老化設計師',d:'幫助個人在健康時期設計身心靈整合的老化方案',w:'預防遠比治療便宜，超高齡社會負擔不起等到生病'},{i:'🧠',n:'預防醫學生活顧問',d:'根據個人健康數據設計精準的疾病預防生活策略',w:'慢性病和失智是超高齡社會最大的醫療負擔'},{i:'💆',n:'高齡精神健康專科師',d:'專門處理老年憂鬱、意義感喪失、死亡焦慮等議題',w:'精神疾病是被最嚴重忽視的高齡健康問題'},{i:'🔬',n:'失智陪伴科技治療師',d:'整合科技與人際陪伴，延緩失智並維持生活品質',w:'2050 年全球失智人口將超過一億五千萬'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'👁️',t:'預防思維與早期偵測力',d:'在症狀出現前就介入，是超高齡醫療的核心。你要能在健康的人身上看見風險。',n:'了解你家族中的慢性病史，思考你現在可以做什麼預防'},{i:'🫀',t:'全人照護整合能力',d:'2050 的醫療不只治身體，還要照顧心理、社會關係和人生意義。',n:'問問一位長輩：他覺得什麼讓他活得健康？答案可能不是你想的'},{i:'📊',t:'公共衛生系統思維',d:'一個人的健康問題背後是整個社會的結構。你要能看見個人和系統的連結。',n:'研究一個超高齡國家（如日本）如何應對高齡醫療危機'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇醫藥衛生學群',x:'你想幫助人，但還不確定「幫助」在超高齡社會意味著什麼。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一線工作的震撼',x:'你在醫院看見：很多老人不是因為生病才痛苦，而是因為&lt;em&gt;孤獨和沒有意義感。&lt;/em&gt;'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'從治療轉向預防',x:'你決定把重心從「治病」移到「讓人不需要來醫院」。這在醫療體系裡是叛逆的選擇。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你同時照顧病人、照顧父母，也開始替自己規劃預防性健康方案。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'重新定義「健康」',x:'你創辦了第三人生中心。健康不是沒有病，是活得有意義、有品質。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你就是你研究的對象',x:'&lt;strong&gt;73 歲的你，是你自己預防醫學理念最好的示範。你的生活品質超越父母那代 20 年。&lt;/strong&gt;',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你幫這個世代重新定義了「老而健康」的可能性。',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果你能設計自己的老年，你最希望在 73 歲那年，你的身體、心理、和生活是什麼樣子？'},</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>'生命科學學群':{emoji:'🧬',sub:'生物技術・生物醫學・生命科學',traits:['基因分析','老化生物學','長壽倫理','精準醫療'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個早晨，基因研究實驗室',ttl:'43 歲的你，正在讀一個人的未來',txt:'你打開一份&lt;em&gt;個人基因老化報告&lt;/em&gt;，是你客戶的——她 35 歲，但她的基因顯示她在 55 歲有高風險進入快速老化。你是&lt;em&gt;個人長壽基因顧問&lt;/em&gt;，你的工作是用她的 DNA 設計接下來二十年的生活藍圖。你 43 歲，你也有自己的報告。你知道自己的弱點，你也知道你有機會比父母那代多活二十個健康的年份。'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你學基因覺得很抽象',f:'你在讀一個人的 DNA 預測他會在哪一年開始失智'},{n:'你研究細胞分裂',f:'你在研究怎麼讓幹細胞幫受損的膝關節再生'},{n:'你學生態學研究物種',f:'你在研究超高齡社會對整個人類物種演化的影響'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['基因醫療昂貴，一般人用不到','老年疾病的早期基因預測不準確','長壽科技的倫理邊界模糊','不是所有人都能選擇怎麼老'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'🔬',n:'個人長壽基因顧問',d:'根據個人基因組設計量身打造的長壽健康策略',w:'基因醫療普及化是 2050 年的醫療革命'},{i:'🌿',n:'老化生物標記研究員',d:'開發可以精準測量老化進程的生物指標',w:'早期偵測是預防老化相關疾病的關鍵'},{i:'🦠',n:'幹細胞再生治療師',d:'運用幹細胞技術修復因老化受損的組織和器官',w:'再生醫學將大幅延長健康壽命'},{i:'⚖️',n:'長壽倫理審查員',d:'評估長壽科技的社會倫理影響並制定使用規範',w:'長壽技術帶來巨大的社會公平問題'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'🔭',t:'生命系統整合思維',d:'老化不是單一問題，是整個生命系統的變化。你要能看見基因、細胞、器官、個體的連結。',n:'選一個你感興趣的老化相關疾病，試著追溯它的基因根源'},{i:'⚖️',t:'科學倫理判斷力',d:'長壽科技會帶來「誰能活更久」的不平等。你的研究決定決定很多人的命運。',n:'思考：如果有一種技術可以讓人多活 30 年，但很昂貴，這公平嗎？'},{i:'🌐',t:'跨學科研究整合力',d:'生命科學需要結合基因學、醫學、資訊科學。單打獨鬥在 2050 年沒有出路。',n:'找一篇跨領域的生命科學研究，看看它整合了哪些不同學科'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇生命科學學群',x:'你對「生命是什麼」這個問題有深深的好奇，還不知道這會帶你去哪裡。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'進入研究室',x:'你第一次在顯微鏡下看到老化的細胞和年輕細胞的差異。&lt;em&gt;老化是可以被看見的。&lt;/em&gt;'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'研究從實驗室走向真實',x:'你的研究成果開始被用在真實個案。你第一次感受到：基因數據背後是一個人的人生。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你幫父母做基因老化評估，也幫自己規劃。&lt;em&gt;你是自己研究的第一個受益者。&lt;/em&gt;'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'科學家的第二使命',x:'你開始把研究成果做成每個人都負擔得起的工具。科學要普及才有意義。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你活出了你研究的可能性',x:'&lt;strong&gt;你 73 歲的生理年齡是 55 歲。你是你自己研究的最好證明。&lt;/strong&gt;',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你的研究讓這個世代的人第一次真正選擇了怎麼老。',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果你可以用基因技術設計自己的老化方式，你最想保留到最後的是什麼能力或狀態？'},</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>'生物資源學群':{emoji:'🌿',sub:'農林漁牧・園藝・景觀・食品科學',traits:['機能農食','精準農業','高齡營養','食物即藥'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個清晨，宜蘭智慧農場',ttl:'43 歲的你，在設計讓人活到 100 歲的食物',txt:'你的農場不種普通作物——你是&lt;em&gt;個人化機能食品設計師&lt;/em&gt;，每一種作物都針對特定年齡層的身體需求培育。今天你要去拜訪一位 80 歲的老農，他的農業知識是你研究傳統作物功效的重要來源。你 43 歲，你父親 68 歲開始有&lt;em&gt;肌少症&lt;/em&gt;的跡象，你正在為他設計一套以食物為核心的介入方案。食物，是你這個學群在 2050 年最強大的武器。'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你學農業覺得很傳統',f:'你在設計針對不同年齡身體需求的精準機能食品'},{n:'你學食品科學做實驗',f:'你在研究哪些天然成分可以延緩失智和肌肉流失'},{n:'你學景觀設計環境',f:'你在規劃讓高齡者也能參與耕作的療癒性農業空間'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['高齡者的特殊營養需求完全被忽視','失智和肌少症與飲食直接相關','食品系統沒有為高齡人口做設計','農村高齡化讓農業勞動力急速消失'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'🌾',n:'個人化機能農食設計師',d:'根據個人健康數據設計針對性的機能性農業食品',w:'食物是最有效也最自然的健康介入手段'},{i:'🧫',n:'高齡飲食介入科學家',d:'研究飲食如何預防或延緩失智、肌少症等老化疾病',w:'飲食介入比藥物便宜且副作用更少'},{i:'🌳',n:'全齡農業體驗設計師',d:'設計讓老年人也能參與農業活動的療癒農場',w:'農業活動對高齡者的身心健康有顯著效益'},{i:'🔬',n:'食物即藥物研發師',d:'開發以食物為基礎的預防醫學產品和治療方案',w:'全球機能性食品市場在 2050 年將超越傳統製藥'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'🌱',t:'生態系統整合思維',d:'食物、土地、人體是一個整體。你要能同時看見農業、生態、營養的連結。',n:'研究一種台灣傳統食物的健康功效，看看老一輩的智慧有多少科學依據'},{i:'🔬',t:'食品科學與健康應用力',d:'2050 的農業不只生產食物，而是生產健康。你要懂得把科學知識轉化成真實的飲食方案。',n:'為你家中年齡最大的長輩查詢他最需要攝取的三種營養素'},{i:'🤝',t:'農業文化傳承與創新力',d:'傳統農業智慧和現代科技的結合，是生物資源學群最獨特的位置。',n:'找一位老農聊聊他的農業知識，記錄一件你覺得值得保留的傳統'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇生物資源學群',x:'你對土地、食物、生命有天然的親近感，還不知道這會變成 2050 年最重要的能力之一。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的啟示',x:'你在食品研究所工作。你發現所有食品都針對年輕人設計，&lt;em&gt;沒有人想過 75 歲的人需要什麼。&lt;/em&gt;'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'食物成為你的武器',x:'你的研究證明特定飲食組合可以延緩失智達七年。這改變了你對農業的理解。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你用自己的研究幫父母設計飲食方案，也開始為自己的 73 歲做準備。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'農業科學家的第二使命',x:'你開始把研究成果帶進社區，讓每個人都能用得起「食物即藥物」。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你吃著自己種的健康',x:'&lt;strong&gt;你 73 歲，大腦清晰，肌肉有力，因為你用了一輩子的時間設計自己的食物。&lt;/strong&gt;',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你讓這個世代的人第一次明白：長壽的秘密，在土地裡。',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果食物真的是藥物，你最想用農業的力量解決你身邊哪一個長輩的健康問題？'},</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>'地球環境學群':{emoji:'🌍',sub:'地質・大氣・海洋・地理・環境工程',traits:['環境設計','氣候適應','高齡防災','永續城市'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個夏天，台南海岸線',ttl:'43 歲的你，在守護這座城市和它的老人',txt:'你是&lt;em&gt;高齡社區氣候韌性規劃師&lt;/em&gt;。台灣 2050 年的夏天比 30 年前熱了 3 度，高齡者是熱浪最大的受害者。你正在設計一套讓台南的老人社區可以在極端氣候下繼續安全生活的系統。你 43 歲，你父母住在高雄，你擔心的不只是他們的健康，還有他們家旁邊的海平面——它在&lt;em&gt;緩緩上升&lt;/em&gt;。'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你學地理覺得是背地圖',f:'你在分析哪些社區的高齡人口在氣候災害中最脆弱'},{n:'你學大氣科學做天氣預報',f:'你在設計讓老人社區能提前一週應對極端天氣的系統'},{n:'你學環境工程處理污染',f:'你在設計讓超高齡社會的城市在氣候變遷下還能運作'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['氣候變遷讓高齡者面臨更多健康威脅','極端天氣中高齡者是最脆弱的族群','老舊建築和社區缺乏氣候韌性設計','環境惡化讓高齡者的活動空間急速縮減'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'🏔️',n:'高齡社區氣候韌性規劃師',d:'設計讓高齡社區在氣候變遷下維持安全與功能的方案',w:'2050 年極端氣候對高齡族群威脅達到歷史高峰'},{i:'🌊',n:'高齡防災系統設計師',d:'開發針對高齡者需求的災害預警和應對系統',w:'高齡者在天災中的死亡率是年輕人的三到五倍'},{i:'🌱',n:'永續高齡城市規劃師',d:'規劃對老年人友善且環境永續的城市發展方案',w:'城市設計直接決定高齡者的生活品質和壽命'},{i:'🔬',n:'環境健康老化研究員',d:'研究環境因素如何影響人的老化速度和健康狀況',w:'空氣品質、綠地、噪音都直接影響老化速度'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'🗺️',t:'空間與系統思維',d:'環境問題需要同時在地方和全球尺度思考。你要能把複雜的地球系統轉化成人可以理解的地圖。',n:'查查看你家所在地區在 2050 年的氣候預測，想想對你父母的影響'},{i:'📊',t:'數據分析與風險評估力',d:'氣候韌性需要大量數據支撐。你要能從環境數據中找出誰最脆弱、最需要保護。',n:'找一份台灣的氣候變遷報告，找出其中最讓你擔心的一個數據'},{i:'🤝',t:'跨部門協作整合力',d:'環境問題的解決需要政府、企業、社區、科學家一起行動。你是整合這些力量的人。',n:'觀察你社區中有沒有對高齡者不友善的環境設計，想想誰應該來改變它'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇地球環境學群',x:'你對地球的運作感到著迷，還不知道氣候變遷和超高齡社會的連結有多深。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的震撼',x:'你在環境顧問公司工作，第一次看到氣候災害後的老人社區。&lt;em&gt;最脆弱的永遠是老人。&lt;/em&gt;'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'把環境科學用在人身上',x:'你把氣候韌性的概念引入社區設計，讓高齡者不再是災害的被動受害者。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你守護這座城市的老人，也守護你自己的父母，還擔心自己 73 歲時的海平面高度。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'地球科學家的第二使命',x:'你開始思考：我要給我的孩子留下一個什麼樣的星球，讓他們也能好好老去？'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你生活在你幫助守護的城市裡',x:'&lt;strong&gt;你 73 歲，住在你設計的氣候韌性社區裡。這座城市比 30 年前更適合老人生活。&lt;/strong&gt;',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你讓地球和人類同時活得更久、更好。',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果你有能力守護一個地方不受氣候變遷傷害，你最想保護的是哪裡？那裡住著誰？'},</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>'建築設計學群':{emoji:'🏛️',sub:'建築・室內設計・工業設計',traits:['全齡空間','失智友善','跨代共居','尊嚴設計'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個下午，台中某社區',ttl:'43 歲的你，在設計一個讓所有年齡都想住的地方',txt:'你站在一個新落成的跨代共居社區前。這裡沒有「老人區」——20 歲的設計師和 80 歲的退休廚師住在同一棟樓。你是&lt;em&gt;全齡社區建築師&lt;/em&gt;，你設計的每一個空間決策都在決定：不同年齡的人，會不會自然地相遇。你 43 歲，你父母問你：「我們老了能住你設計的地方嗎？」你說：&lt;em&gt;「那本來就是為你們設計的。」&lt;/em&gt;'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你喜歡畫設計圖或建模',f:'你在設計讓失智老人不會迷路的空間動線'},{n:'你對空間美感很敏感',f:'你在讓「老人院」這個詞從恐怖變成嚮往'},{n:'你喜歡思考人和空間的關係',f:'你在設計讓 20 歲和 80 歲自然想住在一起的社區'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['城市和建築是為健康年輕人設計的','老人院的空間設計讓人失去尊嚴','高密度都市讓高齡者越來越孤立','缺乏讓不同世代自然互動的公共空間'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'🏘️',n:'全齡社區建築師',d:'設計讓所有年齡的人都能安全、有尊嚴生活的居住空間',w:'超高齡社會需要全面重新設計居住環境'},{i:'🧩',n:'失智友善空間設計師',d:'運用空間設計幫助失智者維持定向感和自主生活能力',w:'全球失智人口在 2050 年將超過一億五千萬'},{i:'🛋️',n:'高齡居家改造設計師',d:'將既有住宅改造成支持老化的智慧生活空間',w:'九成高齡者希望在自己家老去'},{i:'🌳',n:'跨代公共空間設計師',d:'設計讓不同世代自然相遇互動的城市公共空間',w:'孤獨是高齡者最大的健康殺手，空間設計可以介入'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'👁️',t:'同理觀察與身體感知力',d:'你要能用 80 歲的眼睛、腳步、和身體感受一個空間。設計師要先成為使用者。',n:'閉上眼睛在你家走一圈，想想如果你的視力只剩三成，你會在哪裡遇到麻煩'},{i:'🔗',t:'功能與美感整合設計力',d:'好的全齡設計不應該看起來像「殘障設施」，而是讓所有人都覺得被考慮到。',n:'找一個你覺得設計得很好的公共空間，分析它對不同年齡的人各有什麼優點'},{i:'🌐',t:'跨域協作整合力',d:'全齡建築需要和醫療、社工、科技專業合作。建築師不能只待在設計室。',n:'找一個你覺得對老人或障礙者不友善的建築，想想需要哪些不同專業才能改善它'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇建築設計學群',x:'你對空間有天生的敏感，喜歡想像人在不同空間裡的感受，還不知道這會成為改變老年生活的能力。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一個設計的衝擊',x:'你第一次踏進安養中心，你無法相信：這就是人老了要住的地方。&lt;em&gt;你決定改變這件事。&lt;/em&gt;'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'空間開始改變人',x:'你設計的跨代共居試驗社區成功。原本孤立的老人開始有了朋友，原本找不到家的年輕人找到了根。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你設計別人的家，也開始思考自己父母的家需要怎麼改造，還有你自己 73 歲想住什麼樣的空間。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'建築師的第二人生',x:'你開始設計自己想要的老年空間。這是你做過最個人、也最重要的設計。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你住在自己設計的世界裡',x:'&lt;strong&gt;你 73 歲，住在你親手設計的社區。每天和不同世代的人相遇，這就是你說的「老而有尊嚴」。&lt;/strong&gt;',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你設計的空間，讓這個世代的每個人都找到了自己的位置。',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果你可以設計你 73 歲想要居住的空間，最重要的三個設計原則會是什麼？'},</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>'藝術學群':{emoji:'🎨',sub:'音樂・美術・舞蹈・影劇・藝術理論',traits:['高齡美學','創意治療','生命敘事','尊嚴設計'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個週末，台北某藝術空間',ttl:'43 歲的你，用藝術讓老年生命被看見',txt:'你策劃的展覽叫「第三人生」——展出的是 80 位超過 75 歲的人的創作，有第一次拿畫筆的阿嬤，有失智後用音樂找回記憶片段的阿公。你是&lt;em&gt;高齡生命藝術策展人&lt;/em&gt;。你 43 歲，你母親 68 歲，她說從來沒想過自己可以創作——直到她參加了你設計的&lt;em&gt;敘事藝術工作坊&lt;/em&gt;。你知道：&lt;em&gt;藝術，是讓老年生命不被遺忘的方式。&lt;/em&gt;'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你現在創作，表達自己的感受',f:'你在設計讓失智老人用藝術維持認知功能的療癒方案'},{n:'你欣賞藝術，感受美的力量',f:'你在重新定義「高齡美學」，讓老不再等於醜或可憐'},{n:'你學藝術理論、研究美的本質',f:'你在策劃讓不同世代一起創作、跨越隔閡的藝術計畫'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['高齡者的創造力和審美需求完全被忽視','輔具和照護設備醜陋，讓老人不願使用','老年生命的故事和智慧在數位時代快速消逝','死亡和老化在文化中是禁忌而非資產'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'🖼️',n:'高齡生命藝術策展人',d:'策劃展現老年生命深度和創造力的藝術計畫',w:'超高齡社會需要重新建立「老」的正面文化形象'},{i:'🎵',n:'藝術治療高齡專科師',d:'運用音樂、繪畫、舞蹈等藝術形式治療高齡身心問題',w:'藝術治療對失智、憂鬱等高齡疾病有顯著效果'},{i:'🎭',n:'跨代創作陪伴師',d:'引導不同世代的人一起創作，建立真實的理解和連結',w:'代際隔閡是超高齡社會最深的社會問題之一'},{i:'✍️',n:'生命敘事設計師',d:'幫助高齡者將人生故事轉化為藝術作品或數位記憶',w:'每一個老人都是活的歷史，讓它消失是最大的文化損失'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'👂',t:'深度觀察與感知力',d:'藝術家要能看見別人看不見的東西。在超高齡社會，你要能看見老年生命的美和尊嚴。',n:'和一位 70 歲以上的長輩談談他人生中最美的一個記憶'},{i:'🌉',t:'跨代溝通與共創能力',d:'你的藝術要能同時打動 18 歲和 80 歲的人。這需要你理解不同世代的語言。',n:'嘗試把一件對你有意義的事情，用一位長輩能感同身受的方式表達出來'},{i:'💡',t:'藝術與社會議題整合力',d:'2050 的藝術家不只是創作，而是用創作回應社會問題。藝術是改變觀念最有力的工具。',n:'找一個你關心的超高齡社會問題，想想可以用什麼藝術形式讓更多人看見它'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇藝術學群',x:'你用創作表達自己，還不知道藝術可以是讓老年生命被看見的工具。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'藝術遇見老年',x:'你第一次參與長照機構的藝術陪伴計畫。你看見一個失智阿嬤在音樂中哭泣，然後微笑。&lt;em&gt;藝術到達了語言到達不了的地方。&lt;/em&gt;'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'藝術開始改變文化',x:'你策劃的「老年創作展」改變了很多年輕人對老的印象。媒體說你在「重新定義老」。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你在為社會設計新的老年美學，同時為你母親設計屬於她的創作旅程。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'藝術家的第二人生',x:'你開始為自己創作：關於中年、關於老、關於你希望在這個世界留下什麼。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你成為自己策展的主題',x:'&lt;strong&gt;你 73 歲，辦了一場屬於自己的回顧展。你說：「老，是我最好的創作材料。」&lt;/strong&gt;',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你的藝術讓這個世代的人第一次不害怕老去。',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果你可以用藝術讓一件關於老年的事情被更多人看見，你最想讓世界看見什麼？'},</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>'社會心理學群':{emoji:'🫂',sub:'社會學・心理學・社會工作',traits:['同理心','跨代溝通','社會系統觀','意義設計'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個週四，台中',ttl:'43 歲的你，坐在三個世界之間',txt:'上午你接了一個案子：&lt;em&gt;一家企業的 72 歲資深員工和 28 歲新人完全無法溝通&lt;/em&gt;，你被叫去調解。午休媽媽傳訊息：「你爸最近很憂鬱，退休後覺得沒用。」你知道這是 &lt;em&gt;2050 年最流行的老年病——意義感喪失&lt;/em&gt;。下午去演講，主題是「照顧不再是單向的」。晚上對著鏡子想：&lt;em&gt;43 歲了，撐著所有人的我，自己的意義感在哪裡？&lt;/em&gt;'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你跟長輩說話有時覺得不在同一個頻道',f:'你在設計讓四個世代可以互相理解的溝通方法'},{n:'你感受到大人有壓力，但不知道怎麼幫',f:'你在幫公司化解 30 歲員工和 70 歲主管之間的衝突'},{n:'你有時覺得不知道自己的未來在哪裡',f:'你在幫 60 歲的人找到退休後的人生意義感'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['職場世代衝突加劇，沒有人懂得如何溝通','高齡者意義感消失是最大的社會危機','三明治世代的心理健康幾乎沒人照顧','家庭照護責任嚴重不均，最累的那層沒人看見'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'🏘️',n:'跨代關係設計師',d:'設計讓不同世代在職場與社區真正理解彼此的方法',w:'四代同堂、四代同工已成常態，衝突是最貴的社會成本'},{i:'🧭',n:'人生意義顧問',d:'幫助各年齡層的人在人生轉折點找到新的身份與目標',w:'退休後 20 年、中年危機——意義感危機全面爆發'},{i:'🧠',n:'三明治世代心理師',d:'專門服務同時照顧父母與子女、承受多重壓力的中壯年',w:'2050 年最被忽略的心理健康族群就是 40-50 歲'},{i:'🌱',n:'高齡角色再設計師',d:'幫助老年人在超高齡社會重新定義自己能給予的貢獻',w:'「老」不再是終點，而是需要被設計的新身份'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'👂',t:'深度傾聽與敘事陪伴',d:'能真正「聽見一個人」是最稀缺的能力。你的工作不是給答案，而是幫人找到自己的答案。',n:'找一位長輩聊聊他年輕時最想做但沒做到的事，全程不打斷、不建議'},{i:'🔍',t:'社會結構與系統觀',d:'個人的痛苦背後永遠有結構性原因。你要能同時看見個人困境和社會制度的連結。',n:'選一個你身邊的家庭問題，試著畫出它的「社會原因地圖」'},{i:'💪',t:'自我照顧與心理韌性',d:'43 歲的三明治壓力可能先把你壓垮。學會照顧自己，才能照顧別人。',n:'今天問問自己：我上一次「不需要負責任地休息」是什麼時候？'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇社會心理學群',x:'你常覺得「人與人之間的誤解」是世界最大的問題，但還不確定這個直覺能帶你去哪裡。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作，看見世代裂縫',x:'你在社會服務機構工作。&lt;em&gt;你發現老人和年輕人說的是兩種語言——而且沒有人想當翻譯。&lt;/em&gt;'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'職場出現同齡不同代的張力',x:'你的同事橫跨 25 歲到 70 歲，你成為那個幫所有人翻譯的人。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'父母需要你，孩子需要你，工作需要你。&lt;em&gt;你第一次真正理解了所有你服務過的個案的感受。&lt;/em&gt;'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'開始為自己設計',x:'你幫了無數人找到意義感。現在你開始問：&lt;em&gt;我自己的第三人生，長什麼樣子？&lt;/em&gt;'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你是「新世代老人」——跟以前完全不同',x:'你不接受「退休等被照顧」的框架。你開設跨代工作坊，學員 20 歲到 80 歲都有。&lt;strong&gt;你這代的 73 歲，需求和能力都和父母那代截然不同。&lt;/strong&gt;',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，人生需要被重新設計',x:'你用一輩子建立的跨代關係，成了這個超高齡社會最重要的社會資本。',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果 73 歲的你回頭看 18 歲的你，你希望那時的你，對「人與人之間的關係」這件事有什麼不同的理解？'},</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>'大眾傳播學群':{emoji:'📡',sub:'新聞・廣電・廣告・新媒體',traits:['全齡媒體','資訊素養','代際敘事','形象重塑'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個早晨，媒體實驗室',ttl:'43 歲的你，在重新定義「老」的形象',txt:'你創辦的媒體平台叫「第三頻道」——不是老人頻道，而是讓&lt;em&gt;所有世代都想看&lt;/em&gt;的內容。2050 年最大的媒體消費族群是 60-80 歲，但所有媒體還是為年輕人設計。你 43 歲，你是那個看見這個矛盾並決定改變的人。你媽媽 68 歲，她是你最忠實的觀眾，也是你的&lt;em&gt;首席顧問&lt;/em&gt;——她說：「終於有人知道我們想看什麼了。」'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你現在追蹤網紅，滑社群媒體',f:'你在研究 70 歲的人怎麼消費資訊、怎麼被感動、怎麼被騙'},{n:'你喜歡拍影片、剪輯創作',f:'你在設計讓失智老人也能參與創作的媒體形式'},{n:'你對行銷和說故事感興趣',f:'你在重新定義「老」的形象，對抗媒體中的年齡歧視'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['媒體對高齡者的形象刻板且負面','假新聞和詐騙對高齡族群傷害最大','高齡消費者是最大市場卻最被忽視','世代之間的資訊落差越來越大'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'📺',n:'全齡媒體內容設計師',d:'設計讓不同世代都願意共同消費的媒體內容',w:'2050 年高齡族群是最大的媒體消費市場'},{i:'🛡️',n:'高齡數位素養推廣師',d:'幫助高齡者識別假訊息、安全使用數位媒體',w:'詐騙和假新聞讓高齡者每年損失數千億'},{i:'🎬',n:'跨代故事紀錄師',d:'記錄和呈現不同世代生命故事，建立代際理解',w:'世代之間的誤解是超高齡社會最深的社會問題'},{i:'📣',n:'反年齡歧視品牌設計師',d:'幫助企業重新設計對高齡者友善且有尊嚴的品牌形象',w:'年齡歧視是 2050 年最主要的歧視形式之一'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'🔍',t:'受眾研究與同理洞察力',d:'真正理解你的受眾是誰，他們的恐懼、慾望和日常是什麼。高齡受眾需要完全不同的理解。',n:'採訪一位 70 歲以上的長輩：他每天最喜歡看什麼內容？為什麼？'},{i:'📖',t:'敘事力與故事設計',d:'好的故事跨越世代。你要能找到讓 18 歲和 80 歲都能感動的敘事角度。',n:'試著把一個長輩的人生故事，濃縮成一個讓你的朋友也會想聽的版本'},{i:'⚖️',t:'媒體倫理與責任意識',d:'媒體有能力改變整個社會對老年的態度。這是很大的責任，也是很大的機會。',n:'找三個你覺得對老人有偏見的媒體報導，想想它們傳遞了什麼訊息'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇大眾傳播學群',x:'你對說故事和媒體有天生的熱情，還沒想過你的故事可以改變整個社會對老的看法。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的觀察',x:'你在媒體公司工作，發現所有內容都假設觀眾是 25 歲。&lt;em&gt;60 歲以上的人好像不存在。&lt;/em&gt;'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'媒體開始反映真實',x:'你製作的高齡人物專題引發討論，第一次讓主流媒體認真對待老年故事。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你為整個社會的高齡者發聲，也在用媒體記錄你父母那一代的故事，留給你的孩子。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'媒體人的第二人生',x:'你開始拍攝自己的故事，記錄 50 歲這個世代在超高齡社會的真實處境。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你就是你報導的故事',x:'&lt;strong&gt;你 73 歲，接受年輕記者的採訪。你說：「我們這代老人和你爺爺奶奶完全不同。」&lt;/strong&gt;',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你讓這個世代的人不再恐懼出現在媒體裡老去的樣子。',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果你可以拍一部讓所有世代都想看的關於「老」的影片，你最想說的一個故事是什麼？'},</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>'外語學群':{emoji:'🌐',sub:'英文・日文・歐語・翻譯',traits:['跨文化溝通','國際長壽','移民照護','全球視野'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個早晨，台北某跨文化中心',ttl:'43 歲的你，是不同文化老年智慧的橋樑',txt:'你的工作室桌上有三台螢幕：左邊是日本的高齡政策會議，中間是一位菲律賓移民老人正在用他的母語說著他的照護需求，右邊是你的台灣客戶正在考慮去葡萄牙養老。你是&lt;em&gt;跨文化高齡顧問&lt;/em&gt;，你的語言能力讓不同文化的老年智慧可以互相流動。你 43 歲，你知道：&lt;em&gt;懂得語言，就懂得那個文化怎麼對待老人&lt;/em&gt;——這告訴你很多關於你自己的老年。'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你學語言覺得就是背單字',f:'語言是進入不同文化老年智慧的鑰匙，你是跨文化的橋樑'},{n:'你喜歡了解不同文化',f:'不同社會怎麼對待老人，決定了你想要什麼樣的老年'},{n:'你想出國工作或留學',f:'全球高齡化讓跨文化老年服務成為最國際化的職業'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['跨文化高齡照護嚴重缺乏','移民高齡者的語言與文化需求無人回應','台灣向外學習高齡經驗的能力不足','高齡旅遊和海外養老需要全新服務模式'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'🌏',n:'跨文化高齡顧問',d:'幫助來自不同文化背景的高齡者獲得符合其需求的服務',w:'2050 年台灣有超過 50 萬名外籍高齡居民'},{i:'✈️',n:'海外養老移民顧問',d:'幫助台灣高齡者規劃在海外安全、快樂地老去',w:'物價、氣候、文化讓越來越多台灣人選擇海外養老'},{i:'📋',n:'國際長壽政策研究員',d:'研究各國高齡政策的優劣並提供台灣政策建議',w:'台灣需要向日本、北歐等國學習高齡社會管理'},{i:'🗣️',n:'多語言照護陪伴師',d:'為語言不通的高齡移民提供母語溝通和文化照護',w:'語言障礙讓移民高齡者面臨更嚴重的孤立和誤診'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'🧠',t:'文化解碼與轉譯能力',d:'語言不只是溝通工具，是理解一個文化如何看待老年的方式。你要能在語言和文化之間自由穿梭。',n:'找一個和台灣不同的文化，研究他們如何對待老人，你覺得什麼值得台灣學習'},{i:'🤝',t:'跨文化同理與適應力',d:'在不同文化中工作需要放下自己的假設。老年的定義在每個文化中都不一樣。',n:'採訪一位來自不同文化背景的人，問問他們文化中老年是什麼樣子'},{i:'🌐',t:'國際議題整合分析力',d:'全球高齡化是各國共同面對的挑戰。你要能同時看見台灣的特殊性和全球的共通性。',n:'比較台灣和日本的高齡化速度和應對方式，找出三個最重要的差異'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇外語學群',x:'你對語言和文化充滿好奇，還不知道這些能力可以讓你成為不同世代之間的橋樑。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的文化衝擊',x:'你在翻譯公司工作，第一次翻譯高齡照護文件。你發現：&lt;em&gt;每種語言對「老」的說法都不一樣，這背後是完全不同的態度。&lt;/em&gt;'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'語言成為跨代橋樑',x:'你的跨文化高齡諮詢服務讓很多移民老人第一次被真正聽見和理解。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你用語言能力在全球串聯高齡智慧，同時思考自己的父母和自己的老年要在哪個文化裡度過。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'語言學家的第二人生',x:'你開始研究：不同語言的老年詞彙如何塑造了那個社會對老年的態度。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你用四種語言思考老這件事',x:'&lt;strong&gt;你 73 歲，用日文思考優雅老化，用葡萄牙文感受生命的熱情，用中文回家。你是這個世代最豐富的老人之一。&lt;/strong&gt;',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你讓台灣的老年文化，因為你帶回的國際智慧，變得更豐富、更溫柔。',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果你能從任何一個文化中借鑒一種對待老年的方式，你最想帶回台灣的是什麼？'},</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>'文史哲學群':{emoji:'📜',sub:'中國文學・歷史・哲學・宗教',traits:['生命敘事','跨代智慧','意義建構','文化傳承'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個黃昏，書房',ttl:'43 歲的你，在幫這個時代找到面對老的語言',txt:'你的新書叫《第三人生哲學》，它成了 2050 年台灣最暢銷的書——不是因為它給了答案，而是因為它幫了很多人&lt;em&gt;找到問題的語言&lt;/em&gt;。你是&lt;em&gt;生命哲學顧問&lt;/em&gt;，企業、醫院、學校都請你去談：在一個活到 100 歲的時代，什麼是有意義的人生？你 43 歲，你父親 70 歲，他問你：「我還有三十年，我現在該怎麼過？」你知道：&lt;em&gt;這個問題，這個時代沒有人教過我們怎麼回答。&lt;/em&gt;'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你讀文學、感受故事的力量',f:'你在用敘事幫助老年人找到人生意義和身份認同'},{n:'你學歷史，研究過去怎麼發生',f:'你在研究人類歷史中的老年智慧，找出適合 2050 的生命哲學'},{n:'你學哲學，思考存在的意義',f:'你在設計讓整個社會面對老年和死亡的新思考框架'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['超高齡社會缺乏面對老年和死亡的文化框架','高齡者的歷史記憶和人生智慧快速消逝','人活得越長，意義感危機越嚴重','現代社會失去了幫人「好好老去」的傳統智慧'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'📖',n:'生命哲學顧問',d:'幫助個人和機構建立面對老年、疾病和死亡的思考框架',w:'超高齡社會帶來前所未有的存在意義危機'},{i:'🏛️',n:'跨代智慧採集師',d:'系統性記錄高齡者的人生智慧並轉化為現代可用的知識',w:'每個老人的死亡都帶走了無法復原的生命經驗'},{i:'✍️',n:'生命敘事治療師',d:'運用文學和敘事方法幫助人整合人生故事、找到意義',w:'意義感喪失是 2050 年高齡者最普遍的心理健康問題'},{i:'🌸',n:'死亡文化設計師',d:'設計讓社會可以更健康地談論和面對死亡的文化方案',w:'迴避死亡讓整個社會無法好好面對老年'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'📚',t:'深度閱讀與批判思考力',d:'在資訊爆炸的時代，能慢下來深度思考是最稀缺的能力。哲學和文史訓練你做到這件事。',n:'找一本關於老年或死亡的書（哲學、文學皆可），讀並寫下最觸動你的一段'},{i:'✍️',t:'敘事與表達整合力',d:'你要能把複雜的思考轉化成讓普通人也能理解和感動的語言。好的思想家也要是好的溝通者。',n:'試著用五百字描述你對「活到 100 歲的人生」的想像'},{i:'🌏',t:'跨文化智慧整合力',d:'不同文明對老年和死亡各有智慧。你要能從孔子、蘇格拉底、到原住民傳統中找到對現代有用的思想。',n:'研究兩種不同文化或宗教對「老年意義」的看法，找出你最認同的部分'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇文史哲學群',x:'你對「人為什麼要活著」這個問題有深深的好奇，還不知道這個問題在超高齡社會會有多重要。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的使命',x:'你在出版社工作，你發現：幾乎沒有書在認真談「怎麼好好老去」。&lt;em&gt;這是一個巨大的空白。&lt;/em&gt;'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'哲學走出書房',x:'你的演講和書開始進入企業、醫院、學校。人們第一次發現：哲學是他們面對老年最需要的工具。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你幫整個社會思考老年的意義，同時幫你父親找到他的第三人生哲學，也開始為自己尋找答案。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'哲學家的個人功課',x:'你開始寫屬於自己的「中年哲學」——你發現：活到 100 歲的挑戰，不是身體，是意義。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你成為你研究的那種智者',x:'&lt;strong&gt;你 73 歲，人們來找你不是為了照顧你，而是為了你的智慧。你是這個超高齡社會最需要的人。&lt;/strong&gt;',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你用一輩子的思考，幫這個世代找到了面對 100 年人生的哲學地圖。',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果你要為「活到 100 歲的人生」寫一個核心哲學原則，你認為最重要的是什麼？'},</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>'教育學群':{emoji:'📚',sub:'師資培育・教育學・特殊教育・幼教',traits:['全齡學習','課程設計','知識傳承','終身教育'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個週二，全齡學習中心',ttl:'43 歲的你，在設計一間沒有年齡限制的教室',txt:'你的課堂上同時有 16 歲和 76 歲的學員——不是老人在學電腦，而是兩個世代一起學習「在超高齡社會活得有意義」。你是&lt;em&gt;全齡學習設計師&lt;/em&gt;，你發現：最好的學習，往往發生在不同年齡的人互相教對方的時候。你 43 歲，你兒子 15 歲，你父親 68 歲——你把他們帶進同一個課程。&lt;em&gt;結果你才是學到最多的那個人。&lt;/em&gt;'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你現在是學生，被老師教',f:'你在設計讓 75 歲的人可以重新學習新技能並重返職場的系統'},{n:'你覺得有些課程沒有用',f:'你在重新定義「什麼知識在 2050 年是真正有用的」'},{n:'你喜歡幫同學解釋題目',f:'你在設計讓不同世代互相教學、彼此成長的學習系統'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['教育系統只設計給 0-25 歲','高齡者的學習需求和方式完全不同','退休後沒有繼續成長的社會結構','知識更新速度讓所有年齡層都焦慮'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'🎓',n:'全齡學習設計師',d:'設計讓各年齡層的人都能持續學習和成長的教育系統',w:'終身學習在超高齡社會是生存必需，不是選項'},{i:'🔄',n:'高齡職能再訓練師',d:'幫助 55 歲以上的人習得新技能，延長職場活躍期',w:'勞動力高齡化讓職能再訓練成為社會最急需的服務'},{i:'🌉',n:'跨代知識傳承設計師',d:'設計讓老年人的經驗智慧可以有效傳遞給年輕世代的方案',w:'大量退休潮讓寶貴的職場知識加速消失'},{i:'🧒',n:'多元年齡融合教育師',d:'在幼兒、中小學課程中融入與高齡者互動的學習設計',w:'讓孩子從小認識老年是超高齡社會最重要的教育任務'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'🔭',t:'學習科學與設計思維',d:'好的學習設計需要理解大腦如何學習。高齡者的學習方式和年輕人不同，你要懂得這個差異。',n:'研究高齡者的學習特點，找出三個和年輕人最不同的地方'},{i:'🤝',t:'跨代教學與陪伴力',d:'你要能同時吸引 16 歲和 76 歲的學員。這需要你真正理解不同世代的動機和恐懼。',n:'嘗試教一位長輩一個你擅長的技能，觀察他的學習方式'},{i:'🌱',t:'課程創新與系統設計力',d:'2050 的教育系統需要被完全重新設計。你是那個有能力重新想像教育是什麼的人。',n:'設計一堂 10 分鐘的課，主題是「2050 年的超高齡社會」，學生是你的同學'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇教育學群',x:'你喜歡幫助人學習和成長，還不知道在超高齡社會，「教育」的定義需要被完全重新寫過。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的現實',x:'你在學校教書，你發現最難教的不是學生，而是讓學生理解：學習是一輩子的事，不是考完試就結束。'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'教育走出教室',x:'你開始設計企業的跨世代學習計畫，讓 70 歲的老員工和 25 歲的新人互相學習。效果出乎意料。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你設計讓整個社會持續學習的系統，同時幫父母找到他們的學習動力，也幫孩子設計未來的學習路徑。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'教育家的第二使命',x:'你開始設計「50 歲之後的學習地圖」，因為你自己需要它。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你還在學、也還在教',x:'&lt;strong&gt;你 73 歲，每週還在上課，也還在教課。你說：「停止學習，才是真正的老去。」&lt;/strong&gt;',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你設計的全齡學習系統，讓這個世代的每個人都找到了持續成長的理由。',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果你要設計一堂讓 16 歲和 76 歲的人都覺得有收穫的課，你會設計什麼主題？'},</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>'法政學群':{emoji:'⚖️',sub:'法律・政治・外交・行政',traits:['長壽法律','數位遺產','高齡權益','跨代正義'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個早晨，法院',ttl:'43 歲的你，在定義人的權利在老年的邊界',txt:'今天的案子是台灣法律史上從未有過的：一個 95 歲的人去世了，他的&lt;em&gt;數位 AI 分身&lt;/em&gt;還在繼續運作。他的孩子說那是他的遺產；他的孫子說那是他本人的延續。你是&lt;em&gt;長壽權益律師&lt;/em&gt;，你在最前線定義「人的權利在數位和老年之間的邊界」。你 43 歲，你父親 70 歲，上週有人試圖詐騙他的數位資產——&lt;em&gt;老人是 2050 年最容易被剝削的族群。&lt;/em&gt;'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你學法律覺得很複雜很無聊',f:'你在寫第一部「數位遺產法」，決定人死後 AI 分身的法律地位'},{n:'你對政治感興趣，想改變社會',f:'你在設計超高齡社會的投票制度：90 歲的一票和 20 歲的一票，應該一樣重嗎？'},{n:'你覺得法律是保護弱者的工具',f:'在 2050 年，高齡者是最容易被剝削的族群，法律是他們最重要的保護'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['高齡者的財產被詐騙和侵占','數位遺產法律完全空白','長壽帶來複雜的繼承和家庭法律問題','高齡者的政治聲音與其人口比例嚴重不符'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'⚖️',n:'長壽權益律師',d:'專門處理高齡者的財產保護、數位遺產和晚年法律規劃',w:'超高齡社會帶來前所未有的法律複雜性'},{i:'💻',n:'數位遺產法律師',d:'處理數位帳號、AI 分身、線上資產的繼承和法律問題',w:'每人平均有 200+ 數位帳號，死後如何處理無法可循'},{i:'🏦',n:'高齡金融保護專員',d:'保護高齡者的財務安全，對抗詐騙和不當金融操作',w:'高齡者每年因詐騙損失的金額是最大受害族群'},{i:'🗳️',n:'跨代正義政策設計師',d:'設計讓不同世代在政策制定中都有公平發言權的制度',w:'超高齡社會的政策容易過度向老年選民傾斜'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'🔍',t:'法律邏輯與批判思考力',d:'法律訓練你在複雜的情況中找到清晰的論證。在超高齡社會，很多問題沒有前例可循，需要你從頭建立邏輯。',n:'找一個超高齡社會帶來的法律灰色地帶（如 AI 照護責任），試著想想現行法律如何應對'},{i:'⚖️',t:'社會正義與倫理判斷力',d:'法律不只是規則，是社會價值的體現。你要能判斷：什麼是對所有世代都公平的制度？',n:'思考一個超高齡社會中的「世代不公平」問題，想想法律應該如何回應'},{i:'🌐',t:'國際比較與政策分析力',d:'不同國家對高齡法律的設計各有優劣。你要能從全球學習，設計適合台灣的方案。',n:'研究一個國家如何用法律保護高齡者，找出你覺得台灣最應該學習的部分'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇法政學群',x:'你對正義有強烈的直覺，還不知道超高齡社會將帶來多少全新的法律和政治挑戰。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的震撼',x:'你在律師事務所工作，接了第一個高齡詐騙案。你看見：法律完全沒有為這個時代做準備。'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'開始定義新的法律邊界',x:'你參與制定第一部數位遺產法草案。你意識到：&lt;em&gt;你在為這個世代寫下前所未有的歷史。&lt;/em&gt;'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你在為社會的高齡者辯護，同時幫父親規劃數位資產，也開始思考自己的法律規劃。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'法律人的第二使命',x:'你開始從政，推動跨代正義的政策改革。法律不只是保護個人，而是設計整個社會的公平。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你成為你保護的那個人',x:'&lt;strong&gt;你 73 歲，你比任何人都清楚高齡者的法律權利。因為你用一輩子幫他們爭取。&lt;/strong&gt;',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你建立的法律架構，保護了這個世代每一個老去的人的尊嚴和權利。',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果你可以為超高齡社會制定一條全新的法律，你最想保護的是什麼？'},</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>'管理學群':{emoji:'💼',sub:'企業管理・行銷・國際貿易・資管',traits:['銀髮商模','跨代管理','第三人生','組織設計'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個週一，創業加速器',ttl:'43 歲的你，幫人在 65 歲開始新事業',txt:'你創辦的「第三人生創業加速器」客戶不是 25 歲的年輕創業家，而是 65-80 歲剛「退休」卻根本不想退休的人。今天你的客戶是一位 72 歲的前工程師，他想把 40 年的製造業經驗變成一門新事業。你幫他找到了市場，設計了商業模式，媒合了 28 歲的年輕合夥人。你 43 歲，你父親 68 歲，你最近在想：&lt;em&gt;他的第三人生，應該長什麼樣子？&lt;/em&gt;'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你學商業覺得就是賺錢',f:'你在設計讓高齡者的時間和智慧可以被市場認可的商業模式'},{n:'你對管理感興趣',f:'你在管理一個橫跨四個世代的團隊，讓每個人的強項都能發揮'},{n:'你喜歡分析市場趨勢',f:'銀髮經濟是 2050 年最大的市場，但設計方向完全錯了，等你來修正'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['銀髮市場被當成賣老人東西，沒人思考老人能創造什麼','四代同工的組織管理幾乎沒有人懂','退休後的人力資本完全被浪費','高齡友善的商業環境幾乎不存在'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'🚀',n:'高齡創業顧問',d:'幫助高齡者將一輩子的經驗轉化為第三人生的事業',w:'退休後的 20 年人力資本是超高齡社會最大的浪費'},{i:'🔄',n:'跨代組織管理顧問',d:'幫助企業設計讓四個世代有效協作的組織架構和文化',w:'2050 年企業同時管理四個世代是最大的管理挑戰'},{i:'📊',n:'銀髮市場策略師',d:'重新定義高齡市場並設計真正滿足高齡者需求的商業方案',w:'高齡消費市場是 2050 年規模最大、最被誤解的市場'},{i:'🌱',n:'第三人生商業模式設計師',d:'幫助個人設計退休後仍能創造價值和收入的商業方案',w:'退休不再是終點，而是需要商業設計的新起點'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'🔭',t:'市場洞察與趨勢分析力',d:'真正理解高齡市場需要你深入了解高齡者的生活、慾望和恐懼，而不是表面的人口數據。',n:'採訪一位 65 歲以上的長輩：他最想消費但市場上還沒有的東西是什麼？'},{i:'🤝',t:'跨代領導與協作力',d:'2050 年的職場領導者要能讓 25 歲和 75 歲的人都願意追隨你，這需要完全不同的領導風格。',n:'觀察你認識的長輩和你的互動，找出一個溝通上的根本差異，想想如何橋接'},{i:'💡',t:'商業模式創新與設計力',d:'超高齡社會帶來的商業問題都是全新的，沒有教科書，需要你從頭創造解決方案。',n:'設計一個解決超高齡社會某個問題的商業模式，不限規模，越創新越好'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇管理學群',x:'你對商業和組織充滿好奇，還不知道最大的管理挑戰即將來自世代的碰撞。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的觀察',x:'你在公司工作，發現組織完全不知道怎麼處理正在高齡化的員工結構。&lt;em&gt;這是一個巨大的管理問題。&lt;/em&gt;'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'成為跨代橋樑',x:'你設計了第一個讓 30 歲和 70 歲員工有效協作的組織方案，成效讓整個產業開始注意。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你幫高齡創業者找到第三人生，也幫父親想他的下一步，也開始規劃自己的商業第二章。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'管理者的第二人生',x:'你開始思考：如何管理自己接下來 50 年的職涯？這是最難的管理課題。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你還在創造價值',x:'&lt;strong&gt;你 73 歲，擔任三家公司的資深顧問。你說：「我退休了兩次，但都失敗了，因為我停不下來。」&lt;/strong&gt;',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你幫這個世代的人發現：退休不是人生的終點，而是第三個人生的起點。',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果你可以設計一個讓 70 歲的人和 25 歲的人一起工作、互相學習的組織，最重要的設計原則是什麼？'},</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>'財經學群':{emoji:'💰',sub:'財務金融・會計・統計',traits:['長壽財務','世代資產','高齡保險','退休設計'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個週五，財務規劃中心',ttl:'43 歲的你，在幫人設計一個活到 100 歲的財務計畫',txt:'你的客戶今天是一對夫妻，他們 45 歲，剛意識到他們的退休金計畫只夠撐到 75 歲，但他們很可能活到 95 歲。你是&lt;em&gt;長壽財務規劃師&lt;/em&gt;，你幫他們重新設計了一個跨越三個人生階段的財務系統。你 43 歲，你自己也有這個問題——你剛幫自己做了一份「活到 100 歲的財務規劃」，&lt;em&gt;結果嚇到自己了。&lt;/em&gt;'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你學會計覺得只是記帳',f:'你在設計讓一個家庭的財富跨越三個世代合理分配的系統'},{n:'你學統計做數據分析',f:'你在建立預測人在不同年齡需要多少資源的精準模型'},{n:'你對金融投資感興趣',f:'你在設計讓退休後有 30 年還能繼續增值的投資策略'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['現有退休金制度是為活到 75 歲設計的，完全不夠','長壽風險：活太久把錢用完了','家庭財富在多代之間的傳承和分配越來越複雜','高齡者的金融詐騙和不當理財問題嚴重'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'📈',n:'長壽財務規劃師',d:'專門設計能支撐 100 年人生的個人和家庭財務方案',w:'現有退休金制度在超高齡社會完全不夠用'},{i:'🛡️',n:'高齡資產保護顧問',d:'保護高齡者的財產免受詐騙和不當金融操作侵害',w:'高齡者的財務脆弱性在超高齡社會是最嚴重的社會問題之一'},{i:'📊',n:'世代財富流動分析師',d:'分析財富在不同世代之間的流動，設計更公平的分配機制',w:'超高齡社會的財富集中在老年世代，世代財富落差擴大'},{i:'🔮',n:'長壽風險精算師',d:'計算和管理人們因為活得太長而面臨的各種財務風險',w:'長壽是 21 世紀最大的未被充分管理的金融風險'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'🔢',t:'長期財務模型思維',d:'你要能把「活到 100 歲」轉化成一個具體的數字計畫。這需要你同時思考時間、風險和人生目標。',n:'試著計算：如果你 65 歲退休、活到 95 歲，每個月需要多少錢？'},{i:'🧠',t:'行為財務學與人性洞察',d:'人在面對錢的時候往往不理性，尤其是老年時期。你要懂得設計對抗人性弱點的財務系統。',n:'找一個你認識的長輩問問：他現在最擔心的財務問題是什麼？'},{i:'⚖️',t:'財務倫理與社會責任感',d:'財經專業有能力影響整個社會的財富分配。你要問的不只是「怎麼賺錢」，而是「什麼是公平的」。',n:'思考：超高齡社會的財富應該怎麼在世代之間分配，才算是公平的？'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇財經學群',x:'你對數字和金融有直覺，還不知道「活太久」將成為你這代人最大的財務挑戰。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的現實',x:'你在銀行工作，你第一次看到一個 80 歲的老人因為錢不夠用而哭泣。&lt;em&gt;現有的退休計畫根本不夠。&lt;/em&gt;'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'重新設計退休金融',x:'你開發了第一個針對「活到 100 歲」的財務規劃工具，讓人第一次可以真正計算長壽風險。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你幫客戶規劃長壽財務，也幫父母重新整理他們的財務狀況，同時為自己做最誠實的百歲財務計畫。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'財務專家的個人功課',x:'你發現：幫別人設計百歲財務很容易，為自己誠實面對這個計畫，才是最難的部分。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你的財務計畫撐住了你的夢想',x:'&lt;strong&gt;你 73 歲，財務自由。你說：「我 43 歲那年做的決定，讓我現在可以做我想做的事。」&lt;/strong&gt;',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你幫這個世代的人第一次認真算清楚了：100 年的人生，需要什麼樣的財務設計。',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果你現在就要開始設計自己活到 100 歲的財務計畫，你覺得最難的一個決定是什麼？'},</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>'遊憩運動學群':{emoji:'🏃',sub:'休閒遊憩・體育・觀光',traits:['全齡運動','防跌設計','代際活動','長壽健康'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>scene:{yr:'2050 年某個清晨，城市公園',ttl:'43 歲的你，讓整座城市一起動起來',txt:'你設計的「跨代城市運動系統」今天正式啟動——這套系統讓 8 歲和 78 歲可以在同一個空間做不同強度的運動，但感覺像是在一起玩。你是&lt;em&gt;全齡運動體驗設計師&lt;/em&gt;。你 43 歲，你父親 68 歲，他上週在浴室跌倒了——&lt;em&gt;跌倒，是台灣高齡者最大的健康威脅&lt;/em&gt;。你決定：運動，是你能給父親最好的保護。'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>compare:[{n:'你喜歡運動覺得就是玩',f:'你在研究怎麼讓 75 歲的人安全地保持肌肉量，預防跌倒'},{n:'你對戶外活動感興趣',f:'你在設計讓高齡者可以繼續探索自然的輔助體驗系統'},{n:'你喜歡競技運動',f:'你在設計高齡者的運動競技文化，讓「超高齡奧運」成真'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>pains:['跌倒是高齡者最大的健康威脅','缺乏適合高齡者的運動設施和文化','運動在高齡照護中被嚴重低估','孤獨讓高齡者不願意出門運動'],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>jobs:[{i:'🏅',n:'全齡運動體驗設計師',d:'設計讓各年齡層都能安全參與且享受的運動體驗',w:'運動是延長健康壽命最有效的單一介入手段'},{i:'🦵',n:'高齡防跌運動專科師',d:'專門為高齡者設計預防跌倒的肌力和平衡訓練方案',w:'跌倒是台灣高齡者第一大意外死亡原因'},{i:'🌿',n:'長壽生活型態設計師',d:'整合運動、飲食、社交，設計讓人健康老去的生活方式',w:'生活型態是影響健康壽命最重要的因素'},{i:'🌉',n:'代際運動連結設計師',d:'設計讓不同世代可以一起運動的體驗，建立跨代連結',w:'共同運動是建立跨代關係最自然的方式'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>skills:[{i:'🧬',t:'運動科學與高齡生理學',d:'你要懂得 70 歲的身體和 20 歲的身體有什麼不同，才能設計真正安全有效的高齡運動方案。',n:'研究「肌少症」是什麼，想想你身邊的長輩有哪些跡象'},{i:'🎨',t:'體驗設計與創意思維',d:'讓高齡者真正想動起來，需要的不只是「有益健康」，而是真正有趣的體驗設計。',n:'觀察一個你覺得對高齡者不友善的運動設施，想想怎麼重新設計'},{i:'🤝',t:'跨代互動與社群設計力',d:'運動的動力來自社群。你要能設計讓不同年齡的人都想加入的運動社群和文化。',n:'設計一個讓你的祖父母輩和你的同學都願意一起參加的運動活動'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇遊憩運動學群',x:'你喜歡運動、喜歡讓人快樂，還不知道運動是超高齡社會最強大的健康武器。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的體悟',x:'你在體適能中心工作，你看見：幾乎所有設施都是為年輕人設計的，老人只敢坐在邊緣看。'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'運動開始改變老年',x:'你設計的高齡防跌運動課程讓參與者的跌倒率下降 60%。這不只是運動，是救命。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你為整座城市設計運動系統，也幫父親設計每天的運動方案，也為自己的 73 歲身體投資。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'運動設計師的個人使命',x:'你開始把最好的運動科學知識用在自己身上。因為你知道：73 歲的品質，從現在就開始決定。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你的身體就是你的作品',x:'&lt;strong&gt;你 73 歲，肌肉量和平衡感超越同年齡層 30%。你說：「我最好的設計，就是我自己的身體。」&lt;/strong&gt;',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你讓這個世代的人發現：老，不是停下來，而是換一種方式繼續動。',tag:'百歲世代'}],</p>
-<p class="p1"><span class="Apple-converted-space">    </span>img:'如果你可以設計一種讓你的父母和你的孩子都願意一起做的運動體驗，它長什麼樣子？'}</p>
-<p class="p1">};</p>
-<p class="p2"><br></p>
-<p class="p1">// group categories</p>
-<p class="p1">const groups={</p>
-<p class="p1"><span class="Apple-converted-space">  </span>'🔬 理工與生命科學':['資訊學群','工程學群','數理化學群','醫藥衛生學群','生命科學學群','生物資源學群','地球環境學群'],</p>
-<p class="p1"><span class="Apple-converted-space">  </span>'🎨 設計與創意':['建築設計學群','藝術學群'],</p>
-<p class="p1"><span class="Apple-converted-space">  </span>'📢 傳播語文與人文':['大眾傳播學群','外語學群','文史哲學群'],</p>
-<p class="p1"><span class="Apple-converted-space">  </span>'🫂 社會與教育':['社會心理學群','教育學群'],</p>
-<p class="p1"><span class="Apple-converted-space">  </span>'⚖️ 法政管理財經':['法政學群','管理學群','財經學群','遊憩運動學群']</p>
-<p class="p1">};</p>
-<p class="p2"><br></p>
-<p class="p1">const quizGroups={</p>
-<p class="p1"><span class="Apple-converted-space">  </span>info:['資訊學群','工程學群','數理化學群','醫藥衛生學群','生命科學學群','生物資源學群','地球環境學群'],</p>
-<p class="p1"><span class="Apple-converted-space">  </span>social:['社會心理學群','教育學群','文史哲學群','法政學群','外語學群'],</p>
-<p class="p1"><span class="Apple-converted-space">  </span>art:['藝術學群','建築設計學群','大眾傳播學群'],</p>
-<p class="p1"><span class="Apple-converted-space">  </span>biz:['管理學群','財經學群','遊憩運動學群']</p>
-<p class="p1">};</p>
-<p class="p2"><br></p>
-<p class="p1">function goto(id){</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.screen').forEach(s=&gt;s.classList.remove('active'));</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const t=document.getElementById(id);t.classList.add('active');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>t.classList.remove('fade-in');void t.offsetWidth;t.classList.add('fade-in');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>window.scrollTo(0,0);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>if(id==='s-home')updateHome();</p>
-<p class="p1"><span class="Apple-converted-space">  </span>if(id==='s-explore'){renderSelector();renderGroup(activeGroup);}</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function afterImpact(ans){</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const m={</p>
-<p class="p1"><span class="Apple-converted-space">    </span>a:{e:'💡',t:'「找一份好工作」——只夠撐 30 年',b:'如果你 22 歲開始工作，一份「好工作」撐到 50 歲，\n然後呢？你還有 &lt;strong style="color:var(--neon3)"&gt;50 年&lt;/strong&gt; 的人生沒有計畫。\n\n100 歲的人生是 &lt;strong style="color:var(--neon2)"&gt;三到四個完全不同的人生階段&lt;/strong&gt;。\n\n你現在選的科系，只是第一個人生的起點。'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>b:{e:'🌌',t:'「很久」和「100 歲」是完全不同的感受',b:'2050 年你才 &lt;strong style="color:var(--neon4)"&gt;43 歲&lt;/strong&gt;——那是中壯年，不是老年。\n2080 年你 &lt;strong style="color:var(--neon2)"&gt;73 歲&lt;/strong&gt;——那時你還可能在工作、在創造。\n\n100 歲的人生，需要被認真設計。'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>c:{e:'🔄',t:'你這代的「老」和現在的老人完全不同',b:'你爸媽那代的 70 歲，是你這代的 &lt;strong style="color:var(--neon5)"&gt;50 歲&lt;/strong&gt;。\n\n你這代老了：數位原生、身體更健康、\n可能 80 歲還在做自己想做的事。\n\n&lt;strong style="color:var(--neon3)"&gt;「老」這件事，正在被你們這代重新定義。&lt;/strong&gt;'},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>d:{e:'🚀',t:'你有感覺——現在就是準備的時候',b:'這種「說不清但隱隱覺得重要」的感覺，是對的。\n\n100 歲的人生靠 &lt;strong style="color:var(--neon2)"&gt;持續地認識自己、想像未來、嘗試可能&lt;/strong&gt; 來準備。\n\n你現在選的科系，&lt;strong style="color:var(--neon4)"&gt;是在設計你想活的人生。&lt;/strong&gt;'}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}[ans];</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('impact2-content').innerHTML=`</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="font-size:2.4rem;margin-bottom:.9rem"&gt;${m.e}&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="font-size:1.25rem;font-weight:900;margin-bottom:1.1rem;line-height:1.3;background:linear-gradient(135deg,#fff,var(--neon2));-webkit-background-clip:text;-webkit-text-fill-color:transparent"&gt;${m.t}&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="color:var(--sub);font-size:.84rem;line-height:1.9;white-space:pre-line;max-width:370px"&gt;${m.b}&lt;/div&gt;`;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>goto('s-impact2');</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">document.getElementById('inp-dad').addEventListener('input',updatePreview);</p>
-<p class="p1">document.getElementById('inp-mom').addEventListener('input',updatePreview);</p>
-<p class="p1">function updatePreview(){</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const d=parseInt(document.getElementById('inp-dad').value)||0,m=parseInt(document.getElementById('inp-mom').value)||0;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const el=document.getElementById('setup-preview');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>let lines=[];</p>
-<p class="p1"><span class="Apple-converted-space">  </span>if(d&gt;0)lines.push(`爸爸在 2050 年 &lt;em&gt;${d+25} 歲&lt;/em&gt;`);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>if(m&gt;0)lines.push(`媽媽在 2050 年 &lt;em&gt;${m+25} 歲&lt;/em&gt;`);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>el.innerHTML=lines.length?'✦ '+lines.join('，')+'&lt;br&gt;那時的他們，你能給什麼？':'填入後，這裡會出現你父母在 2050 年的年齡 ✦';</p>
-<p class="p1">}</p>
-<p class="p1">function saveSetup(skip=false){</p>
-<p class="p1"><span class="Apple-converted-space">  </span>if(!skip){user.name=document.getElementById('inp-name').value.trim();user.dadAge=parseInt(document.getElementById('inp-dad').value)||0;user.momAge=parseInt(document.getElementById('inp-mom').value)||0;}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>goto('s-home');</p>
-<p class="p1">}</p>
-<p class="p1">function updateHome(){</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const n=user.name;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('welcome-name').innerHTML=n?`嗨，&lt;em&gt;${n}&lt;/em&gt;！歡迎來到你的未來宇宙`:'';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>let pLine='';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>if(user.dadAge||user.momAge){let ps=[];if(user.dadAge)ps.push(`爸爸那時 &lt;strong style="color:var(--neon4)"&gt;${user.dadAge+25} 歲&lt;/strong&gt;`);if(user.momAge)ps.push(`媽媽那時 &lt;strong style="color:var(--neon4)"&gt;${user.momAge+25} 歲&lt;/strong&gt;`);pLine=ps.join('，')+'，他們需要你。&lt;br&gt;';}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('home-ctx').innerHTML=`現在出生的你，&lt;strong&gt;有很高的機率活到 100 歲。&lt;/strong&gt;&lt;br&gt;2050 年你 &lt;em&gt;43 歲&lt;/em&gt;——${pLine}你的同事可能比你老 30 歲，你的身體也開始說話。&lt;br&gt;&lt;br&gt;你選的科系，不只是找一份工作。&lt;br&gt;&lt;strong&gt;是在設計一個能活到 100 歲的人生。&lt;/strong&gt;`;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">// QUIZ</p>
-<p class="p1">const questions=[</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{q:'面對一個問題，你最想做什麼？',emoji:'🧩',opts:[{t:'分析規律，設計一套系統解法',g:'info'},{t:'理解人為什麼有這個問題',g:'social'},{t:'用視覺或空間的方式呈現解方',g:'art'},{t:'找出商業或組織的運作方式',g:'biz'}]},</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{q:'2050 年你 43 歲，最想做什麼？',emoji:'🚀',opts:[{t:'建立讓各世代都能用的科技或科學系統',g:'info'},{t:'幫助人找到跨世代相處的方式',g:'social'},{t:'設計讓老年生活有美感和尊嚴的環境',g:'art'},{t:'打造讓高齡者繼續創造價值的事業',g:'biz'}]},</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{q:'你覺得超高齡社會最需要什麼？',emoji:'🌍',opts:[{t:'更好的醫療科技讓人健康到老',g:'info'},{t:'讓老人被尊重、找到意義的社會文化',g:'social'},{t:'讓老年生活有美感、有故事的設計',g:'art'},{t:'讓高齡者繼續參與社會的機制',g:'biz'}]},</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{q:'你比較享受哪種工作狀態？',emoji:'💫',opts:[{t:'深度研究，解決一個技術或科學難題',g:'info'},{t:'和人深度對話，理解他的故事',g:'social'},{t:'創作、設計，讓想法變成看得見的東西',g:'art'},{t:'分析趨勢，規劃策略，帶領團隊',g:'biz'}]}</p>
-<p class="p1">];</p>
-<p class="p1">let qIdx=0,scores={info:0,social:0,art:0,biz:0};</p>
-<p class="p1">function startQuiz(){qIdx=0;scores={info:0,social:0,art:0,biz:0};renderQ()}</p>
-<p class="p1">function renderQ(){</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const q=questions[qIdx];</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('qbar').style.width=Math.round(qIdx/questions.length*100)+'%';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('quiz-body').innerHTML=`&lt;div class="quiz-emoji fade-in"&gt;${q.emoji}&lt;/div&gt;&lt;div class="quiz-q fade-in"&gt;Q${qIdx+1}. ${q.q}&lt;/div&gt;&lt;div class="quiz-sub"&gt;選最符合你的答案&lt;/div&gt;&lt;div class="quiz-opts fade-in"&gt;${q.opts.map(o=&gt;`&lt;button class="quiz-opt" onclick="selectOpt(this,'${o.g}')"&gt;${o.t}&lt;/button&gt;`).join('')}&lt;/div&gt;&lt;button class="btn-next" id="btn-next" onclick="nextQ()"&gt;繼續 →&lt;/button&gt;`;</p>
-<p class="p1">}</p>
-<p class="p1">function selectOpt(el,g){document.querySelectorAll('.quiz-opt').forEach(b=&gt;b.classList.remove('selected'));el.classList.add('selected');const btn=document.getElementById('btn-next');btn.classList.add('ready');btn._g=g;}</p>
-<p class="p1">function nextQ(){const btn=document.getElementById('btn-next');if(!btn.classList.contains('ready'))return;scores[btn._g]=(scores[btn._g]||0)+1;if(++qIdx&lt;questions.length)renderQ();else showResult();}</p>
-<p class="p1">function showResult(){</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const top=Object.entries(scores).sort((a,b)=&gt;b[1]-a[1])[0][0];</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const pool=quizGroups[top];</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const gid=pool[Math.floor(Math.random()*pool.length)];</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const g=GD[gid];</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('r-emoji').textContent=g.emoji;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('r-group').textContent=gid;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('r-desc').textContent='根據你的回答，你很適合探索這個學群在超高齡社會的可能性！';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('r-tags').innerHTML=g.traits.map(t=&gt;`&lt;span class="trait-tag"&gt;${t}&lt;/span&gt;`).join('');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>window._rg=gid;goto('s-result');</p>
-<p class="p1">}</p>
-<p class="p1">function exploreResult(){activeGroup=window._rg||'資訊學群';goto('s-explore')}</p>
-<p class="p2"><br></p>
-<p class="p1">function renderSelector(){</p>
-<p class="p1"><span class="Apple-converted-space">  </span>let html='';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>for(const [cat,ids] of Object.entries(groups)){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>html+=`&lt;div class="group-cat"&gt;&lt;div class="cat-label"&gt;${cat}&lt;/div&gt;&lt;div class="group-pills"&gt;`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>ids.forEach(id=&gt;{const g=GD[id];html+=`&lt;div class="gpill${id===activeGroup?' active':''}" onclick="selectGroup('${id}')"&gt;${g.emoji} ${id}&lt;/div&gt;`;});</p>
-<p class="p1"><span class="Apple-converted-space">    </span>html+='&lt;/div&gt;&lt;/div&gt;';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('group-selector').innerHTML=html;</p>
-<p class="p1">}</p>
-<p class="p1">function selectGroup(id){activeGroup=id;renderSelector();renderGroup(id);}</p>
-<p class="p2"><br></p>
-<p class="p1">function renderGroup(gid){</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const d=GD[gid];if(!d){document.getElementById('group-content').innerHTML='&lt;div style="color:var(--sub);padding:2rem;text-align:center"&gt;找不到此學群的資料&lt;/div&gt;';return;}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const nm=user.name||'你';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const topLbl=buildTopLabel();</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>const cmp=d.compare.map(c=&gt;`&lt;div class="cmp-row"&gt;&lt;div class="cmp-now"&gt;&lt;div class="cmp-lbl"&gt;現在 18 歲的你&lt;/div&gt;&lt;div class="cmp-txt"&gt;${c.n}&lt;/div&gt;&lt;/div&gt;&lt;div class="cmp-fut"&gt;&lt;div class="cmp-lbl"&gt;2050 年 43 歲的你&lt;/div&gt;&lt;div class="cmp-txt"&gt;${c.f}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;`).join('');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const tlHtml=buildTL(d.tl);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>const html=`</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="scene-box fade-in"&gt;&lt;div class="scene-yr"&gt;📡 ${d.scene.yr}&lt;/div&gt;&lt;div class="scene-ttl"&gt;✨ ${d.scene.ttl}&lt;/div&gt;&lt;div class="scene-txt"&gt;${d.scene.txt}&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="sec fade-in"&gt;&lt;div class="sec-lbl" style="color:var(--neon2)"&gt;🔄 現在的你 vs 2050 的你&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="cmp-intro"&gt;同樣是「你」——二十五年後，你用同樣的興趣，&lt;em&gt;解決完全不同規模的問題&lt;/em&gt;。&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="cmp-grid"&gt;${cmp}&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="sec fade-in"&gt;&lt;div class="sec-lbl" style="color:var(--neon3)"&gt;🥪 2050 年的你：三明治世代&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="sw-layers"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sw-layer top"&gt;&lt;div class="sw-ico"&gt;👴&lt;/div&gt;&lt;div&gt;&lt;div class="sw-lbl"&gt;${topLbl}&lt;/div&gt;&lt;div style="font-size:.73rem;color:var(--sub);line-height:1.5"&gt;他們還有活力，但需要你的支持與理解。&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sw-layer mid"&gt;&lt;div class="sw-ico"&gt;🧑&lt;/div&gt;&lt;div&gt;&lt;div class="sw-lbl"&gt;你｜43 歲，社會的經濟核心&lt;/div&gt;&lt;div style="font-size:.73rem;color:var(--sub);line-height:1.5"&gt;你是家庭支柱，也是職場中最重要的世代。上下都需要你，你自己的身體也開始說話。&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sw-layer bot"&gt;&lt;div class="sw-ico"&gt;🧒&lt;/div&gt;&lt;div&gt;&lt;div class="sw-lbl"&gt;你的孩子世代｜15 歲左右&lt;/div&gt;&lt;div style="font-size:.73rem;color:var(--sub);line-height:1.5"&gt;他們在超高齡社會長大，你要幫他們找到自己的位置。&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="sec fade-in"&gt;&lt;div class="sec-lbl" style="color:var(--neon3)"&gt;⚡ 超高齡社會的生存痛點&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pain-grid"&gt;${d.pains.map(p=&gt;`&lt;div class="pain-item"&gt;${p}&lt;/div&gt;`).join('')}&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="sec fade-in"&gt;&lt;div class="sec-lbl" style="color:var(--neon2)"&gt;🃏 2050 新興職業（點擊翻轉）&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="cards-grid"&gt;${d.jobs.map(j=&gt;`&lt;div class="flip-card" onclick="this.classList.toggle('flipped')"&gt;&lt;div class="flip-inner"&gt;&lt;div class="flip-front"&gt;&lt;div class="flip-ico"&gt;${j.i}&lt;/div&gt;&lt;div class="flip-nm"&gt;${j.n}&lt;/div&gt;&lt;div class="flip-hint"&gt;點我翻轉 →&lt;/div&gt;&lt;/div&gt;&lt;div class="flip-back"&gt;&lt;div class="flip-bt"&gt;${j.n}&lt;/div&gt;&lt;div class="flip-bd"&gt;${j.d}&lt;br&gt;&lt;br&gt;📌 ${j.w}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;`).join('')}&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="sec fade-in"&gt;&lt;div class="sec-lbl" style="color:var(--neon5)"&gt;🌱 現在的我要培養什麼？&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>${d.skills.map(s=&gt;`&lt;div class="skill-item"&gt;&lt;div class="skill-ttl"&gt;${s.i} ${s.t}&lt;/div&gt;&lt;div class="skill-desc"&gt;${s.d}&lt;/div&gt;&lt;div class="skill-now"&gt;📌 現在可以做：${s.n}&lt;/div&gt;&lt;/div&gt;`).join('')}&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="sec fade-in"&gt;&lt;div class="sec-lbl" style="color:var(--neon4)"&gt;⏳ ${nm==='你'?'我':nm}的 100 年人生時間軸&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="tl-intro"&gt;你這代人，&lt;em&gt;很可能活到 100 歲&lt;/em&gt;。43 歲是最重的三明治期，73 歲你是&lt;strong&gt;跟父母那代完全不同的新世代老人&lt;/strong&gt;，100 歲——&lt;em&gt;不再是奇蹟，是設計題&lt;/em&gt;。&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="timeline"&gt;${tlHtml}&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="imagine-box fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="imagine-q"&gt;💭 &lt;span&gt;寫給未來的${nm}&lt;/span&gt;&lt;br&gt;${d.img}&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;textarea id="user-idea" placeholder="用你自己的話寫下來——越真實越好 ✍️"&gt;&lt;/textarea&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;br&gt;&lt;button class="sub-btn" onclick="submitIdea('${gid}')"&gt;送出，讓 73 歲的${nm}來回應 ✨&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="ai-resp" id="idea-resp"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;&lt;div style="height:2rem"&gt;&lt;/div&gt;`;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>const cont=document.getElementById('group-content');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>cont.innerHTML=html;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>cont.classList.remove('fade-in');void cont.offsetWidth;cont.classList.add('fade-in');</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function buildTopLabel(){</p>
-<p class="p1"><span class="Apple-converted-space">  </span>if(user.dadAge||user.momAge){let ps=[];if(user.dadAge)ps.push(`爸爸 ${user.dadAge+25} 歲`);if(user.momAge)ps.push(`媽媽 ${user.momAge+25} 歲`);return '你的父母｜'+ps.join('、');}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>return '你的父母世代｜那時 70-80 歲';</p>
-<p class="p1">}</p>
-<p class="p1">function buildTL(items){</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const phases=[{label:'🌱 第一人生：選擇與建立',c:'var(--neon1)',ids:[0,1]},{label:'🔥 第二人生：三明治與高峰',c:'var(--neon4)',ids:[2,3,4]},{label:'✨ 第三人生：新世代的老',c:'var(--neon5)',ids:[5,6]}];</p>
-<p class="p1"><span class="Apple-converted-space">  </span>let html='';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>phases.forEach(ph=&gt;{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>html+=`&lt;div class="tl-phase" style="color:${ph.c}"&gt;&lt;div class="tl-ph-line" style="background:${ph.c}"&gt;&lt;/div&gt;&lt;div class="tl-ph-lbl"&gt;${ph.label}&lt;/div&gt;&lt;div class="tl-ph-line" style="background:${ph.c}"&gt;&lt;/div&gt;&lt;/div&gt;`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>ph.ids.forEach(i=&gt;{const t=items[i];if(!t)return;const tag=t.tag?`&lt;div class="newtag"&gt;✦ ${t.tag}&lt;/div&gt;`:'';html+=`&lt;div class="tl-item"&gt;&lt;div class="tl-dot" style="border-color:${t.c};color:${t.c}"&gt;${t.i}&lt;/div&gt;&lt;div class="tl-box ${t.s}"&gt;&lt;div class="tl-age" style="color:${t.c}"&gt;${t.a}&lt;/div&gt;&lt;div class="tl-ttl"&gt;${t.t}&lt;/div&gt;&lt;div class="tl-txt"&gt;${t.x}&lt;/div&gt;${tag}&lt;/div&gt;&lt;/div&gt;`;});</p>
-<p class="p1"><span class="Apple-converted-space">  </span>});</p>
-<p class="p1"><span class="Apple-converted-space">  </span>return html;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function submitIdea(gid){</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const txt=document.getElementById('user-idea').value.trim();</p>
-<p class="p1"><span class="Apple-converted-space">  </span>if(!txt)return;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const el=document.getElementById('idea-resp');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>el.style.display='block';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>el.classList.add('ldots');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>el.textContent='正在連線 2080 的你';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>setTimeout(()=&gt;{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>el.classList.remove('ldots');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>el.textContent=genReply(gid,txt,user.name||'你',user.dadAge,user.momAge);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>},1800);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function genReply(gid,txt,nm,dadAge,momAge){</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const yr73=2080;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const dadNow=dadAge?`那時爸爸 ${dadAge+55} 歲，`:'';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const momNow=momAge?`媽媽 ${momAge+55} 歲，`:'';<span class="Apple-converted-space"> </span></p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>// 關鍵詞偵測</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const t=txt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const has=(words)=&gt;words.some(w=&gt;t.includes(w));</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>// 學群專屬的 73 歲智慧</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const groupWisdom={</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'資訊學群':'我花了二十年幫別人設計系統，卻花了最後三十年才學會設計自己的生活節奏。',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'工程學群':'我建造了很多東西，但最難設計的，是我自己老去的方式。',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'數理化學群':'我研究老化的方程式，卻發現人生最重要的變數，不在公式裡。',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'醫藥衛生學群':'我幫無數人設計健康的老年，但我自己最健康的秘密，是我從不害怕問「我還想做什麼」。',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'生命科學學群':'我讀懂了細胞如何老化，卻花了更長的時間讀懂自己的人生。',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'生物資源學群':'最好的長壽秘方，不是我研究室裡的任何東西，而是每天早上有值得起床的理由。',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'地球環境學群':'我守護了很多地方不受傷害，但最難守護的，是我內心對未來的信心。',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'建築設計學群':'我設計了很多讓人有尊嚴的空間，但真正的尊嚴，來自你對自己的看法，不是空間。',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'藝術學群':'73 歲的我，比 18 歲的我更敢創作，因為我終於不在乎別人怎麼看了。',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'社會心理學群':'我幫了無數人找到意義感，卻發現意義感這東西，只能自己找，沒有人能給你。',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'大眾傳播學群':'我說了一輩子的故事，到了 73 歲才發現：自己的故事，才是最重要的那一個。',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'外語學群':'我懂四種語言，但人生最重要的對話，是每天早上和鏡子裡的自己說的那幾句話。',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'文史哲學群':'我研究了一輩子的智慧，到 73 歲才真正開始活出那些智慧。',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'教育學群':'我教了一輩子的學生，卻發現最好的學習，是那些讓你不舒服的時刻。',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'法政學群':'我捍衛了很多人的權利，但最難捍衛的，是自己不被恐懼支配的權利。',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'管理學群':'我管理過很多人和事業，但管理「自己想要什麼樣的人生」，才是最難的課題。',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'財經學群':'錢很重要，但到了 73 歲，我最感謝的投資，是那些我投入在關係和體驗上的時間。',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>'遊憩運動學群':'我的身體在 73 歲還很好用，因為我從你這個年紀就開始認真對待它。'</p>
-<p class="p1"><span class="Apple-converted-space">  </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>// 根據輸入內容選擇回應角度</p>
-<p class="p1"><span class="Apple-converted-space">  </span>let opening='';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>let middle='';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>let closing='';</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>if(has(['害怕','恐懼','擔心','不確定','迷茫','不知道'])){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>opening=`我看著你寫的這些，想起了 18 歲的我——也是一樣的害怕。`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>middle=`但我現在可以告訴你：那些讓你不確定的感覺，後來都變成了你最重要的能力。不確定，代表你還在認真思考。`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>closing=`不要急著找到答案。先找到一個讓你願意繼續往前的問題。`;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>} else if(has(['父母','爸','媽','家人','照顧'])){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>opening=`你想到了父母，這讓我有點意外，也很感動。`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const parentLine=dadAge||momAge?`${dadNow}${momNow}你還是那個中間的人，但你已經學會了在給予的同時，也接受別人的給予。`:``;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>middle=`${parentLine}在超高齡社會，照顧不是單向的。你的父母，在某些時候，也是你的老師。`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>closing=`趁他們還能說話，多問問他們的故事。那些故事，你以後會非常需要。`;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>} else if(has(['錢','收入','工作','賺','財務','穩定'])){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>opening=`你在想生存的問題，這很真實，我不會說「不要想這些」。`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>middle=`但我現在 73 歲回頭看，錢確實重要，但最讓我有錢的決定，往往不是最「安全」的那個，而是最讓我全力投入的那個。`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>closing=`找到你願意認真做的事，錢會跟著來。反過來不一定成立。`;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>} else if(has(['改變','影響','貢獻','幫助','社會','世界'])){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>opening=`你想改變什麼，這很好。18 歲有這種衝動，是最珍貴的資源。`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>middle=`我告訴你一件 73 歲才懂的事：改變世界的人，不是因為他們很厲害，而是因為他們在一件事情上，比別人多堅持了幾年。`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>closing=`找到你願意堅持的那一件事，然後開始。不要等到準備好了再開始。`;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>} else if(has(['自己','我','未來','夢想','想要','希望'])){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>opening=`你在想自己的事，這正是 18 歲最應該做的事。`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>middle=`${groupWisdom[gid]||'我用了三十年才真正搞清楚自己要什麼。但你不必等那麼久——如果你現在就開始認真問自己這個問題的話。'}`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>closing=`你寫的這些，比你知道的更接近答案。`;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>} else if(has(['老','老人','老年','長輩','年紀'])){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>opening=`你在想「老」這件事，很好。大多數 18 歲的人不會想到這裡。`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>middle=`我告訴你：73 歲的我，和你想像的「老人」完全不一樣。我還在創造，還有好奇心，還有很多沒做完的事。「老」這個字，需要被你們這代重新定義。`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>closing=`從現在開始，不要用你爸媽那代的眼光想像你的老年。那是完全不同的事。`;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// 通用回應</p>
-<p class="p1"><span class="Apple-converted-space">    </span>opening=`我在 2080 年讀到你寫的這些，停了很久。`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>middle=`${groupWisdom[gid]||'我花了很多年才懂：人生最重要的不是做了什麼，而是你在做的時候，是不是真的在場。'}`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>closing=`你現在的每一個選擇，都在悄悄塑造 2080 年的我。謝謝你認真想這些事。`;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>const nm73=nm==='你'?'我':nm;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>return `來自 2080 年、73 歲的${nm}：\n\n${opening}\n\n${middle}\n\n${closing}\n\n— ${nm73}，${yr73} 年`;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">startQuiz();</p>
-<p class="p1">&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+<div id="stars"></div>
+
+<div class="screen active" id="s-impact">
+  <div style="width:100%;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem 1.2rem" class="fade-in">
+    <div style="font-size:.68rem;letter-spacing:.2em;color:var(--neon2);margin-bottom:1.4rem">✦ 在你選科系之前，先面對一件事</div>
+    <div class="impact-q">你會活到<br>100 歲。</div>
+    <div class="impact-sub">這不是假設。這是你這個世代的現實。<br><br>那麼——你現在對未來的計畫，<br><em>夠撐 100 年嗎？</em></div>
+    <div class="impact-choices">
+      <div class="impact-choice" onclick="afterImpact('a')">😰 我只想到「找一份好工作」</div>
+      <div class="impact-choice" onclick="afterImpact('b')">🤔 我知道會很久，但沒想過 100 歲是什麼感覺</div>
+      <div class="impact-choice" onclick="afterImpact('c')">😐 我覺得 100 歲跟現在的老人差不多吧</div>
+      <div class="impact-choice" onclick="afterImpact('d')">🔥 我想過，但不知道怎麼準備</div>
+    </div>
+    <div class="impact-skip" onclick="goto('s-setup')">跳過，直接開始 →</div>
+  </div>
+</div>
+
+<div class="screen" id="s-impact2">
+  <div style="width:100%;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem 1.2rem" class="fade-in">
+    <div id="impact2-content"></div>
+    <button class="btn-main" style="margin-top:2rem" onclick="goto('s-setup')">我準備好了，開始探索 →</button>
+  </div>
+</div>
+
+<div class="screen" id="s-setup">
+  <div class="top-nav"><button class="back-btn" onclick="goto('s-impact')">← 返回</button></div>
+  <div class="setup-title">讓內容變成你的故事</div>
+  <div class="setup-sub">輸入你的資訊，時間軸會自動變成「你的人生」</div>
+  <div class="setup-form w100">
+    <div class="setup-field"><label>你叫什麼名字？</label><input id="inp-name" type="text" placeholder="輸入名字或暱稱" maxlength="10"></div>
+    <div class="setup-row">
+      <div class="setup-field"><label>爸爸現在幾歲？</label><input id="inp-dad" type="number" placeholder="例如 50" min="30" max="80"></div>
+      <div class="setup-field"><label>媽媽現在幾歲？</label><input id="inp-mom" type="number" placeholder="例如 48" min="30" max="80"></div>
+    </div>
+    <div class="setup-hint" id="setup-preview">填入後，這裡會出現你父母在 2050 年的年齡 ✦</div>
+    <button class="btn-main w100" onclick="saveSetup()">進入我的 2050 宇宙 🚀</button>
+    <button class="btn-sec w100" onclick="saveSetup(true)" style="margin-top:.3rem">先跳過</button>
+  </div>
+</div>
+
+<div class="screen" id="s-home">
+  <div class="logo-badge">✦ 2050 未來宇宙探索器</div>
+  <div class="welcome-name" id="welcome-name"></div>
+  <h1 class="title">你的科系<br>藏著什麼<br>超能力？</h1>
+  <div class="home-ctx" id="home-ctx"></div>
+  <div class="planet-wrap"><div class="ring"></div><div class="planet"></div></div>
+  <button class="btn-main" onclick="goto('s-quiz')">🔭 測驗：找到我的未來學群</button>
+  <div class="or-divider">— 或 —</div>
+  <button class="btn-sec" onclick="goto('s-explore')">直接瀏覽 18 個學群</button>
+</div>
+
+<div class="screen" id="s-quiz">
+  <div class="top-nav"><button class="back-btn" onclick="goto('s-home')">← 返回</button><span class="nav-ttl">🎯 找到你的未來星球</span></div>
+  <div class="quiz-progress w100"><div class="quiz-bar" id="qbar" style="width:0%"></div></div>
+  <div id="quiz-body" class="w100"></div>
+</div>
+
+<div class="screen" id="s-result">
+  <div class="top-nav"><button class="back-btn" onclick="goto('s-quiz')">← 重測</button></div>
+  <div class="result-badge" id="r-emoji"></div>
+  <div class="result-group" id="r-group"></div>
+  <div class="result-desc" id="r-desc"></div>
+  <div class="result-tags" id="r-tags"></div>
+  <button class="btn-main" onclick="exploreResult()">🚀 探索我的 100 年人生宇宙</button>
+  <div class="or-divider">— 也看看其他學群 —</div>
+  <button class="btn-sec" onclick="goto('s-explore')">瀏覽全部 18 學群</button>
+</div>
+
+<div class="screen" id="s-explore">
+  <div class="top-nav"><button class="back-btn" onclick="goto('s-home')">← 返回</button><span class="nav-ttl">🌌 學群星圖</span></div>
+  <div id="group-selector" class="w100"></div>
+  <div id="group-content" class="w100"></div>
+</div>
+
+<script>
+const sf=document.getElementById('stars');
+for(let i=0;i<80;i++){const s=document.createElement('div');s.className='star';const z=Math.random()*2.5+.5;s.style.cssText=`width:${z}px;height:${z}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${Math.random()*3+2}s;animation-delay:${Math.random()*3}s`;sf.appendChild(s)}
+
+let user={name:'',dadAge:0,momAge:0};
+let activeGroup='資訊學群';
+
+// ── 18 學群完整資料 ──
+const GD={
+  '資訊學群':{emoji:'💻',sub:'計算機科學・資工・資管',traits:['系統思維','全齡設計','數據倫理','跨代介面'],
+    scene:{yr:'2050 年某個週三，台北信義區',ttl:'43 歲的你，同時活在三個世界裡',txt:'上午你的視訊右邊是<em>77 歲的資深顧問阿財伯</em>，他的語音辨識是你幫他設定的。左邊是女兒傳來：「爸，阿公的健康 App 又當掉了。」下午你去提案——你是那家老年科技公司的<em>技術長</em>，你在定義老人怎麼被科技服務。晚上你打開自己的身體數據，43 歲了，膝蓋開始說話，你幫自己設了一個<em>預防性 AI 教練</em>。'},
+    compare:[{n:'你現在滑手機，偶爾覺得介面很難用',f:'你在設計讓 8 歲和 80 歲都能用的介面'},{n:'你用 AI 查資料、寫作業',f:'你在設計 AI 如何理解一個 75 歲老人的需求'},{n:'你在學校被系統管理',f:'你在決定誰的數據可以被使用、怎麼保護'}],
+    pains:['科技設計排除高齡使用者','四代同工協作系統崩潰','龐大醫療數據無法個人化','自身健康管理需要智慧工具'],
+    jobs:[{i:'🧠',n:'記憶工程師',d:'建立個人記憶數據模型，讓家族記憶可被保存',w:'失智人口激增，記憶保存成家庭剛需'},{i:'♿',n:'全齡介面設計師',d:'設計讓 8 歲到 85 歲都能流暢使用的系統',w:'四代共用同一科技環境已是現實'},{i:'🏥',n:'個人健康 AI 架構師',d:'建立終身健康數據模型整合預防與治療',w:'醫療資源稀缺，預防性 AI 成標配'},{i:'🌐',n:'跨代職場系統設計師',d:'設計讓不同世代有效協作的工作工具',w:'2050 職場平均橫跨四個世代'}],
+    skills:[{i:'🔍',t:'以人為本的系統設計力',d:'技術要能被各年齡層使用。你不只是工程師，是理解不同世代怎麼思考的設計者。',n:'觀察家中長輩用手機的方式，記錄三個讓他們困惑的地方'},{i:'⚖️',t:'數據倫理與隱私思維',d:'2050 的數據包含記憶、情感、健康。懂技術不夠，要懂什麼不應該做。',n:'找一篇 AI 倫理爭議新聞，寫下你的立場'},{i:'🌉',t:'跨世代溝通與翻譯力',d:'你的系統要同時說服 25 歲的同事和 75 歲的使用者。',n:'試著用三句話向一位長輩解釋一個你熟悉的科技概念'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇資訊學群',x:'你對「系統如何運作」有說不清的著迷，還不知道這會變成改變世界的能力。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的衝擊',x:'你的 App 發布，你發現 60 歲以上的使用者根本用不了。<em>設計是有立場的。</em>'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'職場出現老同事',x:'新主管 68 歲，比你多 37 年經驗。你需要學會協作，不是等他退休。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'上有父母，下有孩子，職場有 75 歲同事。<em>誰來幫我設計一個好用的 43 歲？</em>'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'開始為自己設計',x:'幫別人做了三十年的系統，第一次認真為自己打造。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'新世代老人——和父母那代截然不同',x:'你依然在工作。<strong>你這代的 73 歲，是父母那代 50 歲的狀態。</strong>你的需求要求社會重新設計「老」。',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'那時的社會是為活到 100 歲的人設計的。<strong>那些設計，是 2025 年選科系的你們創造的。</strong>',tag:'百歲世代'}],
+    img:'如果 73 歲的你回頭看 18 歲的你，你希望那時的你，對「設計給所有人使用的東西」這件事有什麼不同的理解？'},
+
+  '工程學群':{emoji:'⚙️',sub:'土木・機械・電機・材料',traits:['結構設計','仿生工程','全齡城市','輔具創新'],
+    scene:{yr:'2050 年某個早晨，高雄左營',ttl:'43 歲的你，在重新設計這座城市',txt:'你站在一個捷運站的改造工地前。這不是普通的無障礙工程——你是<em>全齡城市工程師</em>，你在設計讓 80 歲的人和 8 歲的孩子都覺得「這個城市是為我造的」。你的手機同時顯示父親的健康數據，他 72 歲，上週剛換了你設計的<em>仿生膝關節輔具</em>。下午你要去審查一棟「智慧老宅」的結構圖——你 43 歲，你自己也開始想這件事。'},
+    compare:[{n:'你學物理覺得很抽象',f:'你用力學模型設計讓老人骨骼撐更久的外骨骼'},{n:'你喜歡拆東西、組東西',f:'你在設計房子怎麼跟著主人的身體一起變化'},{n:'你看城市覺得理所當然',f:'你發現這座城市的所有設計都假設使用者是健康的 30 歲'}],
+    pains:['城市基礎設施為年輕身體設計','老年輔具笨重昂貴且不美觀','住宅無法隨老化需求調整','交通系統對高齡者極不友善'],
+    jobs:[{i:'🏙️',n:'全齡城市工程師',d:'重新設計城市基礎設施讓所有年齡安全移動',w:'超高齡城市的基礎建設全面需要改造'},{i:'🦾',n:'仿生外骨骼設計師',d:'開發讓老年人維持行動力的穿戴式輔助裝置',w:'肌少症是高齡社會最大的失能來源'},{i:'🏠',n:'智慧老宅改造工程師',d:'將既有住宅升級為能隨老化需求調整的智慧空間',w:'九成高齡者希望在自己家老去'},{i:'🚇',n:'高齡移動科技研發師',d:'開發讓行動不便的高齡者能自主移動的交通科技',w:'移動能力直接決定高齡者的生活品質'}],
+    skills:[{i:'🏗️',t:'人本工程設計思維',d:'工程不只是技術，是為人服務的解方。你要能從使用者的身體和生活去思考設計。',n:'試著觀察你家附近的公共設施，找出三個對老人或孩子不友善的設計'},{i:'🔋',t:'永續與長效材料思維',d:'2050 的工程要同時考慮環境和人的老化，設計壽命要和人一樣長。',n:'找一個你覺得「設計很差」的日常物件，想想怎麼改'},{i:'🤝',t:'跨域協作整合能力',d:'全齡工程需要和醫生、設計師、社工一起工作。工程師的語言要能被所有人理解。',n:'試著向一個非理工的朋友解釋一個你學過的工程概念'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇工程學群',x:'你喜歡解決問題、動手做東西，但還不知道工程和人的關係有多深。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作',x:'你在建設公司畫圖。你第一次注意到：所有規範都假設使用者是健康的成年男性。'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'開始承擔跨世代責任',x:'父母開始有行動問題。你發現市面上的輔具又醜又貴，決定自己來做。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你主導整個城市的全齡改造計畫。<em>你也開始為自己的 73 歲設計。</em>'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'工程師的第二人生',x:'你開始教年輕工程師：每一個設計決定，都在決定誰可以活得有尊嚴。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你住在自己設計的城市裡',x:'<strong>你 73 歲，住在你親手改造的城市裡，身上穿著你設計的輔具，依然每天出門。</strong>',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你這輩子建造的東西，還在支撐著這個城市裡每一個年齡的人。',tag:'百歲世代'}],
+    img:'如果 73 歲的你回頭看 18 歲的你，你希望那時就知道：工程設計的每一個決定，對誰的生命影響最大？'},
+
+  '數理化學群':{emoji:'🔬',sub:'物理・化學・數學・應用科學',traits:['量化分析','老化模型','精準科學','長壽研究'],
+    scene:{yr:'2050 年某個深夜，台大研究室',ttl:'43 歲的你，正在讀一個人的老化方程式',txt:'螢幕上是一份<em>細胞老化速率模型</em>，你花了三年建立它。你 43 歲，但你的生理年齡數據顯示是 36 歲——這是你自己研發的介入方案帶來的結果。你的研究讓人類第一次有機會<em>選擇怎麼老</em>。你媽媽 68 歲，你幫她建了一個個人化的「老化預測模型」，知道她在哪一年需要注意什麼。這就是<em>數理化學群</em>在 2050 年的日常。'},
+    compare:[{n:'你學微積分覺得很抽象',f:'你用數學模型預測一個人老化的速度和時間點'},{n:'你做化學實驗好奇物質變化',f:'你在研發讓神經細胞再生的化合物'},{n:'你學統計做數據分析',f:'你分析百萬人的老化路徑，找出可以介入的關鍵變數'}],
+    pains:['老化目前不可逆是最大人類設計缺陷','失智症尚無根本解方','長壽但不健康的失能老年期','個人化醫療仍然昂貴稀缺'],
+    jobs:[{i:'⏳',n:'老化逆轉研究員',d:'研究細胞老化機制並開發延緩或逆轉老化的方法',w:'長壽科技是 2050 年最大的科研投資領域'},{i:'🧬',n:'生物年齡工程師',d:'開發精準測量生理年齡的技術與個人化介入方案',w:'每個人老化速度不同，個人化是關鍵'},{i:'💊',n:'個人化長壽方案設計師',d:'根據個人數據設計延長健康壽命的科學方案',w:'健康老化市場在 2050 年超越所有其他醫療'},{i:'🔢',n:'高齡社會數據科學家',d:'分析大規模人口老化數據找出預防介入的最佳時機',w:'超高齡社會產生海量數據等待被解讀'}],
+    skills:[{i:'🔭',t:'抽象思維與模型建構',d:'真實世界的老化問題需要被轉化成可計算的模型。這是數理人最獨特的能力。',n:'試著用數學或圖表描述你觀察到的一個生活現象'},{i:'🧪',t:'實驗設計與驗證思維',d:'2050 的長壽科學需要嚴謹的實驗設計。你要懂得區分相關和因果。',n:'找一個「大家都說有效但沒有科學依據」的健康建議，查查看真相'},{i:'🌐',t:'跨學科整合應用力',d:'數理知識要結合生物、醫學、工程才能解決老化問題。純數理人在 2050 年不夠用。',n:'找一篇將數學應用在生物或醫學的研究，試著看懂它的核心邏輯'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇數理化學群',x:'你喜歡找規律、解開複雜問題，但還沒想到這些能力可以用來理解老化。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'進入研究領域',x:'你的碩士論文研究細胞老化機制。第一次意識到：老化是可以被數學描述的。'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'研究開始有真實意義',x:'你的模型被用在臨床試驗中。<em>你第一次感受到：數字背後是真實的人。</em>'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你在實驗室研究老化，同時幫父母建立老化預測模型，也開始監測自己的生理數據。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'科學家的第二人生',x:'你開始把研究成果轉化成普通人用得到的工具。科學不只在實驗室裡。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你的研究讓人類多活了二十年',x:'<strong>你 73 歲的身體狀態，來自你年輕時建立的那套老化介入模型。你是第一代受益者。</strong>',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你的方程式，改變了人類老化的軌跡。',tag:'百歲世代'}],
+    img:'如果你有一個數學模型可以預測自己的老化軌跡，你最想知道哪一個人生節點？為什麼？'},
+
+  '醫藥衛生學群':{emoji:'🏥',sub:'醫學・牙醫・護理・藥學・公衛',traits:['預防醫學','全人照護','長壽設計','公衛思維'],
+    scene:{yr:'2050 年某個下午，台南第三人生中心',ttl:'43 歲的你，不在醫院，在設計人怎麼好好老',txt:'你的診間不在醫院——而是在一個叫<em>「第三人生中心」</em>的地方。你是<em>全人老化設計師</em>，你的工作不是治病，是幫人在還健康的時候，設計怎麼好好老。今天你有三個個案：一個 65 歲剛退休的工程師、一個 78 歲還想繼續旅行的阿嬤、還有一個 43 歲的——就是你自己，你開始幫自己做預防性規劃。'},
+    compare:[{n:'你背解剖學覺得很難',f:'你設計人體感測系統，讓疾病在發生前就被發現'},{n:'你想學護理幫助人',f:'你在設計讓老人不需要護理師也能自主生活的系統'},{n:'你對藥物作用感興趣',f:'你在研究讓人不需要藥物的預防性生活介入方案'}],
+    pains:['醫療資源向急性病傾斜，預防醫學被忽視','心理健康在高齡照護中幾乎不存在','「等生病再治」的模式在超高齡社會撐不住','失智照護讓家屬身心俱疲'],
+    jobs:[{i:'🌱',n:'全人老化設計師',d:'幫助個人在健康時期設計身心靈整合的老化方案',w:'預防遠比治療便宜，超高齡社會負擔不起等到生病'},{i:'🧠',n:'預防醫學生活顧問',d:'根據個人健康數據設計精準的疾病預防生活策略',w:'慢性病和失智是超高齡社會最大的醫療負擔'},{i:'💆',n:'高齡精神健康專科師',d:'專門處理老年憂鬱、意義感喪失、死亡焦慮等議題',w:'精神疾病是被最嚴重忽視的高齡健康問題'},{i:'🔬',n:'失智陪伴科技治療師',d:'整合科技與人際陪伴，延緩失智並維持生活品質',w:'2050 年全球失智人口將超過一億五千萬'}],
+    skills:[{i:'👁️',t:'預防思維與早期偵測力',d:'在症狀出現前就介入，是超高齡醫療的核心。你要能在健康的人身上看見風險。',n:'了解你家族中的慢性病史，思考你現在可以做什麼預防'},{i:'🫀',t:'全人照護整合能力',d:'2050 的醫療不只治身體，還要照顧心理、社會關係和人生意義。',n:'問問一位長輩：他覺得什麼讓他活得健康？答案可能不是你想的'},{i:'📊',t:'公共衛生系統思維',d:'一個人的健康問題背後是整個社會的結構。你要能看見個人和系統的連結。',n:'研究一個超高齡國家（如日本）如何應對高齡醫療危機'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇醫藥衛生學群',x:'你想幫助人，但還不確定「幫助」在超高齡社會意味著什麼。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一線工作的震撼',x:'你在醫院看見：很多老人不是因為生病才痛苦，而是因為<em>孤獨和沒有意義感。</em>'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'從治療轉向預防',x:'你決定把重心從「治病」移到「讓人不需要來醫院」。這在醫療體系裡是叛逆的選擇。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你同時照顧病人、照顧父母，也開始替自己規劃預防性健康方案。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'重新定義「健康」',x:'你創辦了第三人生中心。健康不是沒有病，是活得有意義、有品質。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你就是你研究的對象',x:'<strong>73 歲的你，是你自己預防醫學理念最好的示範。你的生活品質超越父母那代 20 年。</strong>',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你幫這個世代重新定義了「老而健康」的可能性。',tag:'百歲世代'}],
+    img:'如果你能設計自己的老年，你最希望在 73 歲那年，你的身體、心理、和生活是什麼樣子？'},
+
+  '生命科學學群':{emoji:'🧬',sub:'生物技術・生物醫學・生命科學',traits:['基因分析','老化生物學','長壽倫理','精準醫療'],
+    scene:{yr:'2050 年某個早晨，基因研究實驗室',ttl:'43 歲的你，正在讀一個人的未來',txt:'你打開一份<em>個人基因老化報告</em>，是你客戶的——她 35 歲，但她的基因顯示她在 55 歲有高風險進入快速老化。你是<em>個人長壽基因顧問</em>，你的工作是用她的 DNA 設計接下來二十年的生活藍圖。你 43 歲，你也有自己的報告。你知道自己的弱點，你也知道你有機會比父母那代多活二十個健康的年份。'},
+    compare:[{n:'你學基因覺得很抽象',f:'你在讀一個人的 DNA 預測他會在哪一年開始失智'},{n:'你研究細胞分裂',f:'你在研究怎麼讓幹細胞幫受損的膝關節再生'},{n:'你學生態學研究物種',f:'你在研究超高齡社會對整個人類物種演化的影響'}],
+    pains:['基因醫療昂貴，一般人用不到','老年疾病的早期基因預測不準確','長壽科技的倫理邊界模糊','不是所有人都能選擇怎麼老'],
+    jobs:[{i:'🔬',n:'個人長壽基因顧問',d:'根據個人基因組設計量身打造的長壽健康策略',w:'基因醫療普及化是 2050 年的醫療革命'},{i:'🌿',n:'老化生物標記研究員',d:'開發可以精準測量老化進程的生物指標',w:'早期偵測是預防老化相關疾病的關鍵'},{i:'🦠',n:'幹細胞再生治療師',d:'運用幹細胞技術修復因老化受損的組織和器官',w:'再生醫學將大幅延長健康壽命'},{i:'⚖️',n:'長壽倫理審查員',d:'評估長壽科技的社會倫理影響並制定使用規範',w:'長壽技術帶來巨大的社會公平問題'}],
+    skills:[{i:'🔭',t:'生命系統整合思維',d:'老化不是單一問題，是整個生命系統的變化。你要能看見基因、細胞、器官、個體的連結。',n:'選一個你感興趣的老化相關疾病，試著追溯它的基因根源'},{i:'⚖️',t:'科學倫理判斷力',d:'長壽科技會帶來「誰能活更久」的不平等。你的研究決定決定很多人的命運。',n:'思考：如果有一種技術可以讓人多活 30 年，但很昂貴，這公平嗎？'},{i:'🌐',t:'跨學科研究整合力',d:'生命科學需要結合基因學、醫學、資訊科學。單打獨鬥在 2050 年沒有出路。',n:'找一篇跨領域的生命科學研究，看看它整合了哪些不同學科'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇生命科學學群',x:'你對「生命是什麼」這個問題有深深的好奇，還不知道這會帶你去哪裡。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'進入研究室',x:'你第一次在顯微鏡下看到老化的細胞和年輕細胞的差異。<em>老化是可以被看見的。</em>'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'研究從實驗室走向真實',x:'你的研究成果開始被用在真實個案。你第一次感受到：基因數據背後是一個人的人生。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你幫父母做基因老化評估，也幫自己規劃。<em>你是自己研究的第一個受益者。</em>'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'科學家的第二使命',x:'你開始把研究成果做成每個人都負擔得起的工具。科學要普及才有意義。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你活出了你研究的可能性',x:'<strong>你 73 歲的生理年齡是 55 歲。你是你自己研究的最好證明。</strong>',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你的研究讓這個世代的人第一次真正選擇了怎麼老。',tag:'百歲世代'}],
+    img:'如果你可以用基因技術設計自己的老化方式，你最想保留到最後的是什麼能力或狀態？'},
+
+  '生物資源學群':{emoji:'🌿',sub:'農林漁牧・園藝・景觀・食品科學',traits:['機能農食','精準農業','高齡營養','食物即藥'],
+    scene:{yr:'2050 年某個清晨，宜蘭智慧農場',ttl:'43 歲的你，在設計讓人活到 100 歲的食物',txt:'你的農場不種普通作物——你是<em>個人化機能食品設計師</em>，每一種作物都針對特定年齡層的身體需求培育。今天你要去拜訪一位 80 歲的老農，他的農業知識是你研究傳統作物功效的重要來源。你 43 歲，你父親 68 歲開始有<em>肌少症</em>的跡象，你正在為他設計一套以食物為核心的介入方案。食物，是你這個學群在 2050 年最強大的武器。'},
+    compare:[{n:'你學農業覺得很傳統',f:'你在設計針對不同年齡身體需求的精準機能食品'},{n:'你學食品科學做實驗',f:'你在研究哪些天然成分可以延緩失智和肌肉流失'},{n:'你學景觀設計環境',f:'你在規劃讓高齡者也能參與耕作的療癒性農業空間'}],
+    pains:['高齡者的特殊營養需求完全被忽視','失智和肌少症與飲食直接相關','食品系統沒有為高齡人口做設計','農村高齡化讓農業勞動力急速消失'],
+    jobs:[{i:'🌾',n:'個人化機能農食設計師',d:'根據個人健康數據設計針對性的機能性農業食品',w:'食物是最有效也最自然的健康介入手段'},{i:'🧫',n:'高齡飲食介入科學家',d:'研究飲食如何預防或延緩失智、肌少症等老化疾病',w:'飲食介入比藥物便宜且副作用更少'},{i:'🌳',n:'全齡農業體驗設計師',d:'設計讓老年人也能參與農業活動的療癒農場',w:'農業活動對高齡者的身心健康有顯著效益'},{i:'🔬',n:'食物即藥物研發師',d:'開發以食物為基礎的預防醫學產品和治療方案',w:'全球機能性食品市場在 2050 年將超越傳統製藥'}],
+    skills:[{i:'🌱',t:'生態系統整合思維',d:'食物、土地、人體是一個整體。你要能同時看見農業、生態、營養的連結。',n:'研究一種台灣傳統食物的健康功效，看看老一輩的智慧有多少科學依據'},{i:'🔬',t:'食品科學與健康應用力',d:'2050 的農業不只生產食物，而是生產健康。你要懂得把科學知識轉化成真實的飲食方案。',n:'為你家中年齡最大的長輩查詢他最需要攝取的三種營養素'},{i:'🤝',t:'農業文化傳承與創新力',d:'傳統農業智慧和現代科技的結合，是生物資源學群最獨特的位置。',n:'找一位老農聊聊他的農業知識，記錄一件你覺得值得保留的傳統'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇生物資源學群',x:'你對土地、食物、生命有天然的親近感，還不知道這會變成 2050 年最重要的能力之一。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的啟示',x:'你在食品研究所工作。你發現所有食品都針對年輕人設計，<em>沒有人想過 75 歲的人需要什麼。</em>'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'食物成為你的武器',x:'你的研究證明特定飲食組合可以延緩失智達七年。這改變了你對農業的理解。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你用自己的研究幫父母設計飲食方案，也開始為自己的 73 歲做準備。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'農業科學家的第二使命',x:'你開始把研究成果帶進社區，讓每個人都能用得起「食物即藥物」。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你吃著自己種的健康',x:'<strong>你 73 歲，大腦清晰，肌肉有力，因為你用了一輩子的時間設計自己的食物。</strong>',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你讓這個世代的人第一次明白：長壽的秘密，在土地裡。',tag:'百歲世代'}],
+    img:'如果食物真的是藥物，你最想用農業的力量解決你身邊哪一個長輩的健康問題？'},
+
+  '地球環境學群':{emoji:'🌍',sub:'地質・大氣・海洋・地理・環境工程',traits:['環境設計','氣候適應','高齡防災','永續城市'],
+    scene:{yr:'2050 年某個夏天，台南海岸線',ttl:'43 歲的你，在守護這座城市和它的老人',txt:'你是<em>高齡社區氣候韌性規劃師</em>。台灣 2050 年的夏天比 30 年前熱了 3 度，高齡者是熱浪最大的受害者。你正在設計一套讓台南的老人社區可以在極端氣候下繼續安全生活的系統。你 43 歲，你父母住在高雄，你擔心的不只是他們的健康，還有他們家旁邊的海平面——它在<em>緩緩上升</em>。'},
+    compare:[{n:'你學地理覺得是背地圖',f:'你在分析哪些社區的高齡人口在氣候災害中最脆弱'},{n:'你學大氣科學做天氣預報',f:'你在設計讓老人社區能提前一週應對極端天氣的系統'},{n:'你學環境工程處理污染',f:'你在設計讓超高齡社會的城市在氣候變遷下還能運作'}],
+    pains:['氣候變遷讓高齡者面臨更多健康威脅','極端天氣中高齡者是最脆弱的族群','老舊建築和社區缺乏氣候韌性設計','環境惡化讓高齡者的活動空間急速縮減'],
+    jobs:[{i:'🏔️',n:'高齡社區氣候韌性規劃師',d:'設計讓高齡社區在氣候變遷下維持安全與功能的方案',w:'2050 年極端氣候對高齡族群威脅達到歷史高峰'},{i:'🌊',n:'高齡防災系統設計師',d:'開發針對高齡者需求的災害預警和應對系統',w:'高齡者在天災中的死亡率是年輕人的三到五倍'},{i:'🌱',n:'永續高齡城市規劃師',d:'規劃對老年人友善且環境永續的城市發展方案',w:'城市設計直接決定高齡者的生活品質和壽命'},{i:'🔬',n:'環境健康老化研究員',d:'研究環境因素如何影響人的老化速度和健康狀況',w:'空氣品質、綠地、噪音都直接影響老化速度'}],
+    skills:[{i:'🗺️',t:'空間與系統思維',d:'環境問題需要同時在地方和全球尺度思考。你要能把複雜的地球系統轉化成人可以理解的地圖。',n:'查查看你家所在地區在 2050 年的氣候預測，想想對你父母的影響'},{i:'📊',t:'數據分析與風險評估力',d:'氣候韌性需要大量數據支撐。你要能從環境數據中找出誰最脆弱、最需要保護。',n:'找一份台灣的氣候變遷報告，找出其中最讓你擔心的一個數據'},{i:'🤝',t:'跨部門協作整合力',d:'環境問題的解決需要政府、企業、社區、科學家一起行動。你是整合這些力量的人。',n:'觀察你社區中有沒有對高齡者不友善的環境設計，想想誰應該來改變它'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇地球環境學群',x:'你對地球的運作感到著迷，還不知道氣候變遷和超高齡社會的連結有多深。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的震撼',x:'你在環境顧問公司工作，第一次看到氣候災害後的老人社區。<em>最脆弱的永遠是老人。</em>'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'把環境科學用在人身上',x:'你把氣候韌性的概念引入社區設計，讓高齡者不再是災害的被動受害者。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你守護這座城市的老人，也守護你自己的父母，還擔心自己 73 歲時的海平面高度。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'地球科學家的第二使命',x:'你開始思考：我要給我的孩子留下一個什麼樣的星球，讓他們也能好好老去？'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你生活在你幫助守護的城市裡',x:'<strong>你 73 歲，住在你設計的氣候韌性社區裡。這座城市比 30 年前更適合老人生活。</strong>',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你讓地球和人類同時活得更久、更好。',tag:'百歲世代'}],
+    img:'如果你有能力守護一個地方不受氣候變遷傷害，你最想保護的是哪裡？那裡住著誰？'},
+
+  '建築設計學群':{emoji:'🏛️',sub:'建築・室內設計・工業設計',traits:['全齡空間','失智友善','跨代共居','尊嚴設計'],
+    scene:{yr:'2050 年某個下午，台中某社區',ttl:'43 歲的你，在設計一個讓所有年齡都想住的地方',txt:'你站在一個新落成的跨代共居社區前。這裡沒有「老人區」——20 歲的設計師和 80 歲的退休廚師住在同一棟樓。你是<em>全齡社區建築師</em>，你設計的每一個空間決策都在決定：不同年齡的人，會不會自然地相遇。你 43 歲，你父母問你：「我們老了能住你設計的地方嗎？」你說：<em>「那本來就是為你們設計的。」</em>'},
+    compare:[{n:'你喜歡畫設計圖或建模',f:'你在設計讓失智老人不會迷路的空間動線'},{n:'你對空間美感很敏感',f:'你在讓「老人院」這個詞從恐怖變成嚮往'},{n:'你喜歡思考人和空間的關係',f:'你在設計讓 20 歲和 80 歲自然想住在一起的社區'}],
+    pains:['城市和建築是為健康年輕人設計的','老人院的空間設計讓人失去尊嚴','高密度都市讓高齡者越來越孤立','缺乏讓不同世代自然互動的公共空間'],
+    jobs:[{i:'🏘️',n:'全齡社區建築師',d:'設計讓所有年齡的人都能安全、有尊嚴生活的居住空間',w:'超高齡社會需要全面重新設計居住環境'},{i:'🧩',n:'失智友善空間設計師',d:'運用空間設計幫助失智者維持定向感和自主生活能力',w:'全球失智人口在 2050 年將超過一億五千萬'},{i:'🛋️',n:'高齡居家改造設計師',d:'將既有住宅改造成支持老化的智慧生活空間',w:'九成高齡者希望在自己家老去'},{i:'🌳',n:'跨代公共空間設計師',d:'設計讓不同世代自然相遇互動的城市公共空間',w:'孤獨是高齡者最大的健康殺手，空間設計可以介入'}],
+    skills:[{i:'👁️',t:'同理觀察與身體感知力',d:'你要能用 80 歲的眼睛、腳步、和身體感受一個空間。設計師要先成為使用者。',n:'閉上眼睛在你家走一圈，想想如果你的視力只剩三成，你會在哪裡遇到麻煩'},{i:'🔗',t:'功能與美感整合設計力',d:'好的全齡設計不應該看起來像「殘障設施」，而是讓所有人都覺得被考慮到。',n:'找一個你覺得設計得很好的公共空間，分析它對不同年齡的人各有什麼優點'},{i:'🌐',t:'跨域協作整合力',d:'全齡建築需要和醫療、社工、科技專業合作。建築師不能只待在設計室。',n:'找一個你覺得對老人或障礙者不友善的建築，想想需要哪些不同專業才能改善它'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇建築設計學群',x:'你對空間有天生的敏感，喜歡想像人在不同空間裡的感受，還不知道這會成為改變老年生活的能力。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一個設計的衝擊',x:'你第一次踏進安養中心，你無法相信：這就是人老了要住的地方。<em>你決定改變這件事。</em>'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'空間開始改變人',x:'你設計的跨代共居試驗社區成功。原本孤立的老人開始有了朋友，原本找不到家的年輕人找到了根。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你設計別人的家，也開始思考自己父母的家需要怎麼改造，還有你自己 73 歲想住什麼樣的空間。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'建築師的第二人生',x:'你開始設計自己想要的老年空間。這是你做過最個人、也最重要的設計。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你住在自己設計的世界裡',x:'<strong>你 73 歲，住在你親手設計的社區。每天和不同世代的人相遇，這就是你說的「老而有尊嚴」。</strong>',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你設計的空間，讓這個世代的每個人都找到了自己的位置。',tag:'百歲世代'}],
+    img:'如果你可以設計你 73 歲想要居住的空間，最重要的三個設計原則會是什麼？'},
+
+  '藝術學群':{emoji:'🎨',sub:'音樂・美術・舞蹈・影劇・藝術理論',traits:['高齡美學','創意治療','生命敘事','尊嚴設計'],
+    scene:{yr:'2050 年某個週末，台北某藝術空間',ttl:'43 歲的你，用藝術讓老年生命被看見',txt:'你策劃的展覽叫「第三人生」——展出的是 80 位超過 75 歲的人的創作，有第一次拿畫筆的阿嬤，有失智後用音樂找回記憶片段的阿公。你是<em>高齡生命藝術策展人</em>。你 43 歲，你母親 68 歲，她說從來沒想過自己可以創作——直到她參加了你設計的<em>敘事藝術工作坊</em>。你知道：<em>藝術，是讓老年生命不被遺忘的方式。</em>'},
+    compare:[{n:'你現在創作，表達自己的感受',f:'你在設計讓失智老人用藝術維持認知功能的療癒方案'},{n:'你欣賞藝術，感受美的力量',f:'你在重新定義「高齡美學」，讓老不再等於醜或可憐'},{n:'你學藝術理論、研究美的本質',f:'你在策劃讓不同世代一起創作、跨越隔閡的藝術計畫'}],
+    pains:['高齡者的創造力和審美需求完全被忽視','輔具和照護設備醜陋，讓老人不願使用','老年生命的故事和智慧在數位時代快速消逝','死亡和老化在文化中是禁忌而非資產'],
+    jobs:[{i:'🖼️',n:'高齡生命藝術策展人',d:'策劃展現老年生命深度和創造力的藝術計畫',w:'超高齡社會需要重新建立「老」的正面文化形象'},{i:'🎵',n:'藝術治療高齡專科師',d:'運用音樂、繪畫、舞蹈等藝術形式治療高齡身心問題',w:'藝術治療對失智、憂鬱等高齡疾病有顯著效果'},{i:'🎭',n:'跨代創作陪伴師',d:'引導不同世代的人一起創作，建立真實的理解和連結',w:'代際隔閡是超高齡社會最深的社會問題之一'},{i:'✍️',n:'生命敘事設計師',d:'幫助高齡者將人生故事轉化為藝術作品或數位記憶',w:'每一個老人都是活的歷史，讓它消失是最大的文化損失'}],
+    skills:[{i:'👂',t:'深度觀察與感知力',d:'藝術家要能看見別人看不見的東西。在超高齡社會，你要能看見老年生命的美和尊嚴。',n:'和一位 70 歲以上的長輩談談他人生中最美的一個記憶'},{i:'🌉',t:'跨代溝通與共創能力',d:'你的藝術要能同時打動 18 歲和 80 歲的人。這需要你理解不同世代的語言。',n:'嘗試把一件對你有意義的事情，用一位長輩能感同身受的方式表達出來'},{i:'💡',t:'藝術與社會議題整合力',d:'2050 的藝術家不只是創作，而是用創作回應社會問題。藝術是改變觀念最有力的工具。',n:'找一個你關心的超高齡社會問題，想想可以用什麼藝術形式讓更多人看見它'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇藝術學群',x:'你用創作表達自己，還不知道藝術可以是讓老年生命被看見的工具。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'藝術遇見老年',x:'你第一次參與長照機構的藝術陪伴計畫。你看見一個失智阿嬤在音樂中哭泣，然後微笑。<em>藝術到達了語言到達不了的地方。</em>'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'藝術開始改變文化',x:'你策劃的「老年創作展」改變了很多年輕人對老的印象。媒體說你在「重新定義老」。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你在為社會設計新的老年美學，同時為你母親設計屬於她的創作旅程。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'藝術家的第二人生',x:'你開始為自己創作：關於中年、關於老、關於你希望在這個世界留下什麼。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你成為自己策展的主題',x:'<strong>你 73 歲，辦了一場屬於自己的回顧展。你說：「老，是我最好的創作材料。」</strong>',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你的藝術讓這個世代的人第一次不害怕老去。',tag:'百歲世代'}],
+    img:'如果你可以用藝術讓一件關於老年的事情被更多人看見，你最想讓世界看見什麼？'},
+
+  '社會心理學群':{emoji:'🫂',sub:'社會學・心理學・社會工作',traits:['同理心','跨代溝通','社會系統觀','意義設計'],
+    scene:{yr:'2050 年某個週四，台中',ttl:'43 歲的你，坐在三個世界之間',txt:'上午你接了一個案子：<em>一家企業的 72 歲資深員工和 28 歲新人完全無法溝通</em>，你被叫去調解。午休媽媽傳訊息：「你爸最近很憂鬱，退休後覺得沒用。」你知道這是 <em>2050 年最流行的老年病——意義感喪失</em>。下午去演講，主題是「照顧不再是單向的」。晚上對著鏡子想：<em>43 歲了，撐著所有人的我，自己的意義感在哪裡？</em>'},
+    compare:[{n:'你跟長輩說話有時覺得不在同一個頻道',f:'你在設計讓四個世代可以互相理解的溝通方法'},{n:'你感受到大人有壓力，但不知道怎麼幫',f:'你在幫公司化解 30 歲員工和 70 歲主管之間的衝突'},{n:'你有時覺得不知道自己的未來在哪裡',f:'你在幫 60 歲的人找到退休後的人生意義感'}],
+    pains:['職場世代衝突加劇，沒有人懂得如何溝通','高齡者意義感消失是最大的社會危機','三明治世代的心理健康幾乎沒人照顧','家庭照護責任嚴重不均，最累的那層沒人看見'],
+    jobs:[{i:'🏘️',n:'跨代關係設計師',d:'設計讓不同世代在職場與社區真正理解彼此的方法',w:'四代同堂、四代同工已成常態，衝突是最貴的社會成本'},{i:'🧭',n:'人生意義顧問',d:'幫助各年齡層的人在人生轉折點找到新的身份與目標',w:'退休後 20 年、中年危機——意義感危機全面爆發'},{i:'🧠',n:'三明治世代心理師',d:'專門服務同時照顧父母與子女、承受多重壓力的中壯年',w:'2050 年最被忽略的心理健康族群就是 40-50 歲'},{i:'🌱',n:'高齡角色再設計師',d:'幫助老年人在超高齡社會重新定義自己能給予的貢獻',w:'「老」不再是終點，而是需要被設計的新身份'}],
+    skills:[{i:'👂',t:'深度傾聽與敘事陪伴',d:'能真正「聽見一個人」是最稀缺的能力。你的工作不是給答案，而是幫人找到自己的答案。',n:'找一位長輩聊聊他年輕時最想做但沒做到的事，全程不打斷、不建議'},{i:'🔍',t:'社會結構與系統觀',d:'個人的痛苦背後永遠有結構性原因。你要能同時看見個人困境和社會制度的連結。',n:'選一個你身邊的家庭問題，試著畫出它的「社會原因地圖」'},{i:'💪',t:'自我照顧與心理韌性',d:'43 歲的三明治壓力可能先把你壓垮。學會照顧自己，才能照顧別人。',n:'今天問問自己：我上一次「不需要負責任地休息」是什麼時候？'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇社會心理學群',x:'你常覺得「人與人之間的誤解」是世界最大的問題，但還不確定這個直覺能帶你去哪裡。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作，看見世代裂縫',x:'你在社會服務機構工作。<em>你發現老人和年輕人說的是兩種語言——而且沒有人想當翻譯。</em>'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'職場出現同齡不同代的張力',x:'你的同事橫跨 25 歲到 70 歲，你成為那個幫所有人翻譯的人。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'父母需要你，孩子需要你，工作需要你。<em>你第一次真正理解了所有你服務過的個案的感受。</em>'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'開始為自己設計',x:'你幫了無數人找到意義感。現在你開始問：<em>我自己的第三人生，長什麼樣子？</em>'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你是「新世代老人」——跟以前完全不同',x:'你不接受「退休等被照顧」的框架。你開設跨代工作坊，學員 20 歲到 80 歲都有。<strong>你這代的 73 歲，需求和能力都和父母那代截然不同。</strong>',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，人生需要被重新設計',x:'你用一輩子建立的跨代關係，成了這個超高齡社會最重要的社會資本。',tag:'百歲世代'}],
+    img:'如果 73 歲的你回頭看 18 歲的你，你希望那時的你，對「人與人之間的關係」這件事有什麼不同的理解？'},
+
+  '大眾傳播學群':{emoji:'📡',sub:'新聞・廣電・廣告・新媒體',traits:['全齡媒體','資訊素養','代際敘事','形象重塑'],
+    scene:{yr:'2050 年某個早晨，媒體實驗室',ttl:'43 歲的你，在重新定義「老」的形象',txt:'你創辦的媒體平台叫「第三頻道」——不是老人頻道，而是讓<em>所有世代都想看</em>的內容。2050 年最大的媒體消費族群是 60-80 歲，但所有媒體還是為年輕人設計。你 43 歲，你是那個看見這個矛盾並決定改變的人。你媽媽 68 歲，她是你最忠實的觀眾，也是你的<em>首席顧問</em>——她說：「終於有人知道我們想看什麼了。」'},
+    compare:[{n:'你現在追蹤網紅，滑社群媒體',f:'你在研究 70 歲的人怎麼消費資訊、怎麼被感動、怎麼被騙'},{n:'你喜歡拍影片、剪輯創作',f:'你在設計讓失智老人也能參與創作的媒體形式'},{n:'你對行銷和說故事感興趣',f:'你在重新定義「老」的形象，對抗媒體中的年齡歧視'}],
+    pains:['媒體對高齡者的形象刻板且負面','假新聞和詐騙對高齡族群傷害最大','高齡消費者是最大市場卻最被忽視','世代之間的資訊落差越來越大'],
+    jobs:[{i:'📺',n:'全齡媒體內容設計師',d:'設計讓不同世代都願意共同消費的媒體內容',w:'2050 年高齡族群是最大的媒體消費市場'},{i:'🛡️',n:'高齡數位素養推廣師',d:'幫助高齡者識別假訊息、安全使用數位媒體',w:'詐騙和假新聞讓高齡者每年損失數千億'},{i:'🎬',n:'跨代故事紀錄師',d:'記錄和呈現不同世代生命故事，建立代際理解',w:'世代之間的誤解是超高齡社會最深的社會問題'},{i:'📣',n:'反年齡歧視品牌設計師',d:'幫助企業重新設計對高齡者友善且有尊嚴的品牌形象',w:'年齡歧視是 2050 年最主要的歧視形式之一'}],
+    skills:[{i:'🔍',t:'受眾研究與同理洞察力',d:'真正理解你的受眾是誰，他們的恐懼、慾望和日常是什麼。高齡受眾需要完全不同的理解。',n:'採訪一位 70 歲以上的長輩：他每天最喜歡看什麼內容？為什麼？'},{i:'📖',t:'敘事力與故事設計',d:'好的故事跨越世代。你要能找到讓 18 歲和 80 歲都能感動的敘事角度。',n:'試著把一個長輩的人生故事，濃縮成一個讓你的朋友也會想聽的版本'},{i:'⚖️',t:'媒體倫理與責任意識',d:'媒體有能力改變整個社會對老年的態度。這是很大的責任，也是很大的機會。',n:'找三個你覺得對老人有偏見的媒體報導，想想它們傳遞了什麼訊息'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇大眾傳播學群',x:'你對說故事和媒體有天生的熱情，還沒想過你的故事可以改變整個社會對老的看法。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的觀察',x:'你在媒體公司工作，發現所有內容都假設觀眾是 25 歲。<em>60 歲以上的人好像不存在。</em>'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'媒體開始反映真實',x:'你製作的高齡人物專題引發討論，第一次讓主流媒體認真對待老年故事。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你為整個社會的高齡者發聲，也在用媒體記錄你父母那一代的故事，留給你的孩子。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'媒體人的第二人生',x:'你開始拍攝自己的故事，記錄 50 歲這個世代在超高齡社會的真實處境。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你就是你報導的故事',x:'<strong>你 73 歲，接受年輕記者的採訪。你說：「我們這代老人和你爺爺奶奶完全不同。」</strong>',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你讓這個世代的人不再恐懼出現在媒體裡老去的樣子。',tag:'百歲世代'}],
+    img:'如果你可以拍一部讓所有世代都想看的關於「老」的影片，你最想說的一個故事是什麼？'},
+
+  '外語學群':{emoji:'🌐',sub:'英文・日文・歐語・翻譯',traits:['跨文化溝通','國際長壽','移民照護','全球視野'],
+    scene:{yr:'2050 年某個早晨，台北某跨文化中心',ttl:'43 歲的你，是不同文化老年智慧的橋樑',txt:'你的工作室桌上有三台螢幕：左邊是日本的高齡政策會議，中間是一位菲律賓移民老人正在用他的母語說著他的照護需求，右邊是你的台灣客戶正在考慮去葡萄牙養老。你是<em>跨文化高齡顧問</em>，你的語言能力讓不同文化的老年智慧可以互相流動。你 43 歲，你知道：<em>懂得語言，就懂得那個文化怎麼對待老人</em>——這告訴你很多關於你自己的老年。'},
+    compare:[{n:'你學語言覺得就是背單字',f:'語言是進入不同文化老年智慧的鑰匙，你是跨文化的橋樑'},{n:'你喜歡了解不同文化',f:'不同社會怎麼對待老人，決定了你想要什麼樣的老年'},{n:'你想出國工作或留學',f:'全球高齡化讓跨文化老年服務成為最國際化的職業'}],
+    pains:['跨文化高齡照護嚴重缺乏','移民高齡者的語言與文化需求無人回應','台灣向外學習高齡經驗的能力不足','高齡旅遊和海外養老需要全新服務模式'],
+    jobs:[{i:'🌏',n:'跨文化高齡顧問',d:'幫助來自不同文化背景的高齡者獲得符合其需求的服務',w:'2050 年台灣有超過 50 萬名外籍高齡居民'},{i:'✈️',n:'海外養老移民顧問',d:'幫助台灣高齡者規劃在海外安全、快樂地老去',w:'物價、氣候、文化讓越來越多台灣人選擇海外養老'},{i:'📋',n:'國際長壽政策研究員',d:'研究各國高齡政策的優劣並提供台灣政策建議',w:'台灣需要向日本、北歐等國學習高齡社會管理'},{i:'🗣️',n:'多語言照護陪伴師',d:'為語言不通的高齡移民提供母語溝通和文化照護',w:'語言障礙讓移民高齡者面臨更嚴重的孤立和誤診'}],
+    skills:[{i:'🧠',t:'文化解碼與轉譯能力',d:'語言不只是溝通工具，是理解一個文化如何看待老年的方式。你要能在語言和文化之間自由穿梭。',n:'找一個和台灣不同的文化，研究他們如何對待老人，你覺得什麼值得台灣學習'},{i:'🤝',t:'跨文化同理與適應力',d:'在不同文化中工作需要放下自己的假設。老年的定義在每個文化中都不一樣。',n:'採訪一位來自不同文化背景的人，問問他們文化中老年是什麼樣子'},{i:'🌐',t:'國際議題整合分析力',d:'全球高齡化是各國共同面對的挑戰。你要能同時看見台灣的特殊性和全球的共通性。',n:'比較台灣和日本的高齡化速度和應對方式，找出三個最重要的差異'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇外語學群',x:'你對語言和文化充滿好奇，還不知道這些能力可以讓你成為不同世代之間的橋樑。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的文化衝擊',x:'你在翻譯公司工作，第一次翻譯高齡照護文件。你發現：<em>每種語言對「老」的說法都不一樣，這背後是完全不同的態度。</em>'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'語言成為跨代橋樑',x:'你的跨文化高齡諮詢服務讓很多移民老人第一次被真正聽見和理解。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你用語言能力在全球串聯高齡智慧，同時思考自己的父母和自己的老年要在哪個文化裡度過。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'語言學家的第二人生',x:'你開始研究：不同語言的老年詞彙如何塑造了那個社會對老年的態度。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你用四種語言思考老這件事',x:'<strong>你 73 歲，用日文思考優雅老化，用葡萄牙文感受生命的熱情，用中文回家。你是這個世代最豐富的老人之一。</strong>',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你讓台灣的老年文化，因為你帶回的國際智慧，變得更豐富、更溫柔。',tag:'百歲世代'}],
+    img:'如果你能從任何一個文化中借鑒一種對待老年的方式，你最想帶回台灣的是什麼？'},
+
+  '文史哲學群':{emoji:'📜',sub:'中國文學・歷史・哲學・宗教',traits:['生命敘事','跨代智慧','意義建構','文化傳承'],
+    scene:{yr:'2050 年某個黃昏，書房',ttl:'43 歲的你，在幫這個時代找到面對老的語言',txt:'你的新書叫《第三人生哲學》，它成了 2050 年台灣最暢銷的書——不是因為它給了答案，而是因為它幫了很多人<em>找到問題的語言</em>。你是<em>生命哲學顧問</em>，企業、醫院、學校都請你去談：在一個活到 100 歲的時代，什麼是有意義的人生？你 43 歲，你父親 70 歲，他問你：「我還有三十年，我現在該怎麼過？」你知道：<em>這個問題，這個時代沒有人教過我們怎麼回答。</em>'},
+    compare:[{n:'你讀文學、感受故事的力量',f:'你在用敘事幫助老年人找到人生意義和身份認同'},{n:'你學歷史，研究過去怎麼發生',f:'你在研究人類歷史中的老年智慧，找出適合 2050 的生命哲學'},{n:'你學哲學，思考存在的意義',f:'你在設計讓整個社會面對老年和死亡的新思考框架'}],
+    pains:['超高齡社會缺乏面對老年和死亡的文化框架','高齡者的歷史記憶和人生智慧快速消逝','人活得越長，意義感危機越嚴重','現代社會失去了幫人「好好老去」的傳統智慧'],
+    jobs:[{i:'📖',n:'生命哲學顧問',d:'幫助個人和機構建立面對老年、疾病和死亡的思考框架',w:'超高齡社會帶來前所未有的存在意義危機'},{i:'🏛️',n:'跨代智慧採集師',d:'系統性記錄高齡者的人生智慧並轉化為現代可用的知識',w:'每個老人的死亡都帶走了無法復原的生命經驗'},{i:'✍️',n:'生命敘事治療師',d:'運用文學和敘事方法幫助人整合人生故事、找到意義',w:'意義感喪失是 2050 年高齡者最普遍的心理健康問題'},{i:'🌸',n:'死亡文化設計師',d:'設計讓社會可以更健康地談論和面對死亡的文化方案',w:'迴避死亡讓整個社會無法好好面對老年'}],
+    skills:[{i:'📚',t:'深度閱讀與批判思考力',d:'在資訊爆炸的時代，能慢下來深度思考是最稀缺的能力。哲學和文史訓練你做到這件事。',n:'找一本關於老年或死亡的書（哲學、文學皆可），讀並寫下最觸動你的一段'},{i:'✍️',t:'敘事與表達整合力',d:'你要能把複雜的思考轉化成讓普通人也能理解和感動的語言。好的思想家也要是好的溝通者。',n:'試著用五百字描述你對「活到 100 歲的人生」的想像'},{i:'🌏',t:'跨文化智慧整合力',d:'不同文明對老年和死亡各有智慧。你要能從孔子、蘇格拉底、到原住民傳統中找到對現代有用的思想。',n:'研究兩種不同文化或宗教對「老年意義」的看法，找出你最認同的部分'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇文史哲學群',x:'你對「人為什麼要活著」這個問題有深深的好奇，還不知道這個問題在超高齡社會會有多重要。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的使命',x:'你在出版社工作，你發現：幾乎沒有書在認真談「怎麼好好老去」。<em>這是一個巨大的空白。</em>'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'哲學走出書房',x:'你的演講和書開始進入企業、醫院、學校。人們第一次發現：哲學是他們面對老年最需要的工具。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你幫整個社會思考老年的意義，同時幫你父親找到他的第三人生哲學，也開始為自己尋找答案。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'哲學家的個人功課',x:'你開始寫屬於自己的「中年哲學」——你發現：活到 100 歲的挑戰，不是身體，是意義。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你成為你研究的那種智者',x:'<strong>你 73 歲，人們來找你不是為了照顧你，而是為了你的智慧。你是這個超高齡社會最需要的人。</strong>',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你用一輩子的思考，幫這個世代找到了面對 100 年人生的哲學地圖。',tag:'百歲世代'}],
+    img:'如果你要為「活到 100 歲的人生」寫一個核心哲學原則，你認為最重要的是什麼？'},
+
+  '教育學群':{emoji:'📚',sub:'師資培育・教育學・特殊教育・幼教',traits:['全齡學習','課程設計','知識傳承','終身教育'],
+    scene:{yr:'2050 年某個週二，全齡學習中心',ttl:'43 歲的你，在設計一間沒有年齡限制的教室',txt:'你的課堂上同時有 16 歲和 76 歲的學員——不是老人在學電腦，而是兩個世代一起學習「在超高齡社會活得有意義」。你是<em>全齡學習設計師</em>，你發現：最好的學習，往往發生在不同年齡的人互相教對方的時候。你 43 歲，你兒子 15 歲，你父親 68 歲——你把他們帶進同一個課程。<em>結果你才是學到最多的那個人。</em>'},
+    compare:[{n:'你現在是學生，被老師教',f:'你在設計讓 75 歲的人可以重新學習新技能並重返職場的系統'},{n:'你覺得有些課程沒有用',f:'你在重新定義「什麼知識在 2050 年是真正有用的」'},{n:'你喜歡幫同學解釋題目',f:'你在設計讓不同世代互相教學、彼此成長的學習系統'}],
+    pains:['教育系統只設計給 0-25 歲','高齡者的學習需求和方式完全不同','退休後沒有繼續成長的社會結構','知識更新速度讓所有年齡層都焦慮'],
+    jobs:[{i:'🎓',n:'全齡學習設計師',d:'設計讓各年齡層的人都能持續學習和成長的教育系統',w:'終身學習在超高齡社會是生存必需，不是選項'},{i:'🔄',n:'高齡職能再訓練師',d:'幫助 55 歲以上的人習得新技能，延長職場活躍期',w:'勞動力高齡化讓職能再訓練成為社會最急需的服務'},{i:'🌉',n:'跨代知識傳承設計師',d:'設計讓老年人的經驗智慧可以有效傳遞給年輕世代的方案',w:'大量退休潮讓寶貴的職場知識加速消失'},{i:'🧒',n:'多元年齡融合教育師',d:'在幼兒、中小學課程中融入與高齡者互動的學習設計',w:'讓孩子從小認識老年是超高齡社會最重要的教育任務'}],
+    skills:[{i:'🔭',t:'學習科學與設計思維',d:'好的學習設計需要理解大腦如何學習。高齡者的學習方式和年輕人不同，你要懂得這個差異。',n:'研究高齡者的學習特點，找出三個和年輕人最不同的地方'},{i:'🤝',t:'跨代教學與陪伴力',d:'你要能同時吸引 16 歲和 76 歲的學員。這需要你真正理解不同世代的動機和恐懼。',n:'嘗試教一位長輩一個你擅長的技能，觀察他的學習方式'},{i:'🌱',t:'課程創新與系統設計力',d:'2050 的教育系統需要被完全重新設計。你是那個有能力重新想像教育是什麼的人。',n:'設計一堂 10 分鐘的課，主題是「2050 年的超高齡社會」，學生是你的同學'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇教育學群',x:'你喜歡幫助人學習和成長，還不知道在超高齡社會，「教育」的定義需要被完全重新寫過。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的現實',x:'你在學校教書，你發現最難教的不是學生，而是讓學生理解：學習是一輩子的事，不是考完試就結束。'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'教育走出教室',x:'你開始設計企業的跨世代學習計畫，讓 70 歲的老員工和 25 歲的新人互相學習。效果出乎意料。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你設計讓整個社會持續學習的系統，同時幫父母找到他們的學習動力，也幫孩子設計未來的學習路徑。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'教育家的第二使命',x:'你開始設計「50 歲之後的學習地圖」，因為你自己需要它。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你還在學、也還在教',x:'<strong>你 73 歲，每週還在上課，也還在教課。你說：「停止學習，才是真正的老去。」</strong>',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你設計的全齡學習系統，讓這個世代的每個人都找到了持續成長的理由。',tag:'百歲世代'}],
+    img:'如果你要設計一堂讓 16 歲和 76 歲的人都覺得有收穫的課，你會設計什麼主題？'},
+
+  '法政學群':{emoji:'⚖️',sub:'法律・政治・外交・行政',traits:['長壽法律','數位遺產','高齡權益','跨代正義'],
+    scene:{yr:'2050 年某個早晨，法院',ttl:'43 歲的你，在定義人的權利在老年的邊界',txt:'今天的案子是台灣法律史上從未有過的：一個 95 歲的人去世了，他的<em>數位 AI 分身</em>還在繼續運作。他的孩子說那是他的遺產；他的孫子說那是他本人的延續。你是<em>長壽權益律師</em>，你在最前線定義「人的權利在數位和老年之間的邊界」。你 43 歲，你父親 70 歲，上週有人試圖詐騙他的數位資產——<em>老人是 2050 年最容易被剝削的族群。</em>'},
+    compare:[{n:'你學法律覺得很複雜很無聊',f:'你在寫第一部「數位遺產法」，決定人死後 AI 分身的法律地位'},{n:'你對政治感興趣，想改變社會',f:'你在設計超高齡社會的投票制度：90 歲的一票和 20 歲的一票，應該一樣重嗎？'},{n:'你覺得法律是保護弱者的工具',f:'在 2050 年，高齡者是最容易被剝削的族群，法律是他們最重要的保護'}],
+    pains:['高齡者的財產被詐騙和侵占','數位遺產法律完全空白','長壽帶來複雜的繼承和家庭法律問題','高齡者的政治聲音與其人口比例嚴重不符'],
+    jobs:[{i:'⚖️',n:'長壽權益律師',d:'專門處理高齡者的財產保護、數位遺產和晚年法律規劃',w:'超高齡社會帶來前所未有的法律複雜性'},{i:'💻',n:'數位遺產法律師',d:'處理數位帳號、AI 分身、線上資產的繼承和法律問題',w:'每人平均有 200+ 數位帳號，死後如何處理無法可循'},{i:'🏦',n:'高齡金融保護專員',d:'保護高齡者的財務安全，對抗詐騙和不當金融操作',w:'高齡者每年因詐騙損失的金額是最大受害族群'},{i:'🗳️',n:'跨代正義政策設計師',d:'設計讓不同世代在政策制定中都有公平發言權的制度',w:'超高齡社會的政策容易過度向老年選民傾斜'}],
+    skills:[{i:'🔍',t:'法律邏輯與批判思考力',d:'法律訓練你在複雜的情況中找到清晰的論證。在超高齡社會，很多問題沒有前例可循，需要你從頭建立邏輯。',n:'找一個超高齡社會帶來的法律灰色地帶（如 AI 照護責任），試著想想現行法律如何應對'},{i:'⚖️',t:'社會正義與倫理判斷力',d:'法律不只是規則，是社會價值的體現。你要能判斷：什麼是對所有世代都公平的制度？',n:'思考一個超高齡社會中的「世代不公平」問題，想想法律應該如何回應'},{i:'🌐',t:'國際比較與政策分析力',d:'不同國家對高齡法律的設計各有優劣。你要能從全球學習，設計適合台灣的方案。',n:'研究一個國家如何用法律保護高齡者，找出你覺得台灣最應該學習的部分'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇法政學群',x:'你對正義有強烈的直覺，還不知道超高齡社會將帶來多少全新的法律和政治挑戰。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的震撼',x:'你在律師事務所工作，接了第一個高齡詐騙案。你看見：法律完全沒有為這個時代做準備。'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'開始定義新的法律邊界',x:'你參與制定第一部數位遺產法草案。你意識到：<em>你在為這個世代寫下前所未有的歷史。</em>'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你在為社會的高齡者辯護，同時幫父親規劃數位資產，也開始思考自己的法律規劃。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'法律人的第二使命',x:'你開始從政，推動跨代正義的政策改革。法律不只是保護個人，而是設計整個社會的公平。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你成為你保護的那個人',x:'<strong>你 73 歲，你比任何人都清楚高齡者的法律權利。因為你用一輩子幫他們爭取。</strong>',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你建立的法律架構，保護了這個世代每一個老去的人的尊嚴和權利。',tag:'百歲世代'}],
+    img:'如果你可以為超高齡社會制定一條全新的法律，你最想保護的是什麼？'},
+
+  '管理學群':{emoji:'💼',sub:'企業管理・行銷・國際貿易・資管',traits:['銀髮商模','跨代管理','第三人生','組織設計'],
+    scene:{yr:'2050 年某個週一，創業加速器',ttl:'43 歲的你，幫人在 65 歲開始新事業',txt:'你創辦的「第三人生創業加速器」客戶不是 25 歲的年輕創業家，而是 65-80 歲剛「退休」卻根本不想退休的人。今天你的客戶是一位 72 歲的前工程師，他想把 40 年的製造業經驗變成一門新事業。你幫他找到了市場，設計了商業模式，媒合了 28 歲的年輕合夥人。你 43 歲，你父親 68 歲，你最近在想：<em>他的第三人生，應該長什麼樣子？</em>'},
+    compare:[{n:'你學商業覺得就是賺錢',f:'你在設計讓高齡者的時間和智慧可以被市場認可的商業模式'},{n:'你對管理感興趣',f:'你在管理一個橫跨四個世代的團隊，讓每個人的強項都能發揮'},{n:'你喜歡分析市場趨勢',f:'銀髮經濟是 2050 年最大的市場，但設計方向完全錯了，等你來修正'}],
+    pains:['銀髮市場被當成賣老人東西，沒人思考老人能創造什麼','四代同工的組織管理幾乎沒有人懂','退休後的人力資本完全被浪費','高齡友善的商業環境幾乎不存在'],
+    jobs:[{i:'🚀',n:'高齡創業顧問',d:'幫助高齡者將一輩子的經驗轉化為第三人生的事業',w:'退休後的 20 年人力資本是超高齡社會最大的浪費'},{i:'🔄',n:'跨代組織管理顧問',d:'幫助企業設計讓四個世代有效協作的組織架構和文化',w:'2050 年企業同時管理四個世代是最大的管理挑戰'},{i:'📊',n:'銀髮市場策略師',d:'重新定義高齡市場並設計真正滿足高齡者需求的商業方案',w:'高齡消費市場是 2050 年規模最大、最被誤解的市場'},{i:'🌱',n:'第三人生商業模式設計師',d:'幫助個人設計退休後仍能創造價值和收入的商業方案',w:'退休不再是終點，而是需要商業設計的新起點'}],
+    skills:[{i:'🔭',t:'市場洞察與趨勢分析力',d:'真正理解高齡市場需要你深入了解高齡者的生活、慾望和恐懼，而不是表面的人口數據。',n:'採訪一位 65 歲以上的長輩：他最想消費但市場上還沒有的東西是什麼？'},{i:'🤝',t:'跨代領導與協作力',d:'2050 年的職場領導者要能讓 25 歲和 75 歲的人都願意追隨你，這需要完全不同的領導風格。',n:'觀察你認識的長輩和你的互動，找出一個溝通上的根本差異，想想如何橋接'},{i:'💡',t:'商業模式創新與設計力',d:'超高齡社會帶來的商業問題都是全新的，沒有教科書，需要你從頭創造解決方案。',n:'設計一個解決超高齡社會某個問題的商業模式，不限規模，越創新越好'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇管理學群',x:'你對商業和組織充滿好奇，還不知道最大的管理挑戰即將來自世代的碰撞。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的觀察',x:'你在公司工作，發現組織完全不知道怎麼處理正在高齡化的員工結構。<em>這是一個巨大的管理問題。</em>'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'成為跨代橋樑',x:'你設計了第一個讓 30 歲和 70 歲員工有效協作的組織方案，成效讓整個產業開始注意。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你幫高齡創業者找到第三人生，也幫父親想他的下一步，也開始規劃自己的商業第二章。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'管理者的第二人生',x:'你開始思考：如何管理自己接下來 50 年的職涯？這是最難的管理課題。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你還在創造價值',x:'<strong>你 73 歲，擔任三家公司的資深顧問。你說：「我退休了兩次，但都失敗了，因為我停不下來。」</strong>',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你幫這個世代的人發現：退休不是人生的終點，而是第三個人生的起點。',tag:'百歲世代'}],
+    img:'如果你可以設計一個讓 70 歲的人和 25 歲的人一起工作、互相學習的組織，最重要的設計原則是什麼？'},
+
+  '財經學群':{emoji:'💰',sub:'財務金融・會計・統計',traits:['長壽財務','世代資產','高齡保險','退休設計'],
+    scene:{yr:'2050 年某個週五，財務規劃中心',ttl:'43 歲的你，在幫人設計一個活到 100 歲的財務計畫',txt:'你的客戶今天是一對夫妻，他們 45 歲，剛意識到他們的退休金計畫只夠撐到 75 歲，但他們很可能活到 95 歲。你是<em>長壽財務規劃師</em>，你幫他們重新設計了一個跨越三個人生階段的財務系統。你 43 歲，你自己也有這個問題——你剛幫自己做了一份「活到 100 歲的財務規劃」，<em>結果嚇到自己了。</em>'},
+    compare:[{n:'你學會計覺得只是記帳',f:'你在設計讓一個家庭的財富跨越三個世代合理分配的系統'},{n:'你學統計做數據分析',f:'你在建立預測人在不同年齡需要多少資源的精準模型'},{n:'你對金融投資感興趣',f:'你在設計讓退休後有 30 年還能繼續增值的投資策略'}],
+    pains:['現有退休金制度是為活到 75 歲設計的，完全不夠','長壽風險：活太久把錢用完了','家庭財富在多代之間的傳承和分配越來越複雜','高齡者的金融詐騙和不當理財問題嚴重'],
+    jobs:[{i:'📈',n:'長壽財務規劃師',d:'專門設計能支撐 100 年人生的個人和家庭財務方案',w:'現有退休金制度在超高齡社會完全不夠用'},{i:'🛡️',n:'高齡資產保護顧問',d:'保護高齡者的財產免受詐騙和不當金融操作侵害',w:'高齡者的財務脆弱性在超高齡社會是最嚴重的社會問題之一'},{i:'📊',n:'世代財富流動分析師',d:'分析財富在不同世代之間的流動，設計更公平的分配機制',w:'超高齡社會的財富集中在老年世代，世代財富落差擴大'},{i:'🔮',n:'長壽風險精算師',d:'計算和管理人們因為活得太長而面臨的各種財務風險',w:'長壽是 21 世紀最大的未被充分管理的金融風險'}],
+    skills:[{i:'🔢',t:'長期財務模型思維',d:'你要能把「活到 100 歲」轉化成一個具體的數字計畫。這需要你同時思考時間、風險和人生目標。',n:'試著計算：如果你 65 歲退休、活到 95 歲，每個月需要多少錢？'},{i:'🧠',t:'行為財務學與人性洞察',d:'人在面對錢的時候往往不理性，尤其是老年時期。你要懂得設計對抗人性弱點的財務系統。',n:'找一個你認識的長輩問問：他現在最擔心的財務問題是什麼？'},{i:'⚖️',t:'財務倫理與社會責任感',d:'財經專業有能力影響整個社會的財富分配。你要問的不只是「怎麼賺錢」，而是「什麼是公平的」。',n:'思考：超高齡社會的財富應該怎麼在世代之間分配，才算是公平的？'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇財經學群',x:'你對數字和金融有直覺，還不知道「活太久」將成為你這代人最大的財務挑戰。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的現實',x:'你在銀行工作，你第一次看到一個 80 歲的老人因為錢不夠用而哭泣。<em>現有的退休計畫根本不夠。</em>'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'重新設計退休金融',x:'你開發了第一個針對「活到 100 歲」的財務規劃工具，讓人第一次可以真正計算長壽風險。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你幫客戶規劃長壽財務，也幫父母重新整理他們的財務狀況，同時為自己做最誠實的百歲財務計畫。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'財務專家的個人功課',x:'你發現：幫別人設計百歲財務很容易，為自己誠實面對這個計畫，才是最難的部分。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你的財務計畫撐住了你的夢想',x:'<strong>你 73 歲，財務自由。你說：「我 43 歲那年做的決定，讓我現在可以做我想做的事。」</strong>',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你幫這個世代的人第一次認真算清楚了：100 年的人生，需要什麼樣的財務設計。',tag:'百歲世代'}],
+    img:'如果你現在就要開始設計自己活到 100 歲的財務計畫，你覺得最難的一個決定是什麼？'},
+
+  '遊憩運動學群':{emoji:'🏃',sub:'休閒遊憩・體育・觀光',traits:['全齡運動','防跌設計','代際活動','長壽健康'],
+    scene:{yr:'2050 年某個清晨，城市公園',ttl:'43 歲的你，讓整座城市一起動起來',txt:'你設計的「跨代城市運動系統」今天正式啟動——這套系統讓 8 歲和 78 歲可以在同一個空間做不同強度的運動，但感覺像是在一起玩。你是<em>全齡運動體驗設計師</em>。你 43 歲，你父親 68 歲，他上週在浴室跌倒了——<em>跌倒，是台灣高齡者最大的健康威脅</em>。你決定：運動，是你能給父親最好的保護。'},
+    compare:[{n:'你喜歡運動覺得就是玩',f:'你在研究怎麼讓 75 歲的人安全地保持肌肉量，預防跌倒'},{n:'你對戶外活動感興趣',f:'你在設計讓高齡者可以繼續探索自然的輔助體驗系統'},{n:'你喜歡競技運動',f:'你在設計高齡者的運動競技文化，讓「超高齡奧運」成真'}],
+    pains:['跌倒是高齡者最大的健康威脅','缺乏適合高齡者的運動設施和文化','運動在高齡照護中被嚴重低估','孤獨讓高齡者不願意出門運動'],
+    jobs:[{i:'🏅',n:'全齡運動體驗設計師',d:'設計讓各年齡層都能安全參與且享受的運動體驗',w:'運動是延長健康壽命最有效的單一介入手段'},{i:'🦵',n:'高齡防跌運動專科師',d:'專門為高齡者設計預防跌倒的肌力和平衡訓練方案',w:'跌倒是台灣高齡者第一大意外死亡原因'},{i:'🌿',n:'長壽生活型態設計師',d:'整合運動、飲食、社交，設計讓人健康老去的生活方式',w:'生活型態是影響健康壽命最重要的因素'},{i:'🌉',n:'代際運動連結設計師',d:'設計讓不同世代可以一起運動的體驗，建立跨代連結',w:'共同運動是建立跨代關係最自然的方式'}],
+    skills:[{i:'🧬',t:'運動科學與高齡生理學',d:'你要懂得 70 歲的身體和 20 歲的身體有什麼不同，才能設計真正安全有效的高齡運動方案。',n:'研究「肌少症」是什麼，想想你身邊的長輩有哪些跡象'},{i:'🎨',t:'體驗設計與創意思維',d:'讓高齡者真正想動起來，需要的不只是「有益健康」，而是真正有趣的體驗設計。',n:'觀察一個你覺得對高齡者不友善的運動設施，想想怎麼重新設計'},{i:'🤝',t:'跨代互動與社群設計力',d:'運動的動力來自社群。你要能設計讓不同年齡的人都想加入的運動社群和文化。',n:'設計一個讓你的祖父母輩和你的同學都願意一起參加的運動活動'}],
+    tl:[{a:'2025｜18 歲',s:'tl-plain',c:'#a259ff',i:'🌱',t:'選擇遊憩運動學群',x:'你喜歡運動、喜歡讓人快樂，還不知道運動是超高齡社會最強大的健康武器。'},{a:'2030｜23 歲',s:'tl-plain',c:'#00e5ff',i:'🛠️',t:'第一份工作的體悟',x:'你在體適能中心工作，你看見：幾乎所有設施都是為年輕人設計的，老人只敢坐在邊緣看。'},{a:'2038｜31 歲',s:'tl-hot',c:'#39ff99',i:'🔥',t:'運動開始改變老年',x:'你設計的高齡防跌運動課程讓參與者的跌倒率下降 60%。這不只是運動，是救命。'},{a:'2050｜43 歲',s:'tl-sw',c:'#ffe066',i:'🥪',t:'三明治世代的你',x:'你為整座城市設計運動系統，也幫父親設計每天的運動方案，也為自己的 73 歲身體投資。'},{a:'2057｜50 歲',s:'tl-self',c:'#ff6b9d',i:'🪞',t:'運動設計師的個人使命',x:'你開始把最好的運動科學知識用在自己身上。因為你知道：73 歲的品質，從現在就開始決定。'},{a:'2080｜73 歲',s:'tl-elder',c:'#39ff99',i:'✨',t:'你的身體就是你的作品',x:'<strong>你 73 歲，肌肉量和平衡感超越同年齡層 30%。你說：「我最好的設計，就是我自己的身體。」</strong>',tag:'新世代老人'},{a:'2100+｜93 歲以上',s:'tl-c100',c:'#ffffff',i:'♾️',t:'活到 100 歲，不再是奇蹟',x:'你讓這個世代的人發現：老，不是停下來，而是換一種方式繼續動。',tag:'百歲世代'}],
+    img:'如果你可以設計一種讓你的父母和你的孩子都願意一起做的運動體驗，它長什麼樣子？'}
+};
+
+// group categories
+const groups={
+  '🔬 理工與生命科學':['資訊學群','工程學群','數理化學群','醫藥衛生學群','生命科學學群','生物資源學群','地球環境學群'],
+  '🎨 設計與創意':['建築設計學群','藝術學群'],
+  '📢 傳播語文與人文':['大眾傳播學群','外語學群','文史哲學群'],
+  '🫂 社會與教育':['社會心理學群','教育學群'],
+  '⚖️ 法政管理財經':['法政學群','管理學群','財經學群','遊憩運動學群']
+};
+
+const quizGroups={
+  info:['資訊學群','工程學群','數理化學群','醫藥衛生學群','生命科學學群','生物資源學群','地球環境學群'],
+  social:['社會心理學群','教育學群','文史哲學群','法政學群','外語學群'],
+  art:['藝術學群','建築設計學群','大眾傳播學群'],
+  biz:['管理學群','財經學群','遊憩運動學群']
+};
+
+function goto(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  const t=document.getElementById(id);t.classList.add('active');
+  t.classList.remove('fade-in');void t.offsetWidth;t.classList.add('fade-in');
+  window.scrollTo(0,0);
+  if(id==='s-home')updateHome();
+  if(id==='s-explore'){renderSelector();renderGroup(activeGroup);}
+}
+
+function afterImpact(ans){
+  const m={
+    a:{e:'💡',t:'「找一份好工作」——只夠撐 30 年',b:'如果你 22 歲開始工作，一份「好工作」撐到 50 歲，\n然後呢？你還有 <strong style="color:var(--neon3)">50 年</strong> 的人生沒有計畫。\n\n100 歲的人生是 <strong style="color:var(--neon2)">三到四個完全不同的人生階段</strong>。\n\n你現在選的科系，只是第一個人生的起點。'},
+    b:{e:'🌌',t:'「很久」和「100 歲」是完全不同的感受',b:'2050 年你才 <strong style="color:var(--neon4)">43 歲</strong>——那是中壯年，不是老年。\n2080 年你 <strong style="color:var(--neon2)">73 歲</strong>——那時你還可能在工作、在創造。\n\n100 歲的人生，需要被認真設計。'},
+    c:{e:'🔄',t:'你這代的「老」和現在的老人完全不同',b:'你爸媽那代的 70 歲，是你這代的 <strong style="color:var(--neon5)">50 歲</strong>。\n\n你這代老了：數位原生、身體更健康、\n可能 80 歲還在做自己想做的事。\n\n<strong style="color:var(--neon3)">「老」這件事，正在被你們這代重新定義。</strong>'},
+    d:{e:'🚀',t:'你有感覺——現在就是準備的時候',b:'這種「說不清但隱隱覺得重要」的感覺，是對的。\n\n100 歲的人生靠 <strong style="color:var(--neon2)">持續地認識自己、想像未來、嘗試可能</strong> 來準備。\n\n你現在選的科系，<strong style="color:var(--neon4)">是在設計你想活的人生。</strong>'}
+  }[ans];
+  document.getElementById('impact2-content').innerHTML=`
+    <div style="font-size:2.4rem;margin-bottom:.9rem">${m.e}</div>
+    <div style="font-size:1.25rem;font-weight:900;margin-bottom:1.1rem;line-height:1.3;background:linear-gradient(135deg,#fff,var(--neon2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">${m.t}</div>
+    <div style="color:var(--sub);font-size:.84rem;line-height:1.9;white-space:pre-line;max-width:370px">${m.b}</div>`;
+  goto('s-impact2');
+}
+
+document.getElementById('inp-dad').addEventListener('input',updatePreview);
+document.getElementById('inp-mom').addEventListener('input',updatePreview);
+function updatePreview(){
+  const d=parseInt(document.getElementById('inp-dad').value)||0,m=parseInt(document.getElementById('inp-mom').value)||0;
+  const el=document.getElementById('setup-preview');
+  let lines=[];
+  if(d>0)lines.push(`爸爸在 2050 年 <em>${d+25} 歲</em>`);
+  if(m>0)lines.push(`媽媽在 2050 年 <em>${m+25} 歲</em>`);
+  el.innerHTML=lines.length?'✦ '+lines.join('，')+'<br>那時的他們，你能給什麼？':'填入後，這裡會出現你父母在 2050 年的年齡 ✦';
+}
+function saveSetup(skip=false){
+  if(!skip){user.name=document.getElementById('inp-name').value.trim();user.dadAge=parseInt(document.getElementById('inp-dad').value)||0;user.momAge=parseInt(document.getElementById('inp-mom').value)||0;}
+  goto('s-home');
+}
+function updateHome(){
+  const n=user.name;
+  document.getElementById('welcome-name').innerHTML=n?`嗨，<em>${n}</em>！歡迎來到你的未來宇宙`:'';
+  let pLine='';
+  if(user.dadAge||user.momAge){let ps=[];if(user.dadAge)ps.push(`爸爸那時 <strong style="color:var(--neon4)">${user.dadAge+25} 歲</strong>`);if(user.momAge)ps.push(`媽媽那時 <strong style="color:var(--neon4)">${user.momAge+25} 歲</strong>`);pLine=ps.join('，')+'，他們需要你。<br>';}
+  document.getElementById('home-ctx').innerHTML=`現在出生的你，<strong>有很高的機率活到 100 歲。</strong><br>2050 年你 <em>43 歲</em>——${pLine}你的同事可能比你老 30 歲，你的身體也開始說話。<br><br>你選的科系，不只是找一份工作。<br><strong>是在設計一個能活到 100 歲的人生。</strong>`;
+}
+
+// QUIZ
+const questions=[
+  {q:'面對一個問題，你最想做什麼？',emoji:'🧩',opts:[{t:'分析規律，設計一套系統解法',g:'info'},{t:'理解人為什麼有這個問題',g:'social'},{t:'用視覺或空間的方式呈現解方',g:'art'},{t:'找出商業或組織的運作方式',g:'biz'}]},
+  {q:'2050 年你 43 歲，最想做什麼？',emoji:'🚀',opts:[{t:'建立讓各世代都能用的科技或科學系統',g:'info'},{t:'幫助人找到跨世代相處的方式',g:'social'},{t:'設計讓老年生活有美感和尊嚴的環境',g:'art'},{t:'打造讓高齡者繼續創造價值的事業',g:'biz'}]},
+  {q:'你覺得超高齡社會最需要什麼？',emoji:'🌍',opts:[{t:'更好的醫療科技讓人健康到老',g:'info'},{t:'讓老人被尊重、找到意義的社會文化',g:'social'},{t:'讓老年生活有美感、有故事的設計',g:'art'},{t:'讓高齡者繼續參與社會的機制',g:'biz'}]},
+  {q:'你比較享受哪種工作狀態？',emoji:'💫',opts:[{t:'深度研究，解決一個技術或科學難題',g:'info'},{t:'和人深度對話，理解他的故事',g:'social'},{t:'創作、設計，讓想法變成看得見的東西',g:'art'},{t:'分析趨勢，規劃策略，帶領團隊',g:'biz'}]}
+];
+let qIdx=0,scores={info:0,social:0,art:0,biz:0};
+function startQuiz(){qIdx=0;scores={info:0,social:0,art:0,biz:0};renderQ()}
+function renderQ(){
+  const q=questions[qIdx];
+  document.getElementById('qbar').style.width=Math.round(qIdx/questions.length*100)+'%';
+  document.getElementById('quiz-body').innerHTML=`<div class="quiz-emoji fade-in">${q.emoji}</div><div class="quiz-q fade-in">Q${qIdx+1}. ${q.q}</div><div class="quiz-sub">選最符合你的答案</div><div class="quiz-opts fade-in">${q.opts.map(o=>`<button class="quiz-opt" onclick="selectOpt(this,'${o.g}')">${o.t}</button>`).join('')}</div><button class="btn-next" id="btn-next" onclick="nextQ()">繼續 →</button>`;
+}
+function selectOpt(el,g){document.querySelectorAll('.quiz-opt').forEach(b=>b.classList.remove('selected'));el.classList.add('selected');const btn=document.getElementById('btn-next');btn.classList.add('ready');btn._g=g;}
+function nextQ(){const btn=document.getElementById('btn-next');if(!btn.classList.contains('ready'))return;scores[btn._g]=(scores[btn._g]||0)+1;if(++qIdx<questions.length)renderQ();else showResult();}
+function showResult(){
+  const top=Object.entries(scores).sort((a,b)=>b[1]-a[1])[0][0];
+  const pool=quizGroups[top];
+  const gid=pool[Math.floor(Math.random()*pool.length)];
+  const g=GD[gid];
+  document.getElementById('r-emoji').textContent=g.emoji;
+  document.getElementById('r-group').textContent=gid;
+  document.getElementById('r-desc').textContent='根據你的回答，你很適合探索這個學群在超高齡社會的可能性！';
+  document.getElementById('r-tags').innerHTML=g.traits.map(t=>`<span class="trait-tag">${t}</span>`).join('');
+  window._rg=gid;goto('s-result');
+}
+function exploreResult(){activeGroup=window._rg||'資訊學群';goto('s-explore')}
+
+function renderSelector(){
+  let html='';
+  for(const [cat,ids] of Object.entries(groups)){
+    html+=`<div class="group-cat"><div class="cat-label">${cat}</div><div class="group-pills">`;
+    ids.forEach(id=>{const g=GD[id];html+=`<div class="gpill${id===activeGroup?' active':''}" onclick="selectGroup('${id}')">${g.emoji} ${id}</div>`;});
+    html+='</div></div>';
+  }
+  document.getElementById('group-selector').innerHTML=html;
+}
+function selectGroup(id){activeGroup=id;renderSelector();renderGroup(id);}
+
+function renderGroup(gid){
+  const d=GD[gid];if(!d){document.getElementById('group-content').innerHTML='<div style="color:var(--sub);padding:2rem;text-align:center">找不到此學群的資料</div>';return;}
+  const nm=user.name||'你';
+  const topLbl=buildTopLabel();
+
+  const cmp=d.compare.map(c=>`<div class="cmp-row"><div class="cmp-now"><div class="cmp-lbl">現在 18 歲的你</div><div class="cmp-txt">${c.n}</div></div><div class="cmp-fut"><div class="cmp-lbl">2050 年 43 歲的你</div><div class="cmp-txt">${c.f}</div></div></div>`).join('');
+  const tlHtml=buildTL(d.tl);
+
+  const html=`
+    <div class="scene-box fade-in"><div class="scene-yr">📡 ${d.scene.yr}</div><div class="scene-ttl">✨ ${d.scene.ttl}</div><div class="scene-txt">${d.scene.txt}</div></div>
+    <div class="sec fade-in"><div class="sec-lbl" style="color:var(--neon2)">🔄 現在的你 vs 2050 的你</div>
+      <div class="cmp-intro">同樣是「你」——二十五年後，你用同樣的興趣，<em>解決完全不同規模的問題</em>。</div>
+      <div class="cmp-grid">${cmp}</div></div>
+    <div class="sec fade-in"><div class="sec-lbl" style="color:var(--neon3)">🥪 2050 年的你：三明治世代</div>
+      <div class="sw-layers">
+        <div class="sw-layer top"><div class="sw-ico">👴</div><div><div class="sw-lbl">${topLbl}</div><div style="font-size:.73rem;color:var(--sub);line-height:1.5">他們還有活力，但需要你的支持與理解。</div></div></div>
+        <div class="sw-layer mid"><div class="sw-ico">🧑</div><div><div class="sw-lbl">你｜43 歲，社會的經濟核心</div><div style="font-size:.73rem;color:var(--sub);line-height:1.5">你是家庭支柱，也是職場中最重要的世代。上下都需要你，你自己的身體也開始說話。</div></div></div>
+        <div class="sw-layer bot"><div class="sw-ico">🧒</div><div><div class="sw-lbl">你的孩子世代｜15 歲左右</div><div style="font-size:.73rem;color:var(--sub);line-height:1.5">他們在超高齡社會長大，你要幫他們找到自己的位置。</div></div></div>
+      </div></div>
+    <div class="sec fade-in"><div class="sec-lbl" style="color:var(--neon3)">⚡ 超高齡社會的生存痛點</div>
+      <div class="pain-grid">${d.pains.map(p=>`<div class="pain-item">${p}</div>`).join('')}</div></div>
+    <div class="sec fade-in"><div class="sec-lbl" style="color:var(--neon2)">🃏 2050 新興職業（點擊翻轉）</div>
+      <div class="cards-grid">${d.jobs.map(j=>`<div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><div class="flip-ico">${j.i}</div><div class="flip-nm">${j.n}</div><div class="flip-hint">點我翻轉 →</div></div><div class="flip-back"><div class="flip-bt">${j.n}</div><div class="flip-bd">${j.d}<br><br>📌 ${j.w}</div></div></div></div>`).join('')}</div></div>
+    <div class="sec fade-in"><div class="sec-lbl" style="color:var(--neon5)">🌱 現在的我要培養什麼？</div>
+      ${d.skills.map(s=>`<div class="skill-item"><div class="skill-ttl">${s.i} ${s.t}</div><div class="skill-desc">${s.d}</div><div class="skill-now">📌 現在可以做：${s.n}</div></div>`).join('')}</div>
+    <div class="sec fade-in"><div class="sec-lbl" style="color:var(--neon4)">⏳ ${nm==='你'?'我':nm}的 100 年人生時間軸</div>
+      <div class="tl-intro">你這代人，<em>很可能活到 100 歲</em>。43 歲是最重的三明治期，73 歲你是<strong>跟父母那代完全不同的新世代老人</strong>，100 歲——<em>不再是奇蹟，是設計題</em>。</div>
+      <div class="timeline">${tlHtml}</div></div>
+    <div class="imagine-box fade-in">
+      <div class="imagine-q">💭 <span>寫給未來的${nm}</span><br>${d.img}</div>
+      <textarea id="user-idea" placeholder="用你自己的話寫下來——越真實越好 ✍️"></textarea>
+      <br><button class="sub-btn" onclick="submitIdea('${gid}')">送出，讓 73 歲的${nm}來回應 ✨</button>
+      <div class="ai-resp" id="idea-resp"></div>
+    </div><div style="height:2rem"></div>`;
+
+  const cont=document.getElementById('group-content');
+  cont.innerHTML=html;
+  cont.classList.remove('fade-in');void cont.offsetWidth;cont.classList.add('fade-in');
+}
+
+function buildTopLabel(){
+  if(user.dadAge||user.momAge){let ps=[];if(user.dadAge)ps.push(`爸爸 ${user.dadAge+25} 歲`);if(user.momAge)ps.push(`媽媽 ${user.momAge+25} 歲`);return '你的父母｜'+ps.join('、');}
+  return '你的父母世代｜那時 70-80 歲';
+}
+function buildTL(items){
+  const phases=[{label:'🌱 第一人生：選擇與建立',c:'var(--neon1)',ids:[0,1]},{label:'🔥 第二人生：三明治與高峰',c:'var(--neon4)',ids:[2,3,4]},{label:'✨ 第三人生：新世代的老',c:'var(--neon5)',ids:[5,6]}];
+  let html='';
+  phases.forEach(ph=>{
+    html+=`<div class="tl-phase" style="color:${ph.c}"><div class="tl-ph-line" style="background:${ph.c}"></div><div class="tl-ph-lbl">${ph.label}</div><div class="tl-ph-line" style="background:${ph.c}"></div></div>`;
+    ph.ids.forEach(i=>{const t=items[i];if(!t)return;const tag=t.tag?`<div class="newtag">✦ ${t.tag}</div>`:'';html+=`<div class="tl-item"><div class="tl-dot" style="border-color:${t.c};color:${t.c}">${t.i}</div><div class="tl-box ${t.s}"><div class="tl-age" style="color:${t.c}">${t.a}</div><div class="tl-ttl">${t.t}</div><div class="tl-txt">${t.x}</div>${tag}</div></div>`;});
+  });
+  return html;
+}
+
+function submitIdea(gid){
+  const txt=document.getElementById('user-idea').value.trim();
+  if(!txt)return;
+  const el=document.getElementById('idea-resp');
+  el.style.display='block';
+  el.classList.add('ldots');
+  el.textContent='正在連線 2080 的你';
+  setTimeout(()=>{
+    el.classList.remove('ldots');
+    el.textContent=genReply(gid,txt,user.name||'你',user.dadAge,user.momAge);
+  },1800);
+}
+
+function genReply(gid,txt,nm,dadAge,momAge){
+  const yr73=2080;
+  const dadNow=dadAge?`那時爸爸 ${dadAge+55} 歲，`:'';
+  const momNow=momAge?`媽媽 ${momAge+55} 歲，`:''; 
+
+  // 關鍵詞偵測
+  const t=txt;
+  const has=(words)=>words.some(w=>t.includes(w));
+
+  // 學群專屬的 73 歲智慧
+  const groupWisdom={
+    '資訊學群':'我花了二十年幫別人設計系統，卻花了最後三十年才學會設計自己的生活節奏。',
+    '工程學群':'我建造了很多東西，但最難設計的，是我自己老去的方式。',
+    '數理化學群':'我研究老化的方程式，卻發現人生最重要的變數，不在公式裡。',
+    '醫藥衛生學群':'我幫無數人設計健康的老年，但我自己最健康的秘密，是我從不害怕問「我還想做什麼」。',
+    '生命科學學群':'我讀懂了細胞如何老化，卻花了更長的時間讀懂自己的人生。',
+    '生物資源學群':'最好的長壽秘方，不是我研究室裡的任何東西，而是每天早上有值得起床的理由。',
+    '地球環境學群':'我守護了很多地方不受傷害，但最難守護的，是我內心對未來的信心。',
+    '建築設計學群':'我設計了很多讓人有尊嚴的空間，但真正的尊嚴，來自你對自己的看法，不是空間。',
+    '藝術學群':'73 歲的我，比 18 歲的我更敢創作，因為我終於不在乎別人怎麼看了。',
+    '社會心理學群':'我幫了無數人找到意義感，卻發現意義感這東西，只能自己找，沒有人能給你。',
+    '大眾傳播學群':'我說了一輩子的故事，到了 73 歲才發現：自己的故事，才是最重要的那一個。',
+    '外語學群':'我懂四種語言，但人生最重要的對話，是每天早上和鏡子裡的自己說的那幾句話。',
+    '文史哲學群':'我研究了一輩子的智慧，到 73 歲才真正開始活出那些智慧。',
+    '教育學群':'我教了一輩子的學生，卻發現最好的學習，是那些讓你不舒服的時刻。',
+    '法政學群':'我捍衛了很多人的權利，但最難捍衛的，是自己不被恐懼支配的權利。',
+    '管理學群':'我管理過很多人和事業，但管理「自己想要什麼樣的人生」，才是最難的課題。',
+    '財經學群':'錢很重要，但到了 73 歲，我最感謝的投資，是那些我投入在關係和體驗上的時間。',
+    '遊憩運動學群':'我的身體在 73 歲還很好用，因為我從你這個年紀就開始認真對待它。'
+  };
+
+  // 根據輸入內容選擇回應角度
+  let opening='';
+  let middle='';
+  let closing='';
+
+  if(has(['害怕','恐懼','擔心','不確定','迷茫','不知道'])){
+    opening=`我看著你寫的這些，想起了 18 歲的我——也是一樣的害怕。`;
+    middle=`但我現在可以告訴你：那些讓你不確定的感覺，後來都變成了你最重要的能力。不確定，代表你還在認真思考。`;
+    closing=`不要急著找到答案。先找到一個讓你願意繼續往前的問題。`;
+  } else if(has(['父母','爸','媽','家人','照顧'])){
+    opening=`你想到了父母，這讓我有點意外，也很感動。`;
+    const parentLine=dadAge||momAge?`${dadNow}${momNow}你還是那個中間的人，但你已經學會了在給予的同時，也接受別人的給予。`:``;
+    middle=`${parentLine}在超高齡社會，照顧不是單向的。你的父母，在某些時候，也是你的老師。`;
+    closing=`趁他們還能說話，多問問他們的故事。那些故事，你以後會非常需要。`;
+  } else if(has(['錢','收入','工作','賺','財務','穩定'])){
+    opening=`你在想生存的問題，這很真實，我不會說「不要想這些」。`;
+    middle=`但我現在 73 歲回頭看，錢確實重要，但最讓我有錢的決定，往往不是最「安全」的那個，而是最讓我全力投入的那個。`;
+    closing=`找到你願意認真做的事，錢會跟著來。反過來不一定成立。`;
+  } else if(has(['改變','影響','貢獻','幫助','社會','世界'])){
+    opening=`你想改變什麼，這很好。18 歲有這種衝動，是最珍貴的資源。`;
+    middle=`我告訴你一件 73 歲才懂的事：改變世界的人，不是因為他們很厲害，而是因為他們在一件事情上，比別人多堅持了幾年。`;
+    closing=`找到你願意堅持的那一件事，然後開始。不要等到準備好了再開始。`;
+  } else if(has(['自己','我','未來','夢想','想要','希望'])){
+    opening=`你在想自己的事，這正是 18 歲最應該做的事。`;
+    middle=`${groupWisdom[gid]||'我用了三十年才真正搞清楚自己要什麼。但你不必等那麼久——如果你現在就開始認真問自己這個問題的話。'}`;
+    closing=`你寫的這些，比你知道的更接近答案。`;
+  } else if(has(['老','老人','老年','長輩','年紀'])){
+    opening=`你在想「老」這件事，很好。大多數 18 歲的人不會想到這裡。`;
+    middle=`我告訴你：73 歲的我，和你想像的「老人」完全不一樣。我還在創造，還有好奇心，還有很多沒做完的事。「老」這個字，需要被你們這代重新定義。`;
+    closing=`從現在開始，不要用你爸媽那代的眼光想像你的老年。那是完全不同的事。`;
+  } else {
+    // 通用回應
+    opening=`我在 2080 年讀到你寫的這些，停了很久。`;
+    middle=`${groupWisdom[gid]||'我花了很多年才懂：人生最重要的不是做了什麼，而是你在做的時候，是不是真的在場。'}`;
+    closing=`你現在的每一個選擇，都在悄悄塑造 2080 年的我。謝謝你認真想這些事。`;
+  }
+
+  const nm73=nm==='你'?'我':nm;
+  return `來自 2080 年、73 歲的${nm}：\n\n${opening}\n\n${middle}\n\n${closing}\n\n— ${nm73}，${yr73} 年`;
+}
+
+startQuiz();
+</script>
 </body>
 </html>
